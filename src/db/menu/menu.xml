@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Menu">
+	<select id="selectMenus" resultType="db.menu.Menu_DataBean">
+		select * from mh_menu order by menu_id desc
+	</select>
+	<insert id="insertMenu" parameterType="db.menu.Menu_DataBean">
+		insert into mh_menu values(
+		(select max(menu_id)+1 from mh_menu),
+		#{menu_name},
+		#{menu_price},
+		#{menu_image},
+		#{menu_category},
+		#{menu_detail}
+		)
+	</insert>
+	<update id="modifyMenu" parameterType="db.menu.Menu_DataBean">
+		update mh_menu set
+		menu_name=#{menu_name},
+		menu_price=#{menu_price},
+		menu_image=#{menu_image},
+		menu_category=#{menu_category},
+		menu_detail=#{menu_detail}
+		where menu_id=#{menu_id}
+	</update>
+	
+	<select id="selectMenu" resultType="db.menu.Menu_DataBean" parameterType="int">
+		select * from mh_menu where menu_id=#{menu_id}
+	</select>
+	
+	<delete id="deleteMenu" parameterType="int">
+		delete from mh_menu where menu_id=#{menu_id}
+	</delete>
+	
+	<select id="selectMenusByCategory" parameterType="java.util.Map" resultType="db.menu.Menu_DataBean">
+		select * from mh_menu where menu_category=#{menu_category} order by menu_id desc
+	</select>
+</mapper>

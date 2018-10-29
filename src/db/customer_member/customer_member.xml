@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Customer_member">
+
+	<select id="getCount" resultType="int">
+		select count(*) from mh_customer_member
+	</select>
+	<select id="getCountByAddress" resultType="int">
+		select count(*) from mh_customer_member where cus_address like '%'||#{locationKeyword}||'%'
+	</select>
+
+	<insert id="insertCustomer" parameterType="db.customer_member.Customer_member_DataBean" >
+		insert into mh_customer_member
+		values(
+		#{cus_id},
+		#{cus_pw},
+		#{cus_nickname},
+		#{cus_address},
+		#{cus_address2},
+		#{cus_email},
+		#{cus_tel},
+		#{cus_reg_date},
+		#{cus_gender},
+		#{cus_birth}
+		)
+	</insert>
+	
+	<delete id="deleteCustomer" parameterType="String">
+		delete from mh_customer_member where cus_id=#{cus_id}
+	</delete>
+	
+	<select id="checkId" parameterType="String" resultType="int">
+		select count(*) from mh_customer_member where cus_id=#{cus_id}
+	</select>
+	
+	<select id="selectCustomers" resultType="db.customer_member.Customer_member_DataBean" parameterType="java.util.Map">
+		select * from mh_customer_member
+	</select>
+	
+	<select id="selectCustomers2" resultType="db.customer_member.Customer_member_DataBean" parameterType="java.util.Map">
+		select
+		cus_id,
+		cus_pw,
+		cus_nickname,
+		cus_address,
+		cus_address2,
+		cus_email,
+		cus_tel,
+		cus_reg_date,
+		r from
+		(select  
+		cus_id,
+		cus_pw,
+		cus_nickname,
+		cus_address,
+		cus_address2,
+		cus_email,
+		cus_tel,
+		cus_reg_date,
+		rownum r
+		from (select  
+		cus_id,
+		cus_pw,
+		cus_nickname,
+		cus_address,
+		cus_address2,
+		cus_email,
+		cus_tel,
+		cus_reg_date
+		from mh_customer_member order by cus_id
+		) order by cus_id) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<select id="selectCustomersByAddress" resultType="db.customer_member.Customer_member_DataBean" parameterType="java.util.Map">
+		select
+		cus_id,
+		cus_pw,
+		cus_nickname,
+		cus_address,
+		cus_address2,
+		cus_email,
+		cus_tel,
+		cus_reg_date,
+		r from
+		(select  
+		cus_id,
+		cus_pw,
+		cus_nickname,
+		cus_address,
+		cus_address2,
+		cus_email,
+		cus_tel,
+		cus_reg_date,
+		rownum r
+		from (select  
+		cus_id,
+		cus_pw,
+		cus_nickname,
+		cus_address,
+		cus_address2,
+		cus_email,
+		cus_tel,
+		cus_reg_date
+		from mh_customer_member where cus_address like '%'||#{keyword}||'%' order by cus_id
+		) order by cus_id) where r &gt;= to_number(#{start}) and r &lt;= to_number(#{end})
+	</select>
+	
+	
+	
+	<select id="selectCustomer" resultType="db.customer_member.Customer_member_DataBean" parameterType="String">
+		select * from mh_customer_member where cus_id=#{cus_id}
+	</select>
+	<update id="modifyCustomer" parameterType="db.customer_member.Customer_member_DataBean">
+		update mh_customer_member set
+		cus_pw=#{cus_pw},
+		cus_nickname=#{cus_nickname},
+		cus_address=#{cus_address},
+		cus_address2=#{cus_address2},
+		cus_email=#{cus_email},
+		cus_tel=#{cus_tel},
+		cus_gender=#{cus_gender},
+		cus_birth=#{cus_birth}
+		where cus_id=#{cus_id}
+	</update>
+	
+	<update id="updateCus_address" parameterType="java.util.Map">
+		update mh_customer_member set
+		cus_address=#{cus_address},
+		cus_address2=#{cus_address2}
+		where cus_id=#{cus_id}
+	</update>
+	
+	<insert id="insertBlack" parameterType="String">
+		insert into mh_black_member
+		values(
+		#{cus_id}
+		)
+	</insert>
+	
+	<delete id="deleteBlack" parameterType="String">
+		delete from mh_black_member
+		where cus_id=#{cus_id}
+	</delete>
+	
+	<select id="checkBlack" parameterType="String" resultType="int">
+		select count(*) from mh_black_member where cus_id=#{cus_id}
+	</select>
+	
+	<select id="countReport" resultType="int">
+		select count(*) from mh_report where review_no in (select review_no from mh_review where cus_id=#{cus_id})
+	</select>
+	<select id="countReportByCus" resultType="int">
+		select count(*) from mh_report where cus_id=#{cus_id}
+	</select>
+	
+	<!-- 은혜누나 추가!!!! -->
+	<select resultType="db.customer_member.Customer_member_DataBean" id="selectCusInfoforEmail" parameterType="int">
+		select c.cus_nickname, c.cus_email, c.cus_address, c.cus_address2, c.cus_tel from mh_order_history oh, mh_customer_member c 
+		where oh.order_no=#{order_no} and oh.cus_id=c.cus_id 
+	</select>
+	
+	<!-- 성열이형 find 추가 -->
+	<select id="find_id" resultType="string" parameterType="string">
+		select cus_id from mh_customer_member where cus_email=#{cus_email}
+	</select>
+	<update id="update_pw" parameterType="db.customer_member.Customer_member_DataBean">
+		update mh_customer_member set cus_pw = #{cus_pw} where cus_id = #{cus_id}
+	</update>
+	<select resultType="string" id="find_email" parameterType="string">
+		select cus_email from mh_customer_member where cus_email=#{cus_email}
+	</select>
+</mapper>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Review">
+	<select id="selectReviews" parameterType="java.util.Map" resultType="db.review.Review_DataBean">
+		select * from 
+		(select review_no, review_subject, review_write_date, review_hits, review_score, 
+		review_content, review_image, ref_id, re_step, re_level, cus_id, rownum r from 
+		(select review_no, review_subject, review_write_date, review_hits, review_score, 
+		review_content, review_image, ref_id, re_step, re_level, cus_id from mh_review 
+		order by ref_id desc, re_step asc) order by ref_id desc, re_step asc)
+		where r between #{start} and #{end}
+	</select>
+	<select id="selectReview" parameterType="int" resultType="db.review.Review_DataBean">
+		select * from mh_review where review_no=#{review_no}
+	</select>
+	<update id="blindReview" parameterType="int">
+		update mh_review set
+		review_subject='블라인드',
+		review_content='블라인드'
+		where review_no=#{review_no}
+	</update>
+	
+	<delete id="deleteReview" parameterType="int">
+		delete from mh_review where review_no=#{review_no}
+	</delete>
+	
+	<update id="modifyReview" parameterType="db.review.Review_DataBean">
+		update mh_review set
+		review_subject=#{review_subject},
+		review_content=#{review_content},
+		review_score=#{review_score},
+		review_image=#{review_image}
+		where review_no=#{review_no}
+	</update>
+
+	<update id="addHits" parameterType="int">
+		update mh_review set 
+		review_hits=review_hits+1 
+		where review_no=#{review_no}
+	</update>
+	<select id="getMaxReview_no" resultType="int">
+		select max(review_no) from mh_review
+	</select>
+	<select id="getMaxNotice_no" resultType="int">
+		select max(notice_no) from mh_notice
+	</select>
+	<update id="insertReply" parameterType="db.review.Review_DataBean">
+		update mh_review set
+		re_step=re_step+1 where ref_id=#{ref_id} and re_step>#{re_step}
+	</update>
+	
+	<select id="selectNotices" parameterType="java.util.Map" resultType="db.review.Notice_DataBean">
+		select * from mh_notice order by notice_no desc
+	</select>
+	
+	<select id="selectNotice" parameterType="int" resultType="db.review.Notice_DataBean">
+		select * from mh_notice where notice_no=#{notice_no}
+	</select>
+	
+	<insert id="insertNotice" parameterType="db.review.Notice_DataBean">
+		insert into mh_notice
+		values(
+		#{notice_no},
+		#{notice_subject},
+		#{notice_content},
+		sysdate,
+		0
+		)
+	</insert>
+	
+	<delete id="deleteNotice" parameterType="int">
+		delete from mh_notice
+		where notice_no=#{notice_no}
+	</delete>
+	
+	<update id="modifyNotice" parameterType="db.review.Notice_DataBean">
+		update mh_notice set
+		notice_subject=#{notice_subject},
+		notice_content=#{notice_content}
+		where notice_no=#{notice_no}
+	</update>
+	
+	<update id="addHitsNotice" parameterType="int">
+		update mh_notice set 
+		notice_hits=notice_hits+1 
+		where notice_no=#{notice_no}
+	</update>
+	
+	<insert id="insertReport" parameterType="db.review.Report_DataBean">
+		insert into mh_report
+		values(
+		(select count(*) from mh_report)+1,
+		#{review_no},
+		#{report_reason},
+		#{cus_id}
+		)
+	</insert>
+	
+	<select id="countReport" resultType="int">
+		select count(*) from mh_report where review_no=#{review_no}
+	</select>
+	
+	<insert id="insertReview" parameterType="db.review.Review_DataBean">
+		insert into mh_review
+		values(
+		#{review_no},
+		#{review_subject},
+		sysdate,
+		0,
+		#{review_score},
+		#{review_content},
+		#{review_image, jdbcType=VARCHAR},
+		#{ref_id},
+		#{re_step},
+		#{re_level},
+		#{cus_id}
+		)
+	</insert>
+	
+	<select id="selectMyReviews" parameterType="java.util.Map" resultType="db.review.Review_DataBean">
+		select * from 
+		(select review_no, review_subject, review_write_date, review_hits, review_score, 
+		review_content, review_image, ref_id, re_step, re_level, cus_id, rownum r from 
+		(select review_no, review_subject, review_write_date, review_hits, review_score, 
+		review_content, review_image, ref_id, re_step, re_level, cus_id from mh_review 
+		where cus_id=#{cus_id, jdbcType=VARCHAR} 
+		order by ref_id desc, re_step asc) order by ref_id desc, re_step asc)
+		where r between #{start} and #{end}	
+	</select>
+	
+	<select id="searchReviewBySubject" parameterType="java.util.Map" resultType="db.review.Review_DataBean">
+		select * from 
+		(select review_no, review_subject, review_write_date, review_hits, review_score, 
+		review_content, review_image, ref_id, re_step, re_level, cus_id, rownum r from 
+		(select review_no, review_subject, review_write_date, review_hits, review_score, 
+		review_content, review_image, ref_id, re_step, re_level, cus_id from mh_review 
+		where review_subject like '%'||#{keyword, jdbcType=VARCHAR}||'%'
+		order by ref_id desc, re_step asc) order by ref_id desc, re_step asc)
+		where r between #{start, jdbcType=VARCHAR} and #{end, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="searchReviewByContent" parameterType="java.util.Map" resultType="db.review.Review_DataBean">
+		select * from 
+		(select review_no, review_subject, review_write_date, review_hits, review_score, 
+		review_content, review_image, ref_id, re_step, re_level, cus_id, rownum r from 
+		(select review_no, review_subject, review_write_date, review_hits, review_score, 
+		review_content, review_image, ref_id, re_step, re_level, cus_id from mh_review 
+		where review_content like '%'||#{keyword2, jdbcType=VARCHAR}||'%'
+		order by ref_id desc, re_step asc) order by ref_id desc, re_step asc)
+		where r between #{start, jdbcType=VARCHAR} and #{end, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="searchReviewBySubCon" parameterType="java.util.Map" resultType="db.review.Review_DataBean">
+		select * from 
+		(select review_no, review_subject, review_write_date, review_hits, review_score, 
+		review_content, review_image, ref_id, re_step, re_level, cus_id, rownum r from 
+		(select review_no, review_subject, review_write_date, review_hits, review_score, 
+		review_content, review_image, ref_id, re_step, re_level, cus_id from mh_review 
+		where review_subject like '%'||#{keyword, jdbcType=VARCHAR}||'%'
+		or review_content like '%'||#{keyword2, jdbcType=VARCHAR}||'%'
+		order by ref_id desc, re_step asc) order by ref_id desc, re_step asc)
+		where r between #{start, jdbcType=VARCHAR} and #{end, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from mh_review
+	</select>
+	
+	<select id="getNoticeCount" resultType="int">
+		select count(*) from mh_notice
+	</select>
+
+	<select id="getSearchBySubjectCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from mh_review 
+		where review_subject like '%'||#{keyword, jdbcType=VARCHAR}||'%'
+	</select>
+	
+	<select id="getSearchByContentCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from mh_review
+		where review_content like '%'||#{keyword, jdbcType=VARCHAR}||'%'
+	</select>
+	
+	<select id="getSearchBySubConCount" parameterType="java.util.Map" resultType="int">		
+		select count(*) from mh_review
+		where review_subject like '%'||#{keyword, jdbcType=VARCHAR}||'%'
+		or review_content like '%'||#{keyword2, jdbcType=VARCHAR}||'%'
+	</select>
+	
+	<select id="getMyReviewCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from mh_review where cus_id=#{cus_id, jdbcType=VARCHAR}
+	</select>
+	<select resultType="int" id="getMaxRefId">
+		select max(ref_id) from mh_review
+	</select>
+</mapper>

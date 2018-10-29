@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Store_member">
+	<select id="getCount" resultType="int">
+		select count(*) from mh_store_member
+	</select>
+	<insert id="insertStore" parameterType="db.store_member.Store_member_DataBean">
+		insert into mh_store_member values( 
+		#{store_id}, #{store_pw}, #{store_address}, #{store_name}, #{store_tel}, 
+		#{owner_name},#{owner_tel}, #{owner_reg_date}, #{owner_email} )
+	</insert>
+	<insert id="insertCoords" parameterType="java.util.Map">
+		insert into mh_address_coords values(
+		#{store_id}, to_number(#{store_lon}), to_number(#{store_lat})
+		)
+	</insert>
+	
+	<select id="selectStores" resultType="db.store_member.Store_member_DataBean" parameterType="java.util.Map">
+		select * from mh_store_member
+	</select>
+	<select id="selectStores2" resultType="db.store_member.Store_member_DataBean" parameterType="java.util.Map">
+		select 
+		store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email,
+		r 
+		from 
+		(select store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email,
+		rownum r 
+		from 
+		(select store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email
+		from mh_store_member order by store_id) 
+		order by store_id)
+		where r &gt;= #{start} and r &lt;= #{end} and store_name like '%'||#{keyword,jdbcType=VARCHAR}||'%' 
+				and store_address like '%'||#{keyword1,jdbcType=VARCHAR}||'%'
+	</select>
+	<select id="selectStore" resultType="db.store_member.Store_member_DataBean" parameterType="String">
+		select * from mh_store_member where store_id=#{store_id}
+	</select>
+	
+	<select id="selectStoresWithCoords" parameterType="java.util.Map" resultType="db.store_member.Store_member_coords_DataBean">
+		select * from mh_store_member, mh_address_coords 
+		where mh_store_member.store_id=mh_address_coords.store_id
+	</select>
+	
+	<delete id="deleteStore" parameterType="String">
+		delete from mh_store_member where store_id=#{store_id}
+	</delete>
+	<update id="modifyStore" parameterType="db.store_member.Store_member_DataBean">
+		update mh_store_member set
+		store_pw=#{store_pw},
+		store_address=#{store_address},
+		store_name=#{store_name},
+		store_tel=#{store_tel},
+		owner_name=#{owner_name},
+		owner_tel=#{owner_tel},
+		owner_email=#{owner_email}
+		where store_id=#{store_id}
+	</update>
+	<select id="checkId" parameterType="String" resultType="int">
+		select count(*) from mh_store_member where store_id=#{store_id} 
+	</select>
+	
+	<select id="selectStoresByText" parameterType="java.util.Map" resultType="db.store_member.Store_member_DataBean">
+		select * from mh_store_member where store_name like '%'||#{keyword,jdbcType=VARCHAR}||'%' and store_address like '%'||#{keyword1,jdbcType=VARCHAR}||'%'
+	</select>
+	
+	<select id="selectStoresByText2" parameterType="java.util.Map" resultType="db.store_member.Store_member_DataBean">
+		select 
+		store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email,
+		r 
+		from 
+		(select store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email,
+		rownum r 
+		from 
+		(select store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email
+		from mh_store_member
+		where store_address like '%'||#{keyword}||'%'
+		order by store_id) 
+		order by store_id)
+		where r &gt;= CAST(#{start} AS int) and r &lt;= CAST(#{end} AS int)
+	</select>
+	<select id="selectStoresByText3" parameterType="java.util.Map" resultType="db.store_member.Store_member_DataBean">
+		select 
+		store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email,
+		r 
+		from 
+		(select store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email,
+		rownum r 
+		from 
+		(select store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email
+		from mh_store_member
+		where store_address like '%'||#{keyword}||'%'
+		order by store_id) 
+		order by store_id)
+		where r &gt;= CAST(#{start} AS int) and r &lt;= CAST(#{end} AS int)
+	</select>
+	
+	<select id="getCountByText" parameterType="String" resultType="int">
+		select count(*) from mh_store_member where store_address like '%'||#{keyword}||'%'
+	</select>
+	
+	<select id="selectStoresByName" parameterType="java.util.Map" resultType="db.store_member.Store_member_DataBean">
+		select 
+		store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email,
+		r 
+		from 
+		(select store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email,
+		rownum r 
+		from 
+		(select store_id, 
+		store_pw, 
+		store_address, 
+		store_name, 
+		store_tel, 
+		owner_name, 
+		owner_tel, 
+		owner_reg_date,
+		owner_email
+		from mh_store_member
+		where store_name like '%'||#{keyword}||'%'
+		order by store_id) 
+		order by store_id)
+		where r &gt;= CAST(#{start} AS int) and r &lt;= CAST(#{end} AS int)
+	</select>
+	
+	<select id="getCountByName" parameterType="String" resultType="int">
+		select count(*) from mh_store_member where store_name like '%'||#{keyword}||'%'
+	</select>
+	
+	<select resultType="db.store_member.Store_member_coords_DataBean" id="selectLonLat" parameterType="String">
+		select * from mh_address_coords where store_id=#{store_id} 
+	</select>
+</mapper>

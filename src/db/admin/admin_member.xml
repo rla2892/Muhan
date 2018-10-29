@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Admin_member">
+	<select id="checkId" parameterType="String" resultType="int">
+		select count(*) from mh_admin_member where admin_id=#{id}
+	</select>	
+	<select id="getMember" parameterType="String" resultType="db.admin.Admin_member_DataBean">
+		select * from mh_admin_member where admin_id=#{id}
+	</select>
+</mapper>

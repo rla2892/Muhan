@@ -1,0 +1,346 @@
+@charset "UTF-8";
+
+/* --------------Hiding Scrollbar------------- */
+/* ----스크롤바가 보이면 롯데리아 로고 이미지가 살짝 작아져서 navbar의 전체적인 모양이 달라집니다. 
+그래서 안 보이게 숨겼는데 (스크롤은 그대로 잘 됩니다. 보이지만 않게 바꿨어요.) 
+마우스휠 없는 사람들은 불편할 것 같아서... 그냥 놔둘까 고민이 되네요.----*/
+/* ::-webkit-scrollbar {
+	display: none;
+} */
+
+/* ---------------Main Navbar---------------- */
+#mainNavbar {
+	font-size: 1.75rem !important;
+	font-weight: bold !important;
+}
+
+#loginCartNavbar {
+	font-size: 1.25rem !important;
+	font-weight: light !important;
+}
+
+#navbarToggleIcon {
+	width: 3rem;
+	height: 3rem;
+}
+
+.myInfo {
+	width: 13rem;
+}
+
+.dropdown-item:hover {
+	background-color: #ffc107 !important;
+}
+
+.cart {
+	width: 20rem !important;
+/* 	left: -110px !important; */
+}
+
+.ordered_menus {
+	width: 20rem !important;
+}
+
+/* .cart-detail {
+	padding: 1rem 0rem;
+}
+
+.cart-detail-img img {
+	width: 3rem !important;
+	padding-left: 1rem;	
+}
+
+.cart-detail-product p {
+	margin: 0rem;
+	font-weight: bold;
+}
+
+.cart-detail .price {
+	font-size: 1rem;
+	margin-right: 0.825rem;
+	font-weight: bold;
+} */
+
+.mainWhiteLogo {
+	width: 70% !important;
+}
+/* ---------------Sub Navbar---------------- */
+#subNavbar {
+	font-size: 1.5rem;
+}
+
+.sticky-top {
+	position: sticky !important;
+/* 	top: 4.5rem; */ /* jQuery로 처리해놓음 */
+}
+
+/* .navbar-nav a.active{
+	color: #ffc107 !important;
+} */
+
+/* ---------------Container---------------- */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --------------Jumbotron--------------- */	
+.jumbotron {
+	/* top: 4.5rem; */ /* jQuery로 처리해놓음 */
+	margin-bottom: 0rem !important;
+/* 	height: 6rem; */
+}
+
+/* -----------------Carousel------------------- */
+ /* Make the image fully responsive */
+/* .carousel-inner img{
+	margin: 0 auto; 
+	float: center;
+} */
+
+.carousel-indicators li {
+	background-color: gray !important;
+}
+
+.carousel-indicators .active {
+	background-color: red !important;
+}
+
+#ads {
+	position: fixed !important;
+	top: 4.5rem !important;
+	left: -128 !important;
+}
+
+/* ----------------Footer (w/o Scroll)---------------- */
+#footerJumbotron {
+	position: relative !important;
+	bottom: 0 !important;
+}
+
+#bottomContainer {
+	position: relative !important;
+	bottom: 0 !important;
+}
+
+.footer {
+	position: fixed;
+	height: 7rem;
+}
+
+.footer-info {
+	margin-left: 2.8125rem;
+	margin-right: 2.8125rem;
+}
+
+.bottomLink {
+	font-size: 0.75rem !important;
+}
+
+#bottomInfo {
+	font-size: 0.75rem !important;
+}
+/* --------------Footer (w/ Scroll)-------------- */
+#footerWScroll {
+	position: relative !important;
+	bottom: 0 !important;
+}
+/* --------------LoginForm---------------- */
+
+
+/* --------------Review Search Bar------------- */
+.form-inline {
+	margin-top: 0.4rem !important;
+	margin-bottom: 0rem !important;
+}
+
+.custom-select {
+	font-size: 1rem;
+}
+
+/*--------------------Review-------------------*/
+.reviewNo, .reviewHits {
+	width: 8rem;
+}
+
+.reviewWriter {
+	width: 10rem;
+} 
+
+.reviewScore {
+	width: 6rem;
+}
+
+.reviewWriteDate {
+	width: 12rem;
+}
+
+.reviewSubject {
+	width: 34rem;
+}
+
+.rewind, .fastForward {
+	width: 2rem !important;
+	/* font-size: 2rem; */
+}
+
+.return, .forward {
+	width: 0.8rem !important;
+	/* font-size: 1rem; */
+}
+
+.currentPageBottom {
+	font-size: 1.5rem;
+}
+
+.currentPageBottom:hover {
+	text-decoration: none !important;
+}
+
+.pageNumBottom {
+	font-size: 1.5rem;
+}
+
+.pageNumBottom:hover {
+	text-decoration: none !important;
+}
+
+.clickableRow {
+	cursor: pointer;
+}
+
+.dateWritten {
+	width: 17rem !important;
+}
+
+.writer {
+	width: 10rem !important;
+}
+
+.modifyContent:hover {
+	text-decoration: none !important;
+	color: #b71c1c;
+}
+
+.deleteContent:hover {
+	text-decoration: none !important;
+	color: #b71c1c;
+}
+
+.reportContent:hover {
+	text-decoration: none !important;
+	color: #b71c1c;
+}
+
+.modifyContent, .deleteContent, .reportContent, .replyToContent {
+	color: #dc3545 !important;
+}
+
+.reviewRatings {
+    display: block;
+    position: relative;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* 기본 라디오 버튼 숨기기 */
+.reviewRatings input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Custom Radio Button */
+.checkmark {
+    position: absolute;
+    top: 0.2rem;
+    left: 0.2rem;
+    height: 1rem;
+    width: 1rem;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+/* 버튼 클릭 시 노란색*/
+.reviewRatings input:checked ~ .checkmark {
+    background-color: #ffc107;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.reviewRatings input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.reviewRatings .checkmark:after {
+ 	top: 0.27rem;
+	left: 0.25rem;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 100%;
+	background: white;
+}
+
+/* ----------------Menu Cards------------------*/
+.card {
+	border: none !important;
+	align-items: center;
+	font-size: 1.25rem;
+	width: 20rem;
+}
+
+.card-img-top {
+	width: 80% !important;
+}
+
+.menuListItem:hover {
+	text-decoration: none !important;
+	color: default;
+}
+
+/* ----------------Join------------------*/
+.joinform {
+	height: 25rem;
+}
+
+.idTextbox {
+	width: 14.1rem !important;
+}
+
+/* ----------------User Agreement------------------*/
+.userAgreement {
+	font-size: 0.5rem;
+}
+
+.agreement {
+	overflow-y: scroll !important;
+}
+
+/* ----------------Store Search------------------*/
+#store {
+	position: fixed;
+	top: 9.5rem;
+	height: 30rem;
+}
+
+.storesMap {
+	height: 28rem;
+}
+
+#ranking {
+	width: 10%;
+}

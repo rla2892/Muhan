@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Order_history">
+	<select id="selectOrders" parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean">
+		select * from mh_order_history
+	</select>
+	<select id="selectOrdersByCus" parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean">
+		select * from mh_order_history where cus_id=#{cus_id}
+	</select>
+	<select id="selectOrdersByStore" parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean">
+		select * from mh_order_history where store_id=#{store_id}
+	</select>
+	<select id="selectOrder" parameterType="int" resultType="db.order_history.Order_history_DataBean">
+		select * from mh_order_history where order_no=#{order_no}
+	</select>
+	<select id="selectOrderInfo" parameterType="int" resultType="db.order_history.Order_info_DataBean">
+		select distinct order_no, order_date, cus_id, store_name, order_status 
+		from mh_order_history, mh_store_member 
+		where order_no=#{order_no} and mh_order_history.store_id = mh_store_member.store_id
+	</select>
+	<select id="selectOrderDetail" parameterType="int" resultType="db.order_history.Order_history_DataBean_for_store2">
+		select order_qnt, menu_name, menu_price
+		from mh_order_history, mh_menu 
+		where order_no=#{order_no} and mh_order_history.menu_id=mh_menu.menu_id
+	</select>
+	<insert id="insertOrder" parameterType="db.order_history.Order_history_DataBean">
+		insert into mh_order_history
+		values(#{order_no}, #{order_qnt}, #{order_date}, #{menu_id}, #{cus_id}, #{store_id}, 1)
+	</insert>
+	<select id="getMaxOrder_no" resultType="int">
+		select max(order_no) from mh_order_history
+	</select>
+	
+	
+	
+	<select parameterType="java.util.Map" resultType="int" id="checkOrders">
+		select count(*) from mh_order_history where store_id=#{store_id} 
+		and to_char(order_date, 'yyyy-mm-dd')=#{order_date} and order_status in (1, 2) 
+	</select>
+
+	<select parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean_for_store2" id="selectOrderDetails">
+		select m.menu_name, oh.order_qnt 
+		from mh_menu m, mh_order_history oh 
+		where to_char(order_date, 'yyyy-mm-dd')=#{order_date} and order_status in (1, 2) 
+		and order_no=#{order_no} 
+		and oh.menu_id=m.menu_id 
+	</select>
+	
+	<select parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean_for_store1" id="selectOrdersByDate">
+		select distinct oh.order_no, oh.order_date, oh.order_status, cm.cus_id, cm.cus_address, cm.cus_address2, cm.cus_tel, cm.cus_email 
+		from mh_order_history oh, mh_customer_member cm 
+		where store_id=#{store_id} and to_char(order_date, 'yyyy-mm-dd')=#{order_date} and order_status in (1, 2)
+		and oh.cus_id = cm.cus_id order by order_date asc 
+	</select>
+	
+	<update parameterType="java.util.Map" id="updateOrderStatus">
+		update mh_order_history set order_status=3 where store_id=#{store_id} and order_no=#{order_no} 
+	</update>
+	
+	<update parameterType="java.util.Map" id="confirmOrderStatus">
+		update mh_order_history set order_status=2 where store_id=#{store_id} and order_no=#{order_no} 
+	</update>
+	
+	<!-- 추가!! -->
+
+	<select resultType="db.order_history.Order_history_DataBean_for_Cuslist" parameterType="String" id="selectOrdersByCuslist">
+		select distinct oh.order_no, oh.order_date, m.menu_name from mh_order_history oh, mh_menu m where oh.rowid in (select max(rowid) from mh_order_history where cus_id=#{cus_id} group by order_no)and oh.menu_id=m.menu_id order by oh.order_no desc 
+	</select>
+	
+	<select resultType="int" parameterType="String" id="selectCountOrdersByCus">
+		select count(*) from mh_order_history where cus_id=#{cus_id} 
+	</select>
+	
+	<select resultType="int" parameterType="int" id="selectCountOrder">
+		select count(*) from mh_order_history where order_no=#{order_no} 
+	</select>
+	
+	<select resultType="db.order_history.Order_history_DataBean_for_store2" parameterType="int" id="selectDetailedOrdersByCuslist">
+		select m.menu_name, oh.order_qnt, m.menu_price from mh_order_history oh, mh_menu m where order_no=#{order_no}and oh.menu_id=m.menu_id 
+	</select>
+	
+	<!-- HY 추가 - 알람처리 -->
+	<select id="checkOrderStatus" parameterType="String" resultType="db.order_history.Order_history_DataBean_for_Alarm">
+		select distinct order_no, order_status from mh_order_history where cus_id=#{cus_id} and order_no=(select max(order_no) from mh_order_history where cus_id=#{cus_id})
+	</select>
+	<update id="ajaxUpdateOrderStatus" parameterType="int">
+		update mh_order_history set order_status=4 where order_no=#{order_no} 
+	</update>
+	
+	<!-- 3차 프로젝트 부분 /////////////////////////////////////////////////////////////////////////////////////////////// -->
+	
+	<!-- 김상진 -->
+	<select id="selectOrdersAll" resultType="db.order_history.Order_history_DataBean_for_recieve">
+		select * from mh_order_history
+	</select>
+	<select id="selectOrdersAllToday" resultType="db.order_history.Order_history_DataBean_for_recieve">
+		select * from mh_order_history where to_char(order_date,'yyyy-mm-dd') = to_char(sysdate,'yyyy-mm-dd')
+	</select>
+	<select id="selectOrdersAllMonth" resultType="db.order_history.Order_history_DataBean_for_recieve">
+		select * from mh_order_history where to_char(order_date,'yyyy-mm') = to_char(sysdate,'yyyy-mm')
+	</select>
+	<select id="selectOrdersAllYear" resultType="db.order_history.Order_history_DataBean_for_recieve">
+		select * from mh_order_history where to_char(order_date,'yyyy') = to_char(sysdate,'yyyy')
+	</select>
+	<!-- 최은혜 -->
+	<!-- 장성열 -->
+	<!-- 임상혁 -->
+	<!-- 손소라 -->
+	
+</mapper>
