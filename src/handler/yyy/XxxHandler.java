@@ -33,9 +33,6 @@ public class XxxHandler implements CommandHandler {
 		request.setAttribute("test", test);
 		request.setAttribute("menu_dtos", menu_dtos);
 		
-		int ststts = 1+1;
-		
-		int ressr = 1+1;
 		return new ModelAndView( "yyy/xxx" );
 	}
 
