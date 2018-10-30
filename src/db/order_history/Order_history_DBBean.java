@@ -128,6 +128,11 @@ public class Order_history_DBBean implements Order_history_Dao {
 	public List<Order_history_DataBean_for_recieve> selectOrdersAllYear() {
 		return session.selectList("Order_history.selectOrdersAllYear");
 	}
+	@Override
+	public List<Order_history_car_DataBean> selectCarLocations(int order_no) {
+		return session.selectList("Order_history.selectCarLocations",order_no);
+	}
+	
 	
 	// 최은혜
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore( String store_id ) {

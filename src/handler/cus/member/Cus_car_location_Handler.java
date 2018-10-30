@@ -1,9 +1,6 @@
-package handler.yyy;
+package handler.cus.member;
 
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -13,24 +10,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import db.menu.Menu_Dao;
-import db.menu.Menu_DataBean;
+import db.order_history.Order_history_Dao;
+import db.order_history.Order_history_car_DataBean;
 import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class XxxHandler implements CommandHandler {
+public class Cus_car_location_Handler implements CommandHandler{
 	
 	@Resource
-	private Menu_Dao menu_dao;
+	private Order_history_Dao order_history_dao;
 	
-	@RequestMapping("/xxx")
+	@RequestMapping("/cus_car_location")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		List<Order_history_car_DataBean> order_hisotry_car_dto = order_history_dao.selectCarLocations(1);
+		System.out.println(order_hisotry_car_dto.get(0).getCar_x());
+		System.out.println("test");
 		
-		
-		return new ModelAndView( "yyy/xxx" );
+		return new ModelAndView("/cus/cus_member/cus_car_location");
 	}
-
-
 }
