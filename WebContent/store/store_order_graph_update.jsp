@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="store_setting.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 //그래프
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawUpdate);
 
-
-function setHeight(itemNum){
-	return 100*itemNum;
-}
 function drawUpdate() {
 	var itemNum=${order_history_dto.size()};
 	//상품 이름/매출
@@ -29,12 +25,13 @@ function drawUpdate() {
 	
 	data.addRows(storedata);
 	
+	var charttitle=""+${year}+"년 "+${month}+"월 "+setCategory(${menu_category})+"품목별 매출액과 판매개수";
 	//그래프 모양 
     var classicOptions = {
-  	      width:1000,
+  	      width:1100,
           height:setHeight(itemNum),
           legend: { position: 'top' },
-          chart: { title: '${year}년  ${month}월 '+setCategory(${menu_category})+'품목별 매출액과 판매개수'},
+          chart: { title: charttitle},
           bars: 'horizontal', // Required for Material Bar Charts.
           series: {
   	        0: {axis:'매출액(원)'},
@@ -58,7 +55,6 @@ function drawUpdate() {
 	     } 
 	    drawClassicChart();
   	}
-
 </script>
 <c:forEach var="order_history" items="${order_history_dto}">
 	<input type="hidden" name="name" value="${order_history.menu_name}">

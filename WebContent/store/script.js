@@ -123,7 +123,11 @@ function changeCategory(){
  
 }
 function setHeight(itemNum){
-	return 100*itemNum;
+	if(itemNum<3){
+		return 200*itemNum;
+	}else{
+		return 100*itemNum;
+	}
 }
 /*
 //베낀것수정해야 함

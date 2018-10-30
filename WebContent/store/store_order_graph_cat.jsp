@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+ 
 <%@ include file="store_setting.jsp"%>
 <script src="${project}script.js"></script>
+ 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
 //그래프
@@ -42,18 +43,18 @@
 		
 		//그래프 모양
 	    var classicOptions = {
-	      width:1000,
+	      width:1100,
           height: setHeight(itemNum),
           legend: { position: 'top' },
           chart: { title: '이번달 품목별 매출'},
           bars: 'horizontal', // Required for Material Bar Charts.
           series: {
-  	        0: {axis:'매출액(원)'},
+  	        0: {axis:'매출액(원)',format: '시간'},
   	        1: {axis:'판매개수(개)'}
   	      },
           axes: {
             x: {
-            	'매출액(원)': { label: '매출액(원)'}, // Top x-axis.
+            	'매출액(원)': { label: '매출액(원)',format: 'decimal'}, // Top x-axis.
             	'판매개수(개)': {side: 'top', label: '판매개수(개)'}
             }
           },
@@ -75,63 +76,65 @@
 	var year=today.getFullYear();
 	var month=today.getMonth()+1;
 </script>
+<body>
+<jsp:include page="store_topNav.jsp" flush="false"/>
 <jsp:useBean id="today" class="java.util.Date"/>
 
-<jsp:include page="store_topNav.jsp" flush="false"/>
-<jsp:include page="store_aside_order.jsp" flush="false"/>
-
-<div class="container">
-		<c:forEach var="order_history" items="${order_history_dto}">
-			<input type="hidden" name="menu_name" value="${order_history.menu_name}">
-			<input type="hidden" name="menu_category" value="${order_history.menu_category}">
-			<input type="hidden" name="menu_price" value="${order_history.menu_price}">
-			<input type="hidden" name="menu_num" value="${order_history.menu_num}">
-		</c:forEach>
-
-		<br>
-		<div class="row">
-			년도:&nbsp;
-			<select name="yearGroup">
-				<fmt:formatDate value="${today}" var="curyear" pattern="yyyy" />
-				<c:forEach var="i" begin="${owner_date.year}" end="${curyear}" step="1">
-					<c:if test="${i eq curyear}">
-						<option value="${i}" selected="selected">${i}</option>
-					</c:if>
-					<c:if test="${i ne curyear}">
-						<option value="${i}">${i}</option>
-					</c:if>
-				</c:forEach>
-			</select>
-			&nbsp;
-			월:&nbsp;
-			<select name="monthGroup">
-				<fmt:formatDate value="${today}" var="curmonth" pattern="MM" />
-				
-				<c:forEach var="i" begin="1" end="12" step="1">
-					<c:if test="${i eq curmonth}">
-						<option value="${i}" selected="selected">${i}</option>
-					</c:if>
-					<c:if test="${i ne curmonth}">
-						<option value="${i}">${i}</option>
-					</c:if>
-				</c:forEach>
-			</select>
-			&nbsp;
-			품목:&nbsp; 
-			<select name="itemGroup">
-				<option value="0" selected="selected">전체</option>
-				<option value="1">세트</option>
-				<option value="2">버거</option>
-				<option value="3">사이드와 음료</option>
-				<option value="4">신제품-세트</option>
-				<option value="5">신제품-버거</option>
-			</select>
-			&nbsp;
-			<button type="button" class="btn btn-sm" onclick="updateGraph()">조회</button>
-		</div>
-		<br>
-		<div id="chartArea" class="row">
-			<div id="chart_div"></div>
-		</div>
-</div>
-
+<main>
+	<jsp:include page="store_aside_order.jsp" flush="false"/>
+	<div class="container">
+			<c:forEach var="order_history" items="${order_history_dto}">
+				<input type="hidden" name="menu_name" value="${order_history.menu_name}">
+				<input type="hidden" name="menu_category" value="${order_history.menu_category}">
+				<input type="hidden" name="menu_price" value="${order_history.menu_price}">
+				<input type="hidden" name="menu_num" value="${order_history.menu_num}">
+			</c:forEach>
+	
+			<br>
+			<div class="row">
+				년도:&nbsp;
+				<select name="yearGroup">
+					<fmt:formatDate value="${today}" var="curyear" pattern="yyyy" />
+					<c:forEach var="i" begin="${owner_date.year}" end="${curyear}" step="1">
+						<c:if test="${i eq curyear}">
+							<option value="${i}" selected="selected">${i}</option>
+						</c:if>
+						<c:if test="${i ne curyear}">
+							<option value="${i}">${i}</option>
+						</c:if>
+					</c:forEach>
+				</select>
+				&nbsp;
+				월:&nbsp;
+				<select name="monthGroup">
+					<fmt:formatDate value="${today}" var="curmonth" pattern="MM" />
+					
+					<c:forEach var="i" begin="1" end="12" step="1">
+						<c:if test="${i eq curmonth}">
+							<option value="${i}" selected="selected">${i}</option>
+						</c:if>
+						<c:if test="${i ne curmonth}">
+							<option value="${i}">${i}</option>
+						</c:if>
+					</c:forEach>
+				</select>
+				&nbsp;
+				품목:&nbsp; 
+				<select name="itemGroup">
+					<option value="0" selected="selected">전체</option>
+					<option value="1">세트</option>
+					<option value="2">버거</option>
+					<option value="3">사이드와 음료</option>
+					<option value="4">신제품-세트</option>
+					<option value="5">신제품-버거</option>
+				</select>
+				&nbsp;
+				<button type="button" class="btn btn-sm" onclick="updateGraph()">조회</button>
+			</div>
+			<br>
+			<div id="chartArea" class="row">
+				<div id="chart_div"></div>
+			</div>
+	</div>
+</main>
+</body>
