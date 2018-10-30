@@ -151,8 +151,9 @@
 			}
 		}
 	);
+
 	
-	/* $(window).on(
+	$(window).on(
 		'load',
 		function(event) {
 			if(sessionStorage.getItem('cus_id')) {
@@ -224,7 +225,7 @@
 				var ajaxIntervalSetter=setInterval(updateMsg, 3000);
 			}
 		}
-	); */
+	);
 	
 	
 	$(window).on(
@@ -305,44 +306,6 @@ function rememberMyId(cus_id) {
 function forgetMyId(cus_id) {
 	localStorage.removeItem('cus_id');
 }
-
-/*------------Member Join Functions------------*/
-/* function idcheck() {;
-	if(!joinform.id.value) {
-		alert('아이디를 입력해 주세요.');
-		joinform.id.focus();
-		return false;
-	} else {
-		var url="cus_id_check.do?id="+joinform.id.value;
-		window.open(url, "confirm window", "toolbar=no, scrollbar=no, status=no, menubar=no, width=400px, height=150px" );
-	}
-}
-
-function retryIdCheck() {
-	if(!idcheckform.id.value) {
-		alert('아이디를 입력해 주세요.');
-		idcheckform.id.focus();
-		return false;
-	}
-}
-
-function setid(cus_id) {
-	opener.document.joinform.id.value=cus_id;
-	opener.document.inputform.passwd.focus();
-	opener.document.joinform.idchecked.value = 1;
-	self.close();
-}
-
-function cancel() {
-	self.close();
-}
-
-function toMain() {
-	window.location.href='cus_user_main.do';
-}
-
-function joincheck() {
-} */
 
 /*------------Review Functions------------*/
 function enterKeyword() {
