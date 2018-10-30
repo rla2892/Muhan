@@ -110,4 +110,8 @@ public class Store_member_DBBean implements Store_member_Dao{
 	public List<Store_member_coords_DataBean> selectLonLat ( String store_id ) {
 		return session.selectList( "Store_member.selectLonLat", store_id );
 	}
+	@Override
+	public String getRegDate(String store_id) {
+		return session.selectOne("Store_member.getRegDate",store_id);
+	}
 }

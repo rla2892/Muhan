@@ -88,3 +88,67 @@ function checkorderdetails( order_no, cus_address, cus_address2 ) {
 	var url = "/Muhan/Store_order_check_detail.do?order_no="+order_no+"&cus_address="+cus_address+"&cus_address2="+cus_address2;
 	open( url, "confirm window", "toolbar=no, scrollbars=yes, status=no, menubar=no width=650px, height=800px" );
 }
+
+function updateGraph(){
+	var year=$("select[name=yearGroup]").val();
+	var month=$("select[name=monthGroup]").val();
+	var menu_category=$("select[name=itemGroup]").val();
+	
+	$('#chartArea').empty();
+	var page="Store_order_graph_update.do?menu_category="+menu_category+"&year="+year+"&month="+month;
+	$('#chartArea').load(page);	
+}
+function setCategory(menu_category){
+	var category;
+	switch(menu_category){
+		case 0:
+			return "";break;
+		case 1:
+			return "세트 ";break;
+		case 2:
+			return "버거 ";break;
+		case 3:
+			return "사이드와 음료 ";break;
+		case 4:
+			return "신제품-세트 ";break;
+		case 5:
+			return "신제품-버거 ";break;	
+	}
+}
+function changeCategory(){
+	var categorySelect = document.getElementById("category");
+    
+    // select element에서 선택된 option의 value가 저장된다.
+    var category = categorySelect.options[categorySelect.selectedIndex].value;
+ 
+}
+function setHeight(itemNum){
+	return 100*itemNum;
+}
+/*
+//베낀것수정해야 함
+function updateTodayCat(category){
+	 $.ajax({
+         url : 'ajaxtest.do',
+         cache : false,
+         data: category,//?
+         contentType: "application/json; charset=UTF-8", 
+			success : function (data) {
+				if(data == '') {
+					var myHTMLStr = '${msg_noorder}';
+					$('#result').html(myHTMLStr);
+					
+				} else if ( data != ''){
+					
+					jsonorders = JSON.parse(data);
+					var myHTMLStr=	 '<table class="table table-striped"><tr> <th>주문번호</th> <th>주문시간</th>'
+							+ '<th>고객ID</th> <th>고객주소</th> <th>고객 상세주소</th>'
+							+ '<th>고객 전화번호</th> <th>고객 이메일</th> <th>주문상태</th>'
+					 		+ '<th colspan="3" class="text-center">확인</th> </tr>'
+					 for(var i in jsonorders) {
+		
+					 }
+				}        
+			}
+     });    
+}*/
