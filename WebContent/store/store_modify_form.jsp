@@ -4,7 +4,6 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 <jsp:include page="store_topNav.jsp" flush="false"/>
 <script src="${project}script.js"></script>
-
 <style type="text/css">
 <!--
 body{
@@ -93,6 +92,7 @@ form .modifybutton:hover{
 }
 -->
 </style>
+
 <main>
 <div class="container">
 	<form name="storepasswdform" class="form_contact" method="post" action="Store_modify_view.do" onsubmit="return passwdcheck()">
@@ -100,6 +100,7 @@ form .modifybutton:hover{
 		<h2>${str_storepasswd}</h2>
 		<input type="password" name="store_pw" maxlength="20" placeholder="비밀번호를 입력해주세요" autofocus>
 		<button class="modifybutton" type="submit">${btn_mod}</button>
+		<br>
 		<button class="modifybutton" type="button" onclick="location='Store_main.do'">${btn_mod_cancel}</button>
 	</form>
 </div>

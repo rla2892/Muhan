@@ -66,7 +66,7 @@ form label{
   display: inline-block;
 }
 
-form .loginbutton{
+form .button{
   background-color: #4A8DCA;
   border: none;
   border-radius: 3px;
@@ -81,11 +81,11 @@ form .loginbutton{
           transition: all 400ms ease;
 }
 
-form .loginbutton:focus{
+form .button:focus{
   outline: none;
 }
 
-form .loginbutton:hover{
+form .button:hover{
   background-color: #67A84F;
 }
 -->
@@ -98,6 +98,6 @@ form .loginbutton:hover{
 		<h2>비밀번호</h2>
 			<input type="password" name="store_pw" placeholder="비밀번호를 입력해주세요" required>
 			
-		<input type="submit" class="loginbutton" value="로그인">
+		<input type="submit" class="button" value="로그인">
 	</form>
 </div>
