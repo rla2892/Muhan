@@ -38,7 +38,6 @@ public class Store_order_check_Handler implements CommandHandler {
 	}
 	
 	@RequestMapping(value = "/ajaxtest", method = RequestMethod.GET, produces = "application/text; charset=utf8")
-
     public @ResponseBody
     String getTime(HttpServletRequest request, HttpServletResponse response) {
 		Date date = new Date(System.currentTimeMillis());

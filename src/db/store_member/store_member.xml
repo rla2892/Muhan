@@ -219,4 +219,8 @@
 	<select resultType="db.store_member.Store_member_coords_DataBean" id="selectLonLat" parameterType="String">
 		select * from mh_address_coords where store_id=#{store_id} 
 	</select>
+		<!-- 손소라 추가 1026-->
+	<select id="getRegDate" parameterType="String" resultType="String">
+		select To_char(owner_reg_date,'yyyy-mm-dd') from mh_store_member where store_id=#{store_id}
+	</select>	
 </mapper>

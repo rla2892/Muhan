@@ -59,7 +59,8 @@ function crunchifyAjax() {
 
 $(document).ready(
 		crunchifyAjax()
-		);
+);
+		
 var intervalId = 0;
 intervalId = setInterval(crunchifyAjax, 3000);	 
 
@@ -75,7 +76,7 @@ $(document).on("click","#confirmbutton", function(e){
 
 $(document).on("click","#completebutton", function(e){ 
 		location="Store_order_complete_pro.do?order_no="+e.target.name
-	 });
+ });
 /* 	
  
  	$('*').on(
@@ -90,8 +91,7 @@ $(document).on("click","#completebutton", function(e){
 </script>
 
 <body>
-<jsp:include page="store_topNav.jsp" flush="false"/>
-<h2><a href="Store_main.do" title="누르시면 메인화면으로 돌아갑니다.">주문 확인</a></h2>
-<div id="result" class="table-responsive"></div>
-
+	<jsp:include page="store_topNav.jsp" flush="false"/>
+	<h2><a href="Store_main.do" title="누르시면 메인화면으로 돌아갑니다.">주문 확인</a></h2>
+	<div id="result" class="table-responsive"></div>
 </body>

@@ -15,7 +15,7 @@
 				<a class="nav-link text-white ml-5 mr-5" href="Store_orders_location.do">모든 주문위치</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-white ml-5 mr-5" href="#">날씨확인</a>
+				<a class="nav-link text-white ml-5 mr-5" href="Store_order_graph_cat.do">매출관리</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link text-white ml-5 mr-5" href="Store_modify_form.do">회원정보수정</a>

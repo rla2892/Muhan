@@ -136,4 +136,13 @@ public class Order_history_DBBean implements Order_history_Dao {
 	// 임상혁
 	
 	// 손소라
+	@Override
+	public List<Order_history_DataBean_for_graph> selectOrdersStatusByStore(Map<String, String> map) {
+		return session.selectList("Order_history.selectStoreOrder",map);
+	}
+
+	@Override
+	public List<Order_history_DataBean_for_graph> selectMonthSalesbyCat(Map<String, String> map) {
+		return session.selectList("Order_history.selectMonthSalesbyCat",map);
+	}	
 }

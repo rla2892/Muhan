@@ -88,3 +88,30 @@ function checkorderdetails( order_no, cus_address, cus_address2 ) {
 	var url = "/Muhan/Store_order_check_detail.do?order_no="+order_no+"&cus_address="+cus_address+"&cus_address2="+cus_address2;
 	open( url, "confirm window", "toolbar=no, scrollbars=yes, status=no, menubar=no width=650px, height=800px" );
 }
+
+function updateGraph(){
+	var year=$("select[name=yearGroup]").val();
+	var month=$("select[name=monthGroup]").val();
+	var menu_category=$("select[name=itemGroup]").val();
+	
+	$('#chartArea').empty();
+	var page="Store_order_graph_update.do?menu_category="+menu_category+"&year="+year+"&month="+month;
+	$('#chartArea').load(page);	
+}
+function setCategory(menu_category){
+	var category;
+	switch(menu_category){
+		case 0:
+			return "";break;
+		case 1:
+			return "세트 ";break;
+		case 2:
+			return "버거 ";break;
+		case 3:
+			return "사이드와 음료 ";break;
+		case 4:
+			return "신제품-세트 ";break;
+		case 5:
+			return "신제품-버거 ";break;	
+	}
+}

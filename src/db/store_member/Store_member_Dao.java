@@ -35,4 +35,5 @@ public interface Store_member_Dao {
 	//최은혜
 	public List<Store_member_coords_DataBean> selectLonLat( String store_id );		//store 전용 매장 위도 경도 받기
 	
+	public String getRegDate(String store_id);//store 등록 날짜 가져오기
 }
