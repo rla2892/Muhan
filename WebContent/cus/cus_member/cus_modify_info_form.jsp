@@ -27,8 +27,9 @@
         <div class="container" style="width: 600px" id="a">
         <div class="page-header text-center">
     	    <h1>회원수정</h1>
+    	    <br>
         </div>
- 
+
      <form class="form-horizontal" name="joinform" method="post" action="cus_modify_info_pro.do" onsubmit="return modifyCheck()">
         
 		        <div class="form-group row">
