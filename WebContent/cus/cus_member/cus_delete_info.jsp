@@ -13,17 +13,28 @@
 </div>
 
 <%@include file="/cus/cus_member/cus_member_subNav.jsp"%>
-				
+<style>
+#a{
+	margin-top:100px; 
+}
+</style>				
 		<!-- Container -->
-		<div class="container mt-5 pt-5">
-		
-			회원 탈퇴 페이지
+		<div class="container max-auto"  id="a" style="width:1000px;">
+			
+			
 			<form method="post" name="modify_info_form" action="cus_delete_info_pro.do">
-				<input type="password" name="cus_pw">
-				<input class="inputbutton" type="submit" value="삭제">
-				<input class="inputbutton" type="button" value="취소"
-				onclick="location='cus_user_main.do'">
-			</form>
+			 <div class="row">
+			 	<h3 class="text-muted">회원탈퇴</h3>&nbsp;&nbsp;
+				<input class="form-control col-5" type="password" name="cus_pw">&nbsp;&nbsp;
+				<button type="submit" class="btn btn-md btn-secondary">삭제</button>&nbsp;
+				<button type="button" class="btn btn-md btn-secondary"
+				onclick="location='cus_user_main.do'">취소</button>
+			</div>	
+				
+			 </form>
+			
+			</div>
+			
 		
 			<!-- Footer - No Scroll -->
 			<div class="footer bg-dark fixed-bottom">
