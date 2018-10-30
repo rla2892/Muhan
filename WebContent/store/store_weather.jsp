@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="store_setting.jsp"%>
-<%-- <link rel="stylesheet" type="text/css" href="${project}weather.css"> --%>
+<jsp:include page="store_topNav.jsp" flush="false"/>
 
 <c:forEach var="eachlonlat" items="${storeLonLat}">
 	<fmt:parseNumber var="store_lat" value="${eachlonlat.store_lat}" scope="session"/>
 	<fmt:parseNumber var="store_lon" value="${eachlonlat.store_lon}" scope="session"/>
 </c:forEach>
-<br>
+
+<main>
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-xs-8 col-xs-push-2 col-md-push-3">
@@ -27,9 +28,8 @@
   </div><!--row-->
   <br/>
 </div>
+</main>
 
-<!-- <div id="icon"><img id="wicon" src="" alt="Weather icon"/></div>
-<div id="weathertext"></div> -->
 <script>
 $.ajax({
     url: "https://api.openweathermap.org/data/2.5/weather?lat="+${store_lat}+"&lon="+${store_lon}+"&APPID=69125c4f65a786042a9266798504c230",
@@ -51,6 +51,7 @@ $.ajax({
       console.log(err);
     }
   });
+  
 /* /*  $.ajax({
     url: "http://api.openweathermap.org/data/2.5/weather?lat="+${store_lat}+"&lon="+${store_lon}+"&APPID=69125c4f65a786042a9266798504c230",
     dataType: "json",
