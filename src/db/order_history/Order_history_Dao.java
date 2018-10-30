@@ -45,6 +45,7 @@ public interface Order_history_Dao {
 	public List<Order_history_DataBean_for_recieve> selectOrdersAllMonth();	//이번달 가져오기
 	public List<Order_history_DataBean_for_recieve> selectOrdersAllYear();	//이번해 가져오기
 	
+	public List<Order_history_car_DataBean> selectCarLocations(int order_no);	//해당 주문의 차량의 위치 가져오기
 	
 	// 최은혜
 	

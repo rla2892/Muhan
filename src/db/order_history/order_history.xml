@@ -104,6 +104,9 @@
 	<select id="selectOrdersAllYear" resultType="db.order_history.Order_history_DataBean_for_recieve">
 		select * from mh_order_history where to_char(order_date,'yyyy') = to_char(sysdate,'yyyy')
 	</select>
+	<select id="selectCarLocations" resultType="db.order_history.Order_history_car_DataBean">
+		select * from mh_car
+	</select>
 	<!-- 최은혜 -->
 	<!-- 장성열 -->
 	<!-- 임상혁 -->
