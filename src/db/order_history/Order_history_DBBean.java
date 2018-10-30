@@ -132,7 +132,10 @@ public class Order_history_DBBean implements Order_history_Dao {
 	public List<Order_history_car_DataBean> selectCarLocations(int order_no) {
 		return session.selectList("Order_history.selectCarLocations",order_no);
 	}
-	
+	@Override
+	public int insertCarLocation(Order_history_car_DataBean order_history_car_dto) {
+		return session.insert("Order_history.insertCarLocation", order_history_car_dto);
+	}
 	
 	// 최은혜
 	
