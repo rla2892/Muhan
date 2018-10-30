@@ -16,10 +16,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script src="/Muhan/jquery-3.3.1.js"></script>
+<style>
+	#a{
+		margin-top:50px;
+	}
+</style>
 </head>
 <article class="container">
       
-        <div class="container" style="width: 600px">
+        <div class="container" style="width: 600px" id="a">
         <div class="page-header text-center">
     	    <h1>회원수정</h1>
         </div>

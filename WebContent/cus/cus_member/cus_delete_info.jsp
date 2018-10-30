@@ -6,12 +6,6 @@
 <link rel="stylesheet" type="text/css" href="/Muhan/cus/cus_theme.css">
 
 <%@include file="/cus/cus_topNav.jsp"%>
-
-<!-- Descriptor Jumbotron -->
-<div class="jumbotron mt-5">
-	<h1 class="display-5 text-center font-weight-bold pt-4">회원 탈퇴</h1>
-</div>
-
 <%@include file="/cus/cus_member/cus_member_subNav.jsp"%>
 <style>
 #a{
