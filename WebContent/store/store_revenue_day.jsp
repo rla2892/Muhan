@@ -48,5 +48,6 @@
   }
   </script>
   <main>
+  <jsp:include page="store_aside_order.jsp" flush="false"/>
  <div class="container" id="chart_div"></div>
  </main>
