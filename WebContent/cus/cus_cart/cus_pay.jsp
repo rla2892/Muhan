@@ -5,6 +5,18 @@
 <script src="./jquery-3.3.1.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="cus/cus_cart/cus_cart_script.js"></script>
+<style>
+.dropdown-menu{
+	background-color: #F6F6F6 !important;
+	heightt: 30px;
+	padding: 10px;
+	margin: 1px;
+	boarder: 0px;
+	position: absolute;
+	width: 200px;
+	z-index: 200;
+}
+</style>
 
 <!-- Top Navigation Bar -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">	
@@ -145,42 +157,47 @@
 					<input type="text" class="form-control" name="store_name" id="store_name" readonly>
 					<input type="hidden" name="store_id" id="store_id">
 				</div>
+				
 				<div class="col-sm-5">
 					<div class="dropdown">
 					  <button class="btn btn-md btn-secondary" type="button" data-toggle="dropdown">매장 선택
 					  <span class="caret"></span></button>
-					  <div style="width:500px;">
+					  <div class="container" style="width: 500px">
 					  <ul class="dropdown-menu">
 					    <li>
-					    	<div class="row">
-							    <div class="col">
-									<input class="btn btn-md btn-secondary" type="button" value="주소검색" onclick="searchStore()">
-								</div>
-								<div class="col">
+					    	<div class="form-group row">
+					    	<div class="col-sm-8">
+								<input class="btn btn-md btn-secondary" type="button" value="주소검색" onclick="searchStore()">
+							</div>
+							<div class="col-sm-2">
 									<input class="form-control" type="text" name="keyword" id="keyword">
-								</div>
+							</div>
 							</div>
 						</li>
+					    
 					    <li>
-							<div class="row">
-								<div class="col">
+							<div class="form-group row">
+								<div class="col-sm-8">
 									<input class="btn btn-md btn-secondary" type="button" value="매장명검색" onclick="searchStoreByName()">
 								</div>
-								<div class="col">
+								<div class="col-sm-2">
 									<input class="form-control" type="text" name="keyword" id="keywordName">
 								</div>
 							</div>
 					    </li>
+					   
 					    <li>
-					    	<div class="row">
-					    		<div class="col">
+					    	
+					    	<div class="form-group row">
+					    		<div class="col-sm-8">
 									<input class="btn btn-md btn-secondary" type="button" value="현재위치 근처 매장" onclick="searchStoreByLocation()">
 								</div>
 							</div>
 					    </li>
+					    
 					    <li>
-					    	<div class="row">
-					    		<div class="col">
+					    	<div class="form-group row">
+					    		<div class="col-sm-8">
 									<input class="btn btn-md btn-secondary" type="button" value="입력된 주소 근처 매장" onclick="searchStoreByAddress()">
 								</div>
 							</div>

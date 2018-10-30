@@ -54,5 +54,9 @@ public interface Order_history_Dao {
 	// 임상혁
 	
 	// 손소라
+	//점주측 상품별 이번 달 매출
+	public List<Order_history_DataBean_for_graph> selectOrdersStatusByStore(Map<String,String> map);
+	//점주측 카테고리 별 월 매출
+	public List<Order_history_DataBean_for_graph> selectMonthSalesbyCat(Map<String,String> map);
 }
 

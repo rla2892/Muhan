@@ -124,5 +124,19 @@
 	<!-- 장성열 -->
 	<!-- 임상혁 -->
 	<!-- 손소라 -->
+	<select id="selectStoreOrder" resultType="db.order_history.Order_history_DataBean_for_graph" parameterType="java.util.Map">
+		select m.menu_name,m.menu_category,sum(menu_price) as menu_price,count(h.menu_id) as menu_num 
+		from mh_menu m, mh_order_history h 
+		where h.menu_id=m.menu_id and store_id=#{store_id} and to_char(order_date,'yyyy-mm')=#{search_month}
+		group by h.menu_id,m.menu_name,m.menu_category
+	</select>
+	<select id="selectMonthSalesbyCat" parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean_for_graph">
+		select m.menu_name,count(h.menu_id) as menu_num,NVL2(h.menu_id,sum(menu_price),0) as menu_price
+		from mh_menu m left outer join mh_order_history h 
+		on h.menu_id=m.menu_id 
+		and store_id=#{store_id} and to_char(order_date,'yyyy-mm')=#{search_month} 
+		where menu_category=To_number(#{menu_category})
+		group by h.menu_id,m.menu_name
+	</select>
 	
 </mapper>

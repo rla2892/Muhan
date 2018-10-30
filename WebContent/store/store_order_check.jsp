@@ -59,7 +59,7 @@ function crunchifyAjax() {
 $(document).ready(
 		crunchifyAjax()
 		);
-		
+
 var intervalId = 0;
 intervalId = setInterval(crunchifyAjax, 3000);	 
 
@@ -75,6 +75,7 @@ $(document).on("click","#confirmbutton", function(e){
 
 $(document).on("click","#completebutton", function(e){ 
 		location="Store_order_complete_pro.do?order_no="+e.target.name
+
 	 });
 
 //-->
