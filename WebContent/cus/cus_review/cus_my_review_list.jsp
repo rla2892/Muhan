@@ -10,10 +10,10 @@
 	<body>
 		<%@include file="/cus/cus_topNav.jsp"%>
 		
-		<!-- Descriptor Jumbotron -->
-		<div class="jumbotron mt-1">
+		<!-- <!-- Descriptor Jumbotron -->
+		<!-- <div class="jumbotron mt-1">
 			<h1 class="display-5 text-center font-weight-bold pt-4">내가 쓴 리뷰</h1>
-		</div>
+		</div>  -->
 		
 		<%@include file="/cus/cus_member/cus_member_subNav.jsp"%>
 		
