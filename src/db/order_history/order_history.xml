@@ -107,6 +107,11 @@
 	<select id="selectCarLocations" resultType="db.order_history.Order_history_car_DataBean">
 		select * from mh_car
 	</select>
+	<insert id="insertCarLocation" parameterType="db.order_history.Order_history_car_DataBean">
+		insert into mh_car
+		values(#{car_id}, #{order_no}, #{car_x}, #{car_y}, #{car_date})
+	</insert>
+	
 	<!-- 최은혜 -->
 	<select id="selectOrdersForDayByStore" parameterType="String" resultType="db.order_history.Order_history_DataBean_for_store_Timegraph">
 		select oh.order_date, oh.order_qnt, m.menu_price
