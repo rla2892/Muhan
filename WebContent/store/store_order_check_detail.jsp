@@ -3,10 +3,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="store_setting.jsp"%>
 <script src="${project}script.js"></script>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" type="text/css" href="${project}form.css">
-<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-
 <script src="/Muhan/jquery-3.3.1.js"></script>
 <div class="container" >
 <form class="form_contact">
