@@ -54,9 +54,9 @@
 		        
 		        
 		     	<div class="form-group row">
-		              <label class="col-sm-2 col-form-label">비밀번호 확인</label>
+		              <div class="col-sm-2"></div>
 		             	<div class="col-sm-8">
-		             		 <input class="form-control"  type="password"  id="repasswd" name="password1" value="${memberDto.cus_pw }" placeholder="비밀번호를 한번 더 입력해주세요.">
+		             		 <input class="form-control"  type="password"  id="repasswd" name="password1" value="${memberDto.cus_pw }" placeholder="비밀번호 재입력">
 		             	</div>
 		          </div>
 		          
