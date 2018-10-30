@@ -15,6 +15,7 @@ public interface Store_member_Dao {
 	//좌표 넣기
 	public int insertCoords(Map<String,Object> map);
 	
+	
 	public Store_member_DataBean selectStore(String store_id);						//admin, store, customer. 상세 매장 출력
 	public int deleteStore(String store_id);										//admin 전용. 매장 삭제
 	public int modifyStore(Store_member_DataBean store_member_dto);					//admin, store. 매장 수정

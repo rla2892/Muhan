@@ -16,14 +16,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script src="/Muhan/jquery-3.3.1.js"></script>
+<style>
+	#a{
+		margin-top:50px;
+	}
+</style>
 </head>
 <article class="container">
       
-        <div class="container" style="width: 600px">
+        <div class="container" style="width: 600px" id="a">
         <div class="page-header text-center">
     	    <h1>회원수정</h1>
+    	    <br>
         </div>
- 
+
      <form class="form-horizontal" name="joinform" method="post" action="cus_modify_info_pro.do" onsubmit="return modifyCheck()">
         
 		        <div class="form-group row">
@@ -49,9 +55,9 @@
 		        
 		        
 		     	<div class="form-group row">
-		              <label class="col-sm-2 col-form-label">비밀번호 확인</label>
+		              <div class="col-sm-2"></div>
 		             	<div class="col-sm-8">
-		             		 <input class="form-control"  type="password"  id="repasswd" name="password1" value="${memberDto.cus_pw }" placeholder="비밀번호를 한번 더 입력해주세요.">
+		             		 <input class="form-control"  type="password"  id="repasswd" name="password1" value="${memberDto.cus_pw }" placeholder="비밀번호 재입력">
 		             	</div>
 		          </div>
 		          

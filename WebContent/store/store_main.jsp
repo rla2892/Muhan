@@ -5,19 +5,7 @@
 <script src="${project}script.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<style type="text/css">
-*{
-    margin: 0;
-    padding: 0;
-    font-family: 'Varela Round', sans-serif;
-    box-sizing: border-box;
-}
-.img-responsive{
-	padding: 70px;
-    margin-left: auto;
-    margin-right: auto;
-}
-</style>
+
 <c:if test="${sessionScope.store_id eq null}">
 <body>
 	<jsp:include page="store_topNav.jsp" flush="false"/>
