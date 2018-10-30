@@ -115,3 +115,40 @@ function setCategory(menu_category){
 			return "신제품-버거 ";break;	
 	}
 }
+function changeCategory(){
+	var categorySelect = document.getElementById("category");
+    
+    // select element에서 선택된 option의 value가 저장된다.
+    var category = categorySelect.options[categorySelect.selectedIndex].value;
+ 
+}
+function setHeight(itemNum){
+	return 100*itemNum;
+}
+/*
+//베낀것수정해야 함
+function updateTodayCat(category){
+	 $.ajax({
+         url : 'ajaxtest.do',
+         cache : false,
+         data: category,//?
+         contentType: "application/json; charset=UTF-8", 
+			success : function (data) {
+				if(data == '') {
+					var myHTMLStr = '${msg_noorder}';
+					$('#result').html(myHTMLStr);
+					
+				} else if ( data != ''){
+					
+					jsonorders = JSON.parse(data);
+					var myHTMLStr=	 '<table class="table table-striped"><tr> <th>주문번호</th> <th>주문시간</th>'
+							+ '<th>고객ID</th> <th>고객주소</th> <th>고객 상세주소</th>'
+							+ '<th>고객 전화번호</th> <th>고객 이메일</th> <th>주문상태</th>'
+					 		+ '<th colspan="3" class="text-center">확인</th> </tr>'
+					 for(var i in jsonorders) {
+		
+					 }
+				}        
+			}
+     });    
+}*/

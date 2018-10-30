@@ -6,10 +6,12 @@
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawUpdate);
 
+
+function setHeight(itemNum){
+	return 100*itemNum;
+}
 function drawUpdate() {
-	//품목 개수
 	var itemNum=${order_history_dto.size()};
-	
 	//상품 이름/매출
 	var menu_name = document.getElementsByName("name"); 
 	var menu_price = document.getElementsByName("price"); 
@@ -27,31 +29,35 @@ function drawUpdate() {
 	
 	data.addRows(storedata);
 	
-	//그래프 모양
+	//그래프 모양 
     var classicOptions = {
-      width: 1500,
-      series: {
-        0: {targetAxisIndex: 0},
-        1: {targetAxisIndex: 1}
-      },
-      title: '${year}년  ${month}월 '+setCategory(${menu_category})+'품목별 매출액과 판매개수',
-      vAxes: {
-        // Adds titles to each axis.
-        0: {title: '매출액(원)'},
-        1: {title: '판매개수(개)'}
-      }
-    };
+  	      width:1000,
+          height:setHeight(itemNum),
+          legend: { position: 'top' },
+          chart: { title: '${year}년  ${month}월 '+setCategory(${menu_category})+'품목별 매출액과 판매개수'},
+          bars: 'horizontal', // Required for Material Bar Charts.
+          series: {
+  	        0: {axis:'매출액(원)'},
+  	        1: {axis:'판매개수(개)'}
+  	      },
+          axes: {
+            x: {
+            	'매출액(원)': { label: '매출액(원)'}, // Top x-axis.
+            	'판매개수(개)': {side: 'top', label: '판매개수(개)'}
+            }
+          },
+          bar: { groupWidth: "90%"}
+	    };
 
-	//그래프 그리기 시행
-	 var chartDiv=document.getElementById('chart_div');
-	
-	     function drawClassicChart() {
-       var classicChart = new google.visualization.ColumnChart(chartDiv);
-       classicChart.draw(data, classicOptions);
-     } 
-    //drawMaterialChart();
-    drawClassicChart();
-}
+		//그래프 그리기 시행
+		 var chartDiv=document.getElementById('chart_div');
+		
+		   function drawClassicChart() {
+	       var classicChart = new google.charts.Bar(chartDiv);
+	       classicChart.draw(data, classicOptions);
+	     } 
+	    drawClassicChart();
+  	}
 
 </script>
 <c:forEach var="order_history" items="${order_history_dto}">

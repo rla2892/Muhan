@@ -9,7 +9,6 @@
 	google.charts.load('current', {packages: ['corechart', 'bar']});
 	google.charts.setOnLoadCallback(drawBasic);
 	
-
 	function drawBasic() {
 		//품목 개수
 		var itemNum=${order_history_dto.size()};
@@ -27,36 +26,51 @@
 		var data = new google.visualization.DataTable();
 		data.addColumn('string', '품목');
 		data.addColumn('number', '매출액(원)');
+		data.addColumn('number','판매개수(개)'); 
+		
+		var storedata=[];
+		for(var i=0;i<itemNum;i++){
+			storedata.push([menu_name[i].value, parseInt(menu_price[i].value),parseInt(menu_num[i].value)]);
+		}
+		
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', '품목');
+		data.addColumn('number', '매출액(원)');
 		data.addColumn('number','판매개수(개)');
 		
 		data.addRows(storedata);
 		
 		//그래프 모양
-        var classicOptions = {
-          width: 1500,
+	    var classicOptions = {
+	      width:1000,
+          height: setHeight(itemNum),
+          legend: { position: 'top' },
+          chart: { title: '이번달 품목별 매출'},
+          bars: 'horizontal', // Required for Material Bar Charts.
           series: {
-            0: {targetAxisIndex: 0},
-            1: {targetAxisIndex: 1}
+  	        0: {axis:'매출액(원)'},
+  	        1: {axis:'판매개수(개)'}
+  	      },
+          axes: {
+            x: {
+            	'매출액(원)': { label: '매출액(원)'}, // Top x-axis.
+            	'판매개수(개)': {side: 'top', label: '판매개수(개)'}
+            }
           },
-          title: '이번 달 품목별 매출액과 판매개수',
-          vAxes: {
-            // Adds titles to each axis.
-            0: {title: '매출액(원)'},
-            1: {title: '판매개수(개)'}
-          }
-        };
+          bar: { groupWidth: "90%" }
+	    };
 
 		//그래프 그리기 시행
 		 var chartDiv=document.getElementById('chart_div');
 		
- 	     function drawClassicChart() {
-	       var classicChart = new google.visualization.ColumnChart(chartDiv);
+		   function drawClassicChart() {
+	       var classicChart = new google.charts.Bar(chartDiv);
 	       classicChart.draw(data, classicOptions);
 	     } 
 	    //drawMaterialChart();
 	    drawClassicChart();
 	}
-	
+
 	var today=new Date();
 	var year=today.getFullYear();
 	var month=today.getMonth()+1;
@@ -64,15 +78,6 @@
 <jsp:useBean id="today" class="java.util.Date"/>
 
 <jsp:include page="store_topNav.jsp" flush="false"/>
-<!-- <div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-2 sidenav">
-		<div class="btn-group-vertical">
-		  <li><a href="Store_order_graph_cat">오늘의 품목별 매출</a></li>
-		  <li><a href="">월별 품목별 매출</a></li>
-		</div>
-    </div>
-<div class="col-sm-8 text-left">  -->
 <jsp:include page="store_aside_order.jsp" flush="false"/>
 
 <div class="container">
@@ -83,9 +88,6 @@
 			<input type="hidden" name="menu_num" value="${order_history.menu_num}">
 		</c:forEach>
 
-		<div class="row">
-			월별 품목별 매출
-		</div>
 		<br>
 		<div class="row">
 			년도:&nbsp;
