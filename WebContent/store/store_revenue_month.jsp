@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="store_setting.jsp"%>
+<jsp:include page="store_topNav.jsp" flush="false"/>
 
 <c:set var="jsonmonthmap" value="${jsonmonthmap}"/>
 
@@ -46,4 +47,7 @@
   	chart.draw(data, options);
   }
   </script>
- <div id="chart_div"></div>
+ <main>
+ 	<jsp:include page="store_aside_order.jsp" flush="false"/>
+ 	<div class="container" id="chart_div"></div>
+ </main>
