@@ -3,15 +3,15 @@
 <%@ include file="store_setting.jsp"%>
 <jsp:include page="store_topNav.jsp" flush="false"/>
 
-<c:set var="jsondaymap" value="${jsondaymap}"/>
+<c:set var="jsonyearmap" value="${jsonyearmap}"/>
 
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
-  var jsondayparse = JSON.parse('${jsondaymap}');
+  var jsonyearparse = JSON.parse('${jsonyearmap}');
   
-  var daydata = [];
-   for(var i in jsondayparse) {
-	   daydata.push( [ i , jsondayparse[i]] );
+  var yeardata = [];
+   for(var i in jsonyearparse) {
+	   yeardata.push( [ i , jsonyearparse[i]] );
   } 
   
   google.charts.load('current', {packages: ['corechart', 'bar']});
@@ -20,17 +20,17 @@
   function drawBasic() {
 		
 		var data = new google.visualization.DataTable();
-		data.addColumn('string', '시간');
+		data.addColumn('string', '월');
 		data.addColumn('number', '매출액');
 		
-		data.addRows(daydata);
+		data.addRows(yeardata);
 		
 		//그래프 모양
 		var options = {
-			title: '오늘의 시간대별 매출액',
+			title: '이번년도 월별 매출액',
 			hAxis: {
-				title: '시간대(시)',
-				format: '시간',
+				title: '월별(월)',
+				format: '월',
 				viewWindow: {
 					min: [7, 30, 0],
 					max: [57, 30, 0]

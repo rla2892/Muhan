@@ -44,20 +44,14 @@ public class Store_revenue_month_Handler implements CommandHandler {
 		
 		for(int i=0; i<order_history_month_dtos.size(); i++) {
 			calendar.setTime(order_history_month_dtos.get(i).getOrder_date());
-			int hour = calendar.get(Calendar.DAY_OF_MONTH);
+			int day = calendar.get(Calendar.DAY_OF_MONTH);
 			for(int j=0; j<32; j++) {
 				int old_pay = monthmap.get(j) == null ? 0 : monthmap.get(j);
 				monthmap.put(j, old_pay);
-				if( hour==j ) {
+				if( day==j ) {
 					monthmap.put(j, old_pay + (order_history_month_dtos.get(i).getOrder_qnt()*order_history_month_dtos.get(i).getMenu_price()));
 				}
 			}		
-/*			System.out.println(
-					order_history_month_dtos.get(i).getOrder_date()
-					+ " : " + hour 
-					+ " : " + order_history_month_dtos.get(i).getOrder_qnt()
-					+ " : " + order_history_month_dtos.get(i).getMenu_price()
-			);*/
 		}
 		
 		jsonmonthmap = gson.toJson(monthmap);
