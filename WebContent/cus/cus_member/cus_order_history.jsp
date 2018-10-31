@@ -13,12 +13,8 @@
 		<%@include file="/cus/cus_member/cus_member_subNav.jsp"%>
 		
 		<!-- Container -->
-		<div class="container-fluid mt-5 pt-5 col-lg-9">
-
- 		<h2 class="text-center">주문이력이 없습니다.</h2>
-		
-		<c:if test="${result ne 0}">
-			<table class="table table-sm table-responsive-lg table-striped table-hover text-center">
+		<div class="container">
+			<table class="table table-sm table-responsive-lg table-striped table-hover text-center mt-5 mb-5">
 				<thead>
 					<tr>
 						<th scope="col" class="order_no">주문번호</th>
@@ -26,6 +22,18 @@
 						<th scope="col" class="menu_name">주문내역</th>
 					</tr>
 				</thead>
+		<c:if test="${result eq 0}">
+ 		<h2 class="text-center">주문이력이 없습니다.</h2>
+		</c:if>
+		<c:if test="${result ne 0}">
+			<!-- <table class="table table-sm table-responsive-lg table-striped table-hover text-center">
+				<thead>
+					<tr>
+						<th scope="col" class="order_no">주문번호</th>
+						<th scope="col" class="order_date">날짜</th>
+						<th scope="col" class="menu_name">주문내역</th>
+					</tr>
+				</thead> -->
 		<c:forEach var="i" begin="0" end="${fn:length(cusorderlist)-1}" step="1">
 			<c:set var="count" value="${counts[i]}"/>
 			<c:set var="cusorder" value="${cusorderlist[i]}"/>
@@ -49,9 +57,10 @@
 					</tr>
 				</c:forEach>
 
-			</table>
+			
 		</c:if>
 			<%@include file="/cus/cus_fixedFooter.jsp"%>
+			</table>
 		</div>
 	</body>
 </html>
