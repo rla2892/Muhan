@@ -37,13 +37,10 @@
 				<label for="inputID" class="col-sm-2 col-form-label">아이디</label>
 				<div class="col-sm-8">
 					<input type="text" name="id" maxlength="20" class="form-control"
-						id="id_val" placeholder="ID" maxlength="20" required autofocus>
+						id="id_val" placeholder="ID" maxlength="20" required autofocus onkeyup="IdCheck()">
 						<h6 style="color: red;" id="IdCheckMessagegg"></h6>
 				</div>
-				<div class="col-sm-2">
-					<button type="button" class="btn btn-md btn-secondary"
-						onclick="IdCheck()">중복확인</button>
-				</div>
+
 			</div>
 			
 			<div class="form-group row">
@@ -260,9 +257,9 @@ function IdCheck() {
 				if (data.countId > 0) {
 					$('#IdCheckMessagegg').html(
 							"아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+					idck = 1;
 				} else {
 					$('#IdCheckMessagegg').html("사용가능한 아이디입니다.");
-					idck = 1; //아이디 중복체크시 1이됨
 				}
 			},
 			error : function(error) {
@@ -271,6 +268,10 @@ function IdCheck() {
 		});
 	}
 }
+/* $(document).ready(function(){
+	IdCheck()	
+});
+ */
 var passwdck = 0;
 function passwordCheckFunction() {
 	var userPassword1 = $('#userPassword1').val();
