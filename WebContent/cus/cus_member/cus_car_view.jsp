@@ -1,18 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="/cus/cus_setting.jsp"%>
+<%@include file="/cus/cus_script.jsp" %>
 <script src="./jquery-3.3.1.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/Muhan/cus/cus_theme.css">
+		
+		<%@include file="/cus/cus_topNav.jsp"%>
+		<%@include file="/cus/cus_member/cus_member_subNav.jsp"%>
+
 cus car view
 <div id="map" style="width:500px;height:400px;"></div>
 <div id="testdiv"></div>
+
+<%@include file="/cus/cus_fixedFooter.jsp"%>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84ade146f4c88c0cf4ae826cc2f4eec8&libraries=services"></script>
 <script>
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 var options = { //지도를 생성할 때 필요한 기본 옵션
 	center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-	level: 7 //지도의 레벨(확대, 축소 정도)
+	level: 4 //지도의 레벨(확대, 축소 정도)
 };
 var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+var bike = '/Muhan/cus/cus_images/bike.png'; // 마커이미지의 주소입니다    
+bikeSize = new daum.maps.Size(30, 30); // 마커이미지의 크기입니다
+imageOption = {offset: new daum.maps.Point(1, 1)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+var reddot = '/Muhan/cus/cus_images/reddot.png'; // 마커이미지의 주소입니다    
+reddotSize = new daum.maps.Size(10, 10); // 마커이미지의 크기입니다
+  
+//마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+var bikeImage = new daum.maps.MarkerImage(bike, bikeSize, imageOption)
+var reddotImage = new daum.maps.MarkerImage(reddot, reddotSize, imageOption)
+
 </script>
 
 <script type="text/javascript">
@@ -43,11 +64,19 @@ setInterval(
 						
 						var car_location = new daum.maps.LatLng(car_y,car_x);
 						
-						var car_marker = new daum.maps.Marker({	//내 위치 마커
-						    position: car_location,
-						    title:"차량",
-						});
-						
+						if(i==0){
+							var car_marker = new daum.maps.Marker({	// 마커
+							    position: car_location,
+							    title:"차량",
+							    image:bikeImage
+							});
+						}else{
+							var car_marker = new daum.maps.Marker({	// 마커
+							    position: car_location,
+							    title:"차량",
+							    image:reddotImage
+							});
+						}
 						// 마커가 지도 위에 표시되도록 설정합니다
 						car_marker.setMap(map);
 						

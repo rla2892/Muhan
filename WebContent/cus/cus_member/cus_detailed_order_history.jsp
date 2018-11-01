@@ -50,8 +50,6 @@
 					</td>
 				</tr>
 			</table>
-		
+			<button onclick="window.location.href='cus_car_view.do?order_no=${order_no}'">배달 현황</button>
 		</div>
 		<%@include file="/cus/cus_fixedFooter.jsp"%>
-	</body>
-</html>
