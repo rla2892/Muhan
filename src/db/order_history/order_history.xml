@@ -128,7 +128,15 @@
 		and to_char(order_date, 'mm')=#{month}
 		and oh.store_id=#{store_id}
 		order by oh.order_date asc
-	</select>	
+	</select>
+	<select id="selectOrdersForYearByStore"	parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean_for_store_Timegraph">
+		select oh.order_date, oh.order_qnt, m.menu_price
+		from mh_order_history oh, mh_menu m
+		where oh.menu_id=m.menu_id
+		and to_char(order_date, 'yyyy')=#{year}
+		and oh.store_id=#{store_id}
+		order by oh.order_date asc
+	</select>
 	<!-- 장성열 -->
 	<!-- 임상혁 -->
 	<!-- 손소라 -->
