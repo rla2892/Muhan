@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="/cus/cus_script.jsp" %>
-<%@include file="/cus/cus_head.jsp" %>
-<%@include file="/cus/cus_topNav.jsp" %>
-<%@include file="/cus/cus_member/cus_member_subNav.jsp" %>
+
 <html>
 <head>
 <script src="cus/cus_member/cus_join_checking_script.js"></script>
-<link rel="stylesheet" type="text/css"
+<%-- <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -15,7 +12,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<script src="/Muhan/jquery-3.3.1.js"></script>
+<script src="/Muhan/jquery-3.3.1.js"></script> --%>
+<%@include file="/cus/cus_setting.jsp"%>
+
+<%@include file="/cus/cus_script.jsp" %>
+<%@include file="/cus/cus_head.jsp" %>
+<%@include file="/cus/cus_topNav.jsp" %>
+<%@include file="/cus/cus_member/cus_member_subNav.jsp" %>
+
+
 <style>
 	#a{
 		margin-top:50px;
@@ -24,29 +29,27 @@
 </head>
 <article class="container">
       
-        <div class="container" style="width: 600px" id="a">
-        <div class="page-header text-center">
-    	    <h1>회원수정</h1>
-    	    <br>
-        </div>
+        <div class="mx-auto" style="width: 800px" id="a">
+      
 
      <form class="form-horizontal" name="joinform" method="post" action="cus_modify_info_pro.do" onsubmit="return modifyCheck()">
-        
+     			
+        		<h2 class="text-center" >내 정보수정</h2>
+        		<br>
 		        <div class="form-group row">
-					<label for="nickname" class="col-sm-2 col-form-label">아이디</label>
+					<label for="nickname" class="col-sm-3 col-form-label">아이디</label>
 					<div class="col-sm-8"><input class="form-control" type="text" value="${memberDto.cus_id}" readonly></div>
 					
 				</div>
 		        
 		         <div class="form-group row">
-					<label for="nickname" class="col-sm-2 col-form-label">닉네임</label>
+					<label for="nickname" class="col-sm-3 col-form-label">닉네임</label>
 					<div class="col-sm-8"><input class="form-control" name="nickname" type="text" value="${memberDto.cus_nickname}"></div>
-					
 				</div>
 		        
 		        
 		        <div class="form-group row">
-		         	 <label class="col-sm-2 col-form-label">비밀번호</label>   <!--    password     -->
+		         	 <label class="col-sm-3 col-form-label">비밀번호</label>   <!--    password     -->
 		         	 
 		        		<div class="col-sm-8">
 		         		 <input class="form-control" name="passwd" id="password" type="password" value="${memberDto.cus_pw }" placeholder="비밀번호">
@@ -55,7 +58,7 @@
 		        
 		        
 		     	<div class="form-group row">
-		              <div class="col-sm-2"></div>
+		              <div class="col-sm-3"></div>
 		             	<div class="col-sm-8">
 		             		 <input class="form-control"  type="password"  id="repasswd" name="password1" value="${memberDto.cus_pw }" placeholder="비밀번호 재입력">
 		             	</div>
@@ -64,27 +67,30 @@
 		          
 		          
 		        <div class="form-group row">
-		           <label for="inputNickname" class="col-sm-2 col-form-label">배달지 주소</label>   <!--    Address     -->
+		           <label for="inputNickname" class="col-sm-3 col-form-label">배달지 주소</label>   <!--    Address     -->
 		           
 		          	<div class="col-sm-8">
-		            	<input class="form-control" name="address" id="cus_address" type="text" placeholder="이름" value="${memberDto.cus_address}">
+		            	<input class="form-control col-sm-12" name="address" id="cus_address" type="text" placeholder="이름" value="${memberDto.cus_address}">
+						<div>		            	
+		            	<span style="float:right">
+		            	<button class="btn btn-md btn-secondary" type="button" onclick="sample4_execDaumPostcode()" >주소검색</button>
+		            	</span>
+		            	</div>
 		            </div>
-		            <div class="col-sm-2">
-		            	<input class="btn btn-md btn-secondary" type="button" onclick="sample4_execDaumPostcode()"  value="주소검색">
-		           </div>
+		            
 		        </div>
-		        
+		         
 		        
 		          <div class="form-group row">
-		          	<label  for="inputNickname" class="col-sm-2 col-form-label">상세주소</label>
-		       			<div class="col-lg-9 text-right">
+		          	<label  for="inputNickname" class="col-sm-3 col-form-label">상세주소</label>
+		       			<div class="col-sm-8 text-right">
 		         		 <input class="form-control" name="address2" id="cus_address2" type="text"  placeholder="상세주소를 입력하세요" value="${memberDto.cus_address2 }" >
 		        		</div>
 		         </div>
 		        
 		        		     
             	<div class="form-group row">
-					<label class="col-sm-2 col-form-label">이메일
+					<label class="col-sm-3 col-form-label">이메일
 					</label>
 					<div class="col-sm-8">
 					 <input class="form-control" name="email" type="text" value="${memberDto.cus_email}" readonly>
@@ -93,7 +99,7 @@
 		        
 		      		             
 		        <div class="form-group row">                                        
-		            <label class="col-sm-2 col-form-label" for="inputNumber">휴대폰번호</label>           <!--    Telephone     -->
+		            <label class="col-sm-3 col-form-label" for="inputNumber">휴대폰번호</label>           <!--    Telephone     -->
 		              <div class="col-sm-6">
 		                <div class="input-group">
 		                
