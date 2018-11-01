@@ -24,7 +24,13 @@ public class Cus_car_location_Handler implements CommandHandler{
 	@RequestMapping("/cus_car_location")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		List<Order_history_car_DataBean> order_hisotry_car_dtos = order_history_dao.selectCarLocations(1);
+		int order_no; 
+		if(request.getParameter("order_no") == null) {
+			order_no =0;
+		}else {
+			order_no = Integer.parseInt(request.getParameter("order_no"));
+		}
+		List<Order_history_car_DataBean> order_hisotry_car_dtos = order_history_dao.selectCarLocations(order_no);
 		request.setAttribute("order_hisotry_car_dtos", order_hisotry_car_dtos);
 		return new ModelAndView("/cus/cus_member/cus_car_location");
 	}

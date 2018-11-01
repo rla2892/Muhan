@@ -10,7 +10,7 @@ cus car view
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 var options = { //지도를 생성할 때 필요한 기본 옵션
 	center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-	level: 3 //지도의 레벨(확대, 축소 정도)
+	level: 7 //지도의 레벨(확대, 축소 정도)
 };
 var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
 </script>
@@ -18,14 +18,12 @@ var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리�
 <script type="text/javascript">
 //<!--
 
-
-$(document).ready(
-
+setInterval(
 	function(){
 		$.ajax(
 			{
-				type : 'POST',
-				url : 'cus_car_location.do',
+				type : 'post',
+				url : 'cus_car_location.do?order_no='+${param.order_no},
 				dataType : 'xml',	//json은 jsp파일 안에 있어서 안 읽힘 그래서 대신 text로 준다
 				success : function(data){
 					//alert("success");
@@ -35,6 +33,12 @@ $(document).ready(
 						var order_no = order_hisotry_car_dtos[i].children[1].textContent;
 						var car_x = order_hisotry_car_dtos[i].children[2].textContent;
 						var car_y = order_hisotry_car_dtos[i].children[3].textContent;
+						var car_x_before=0;
+						var car_y_before=0;
+						if(i !=0 ){
+							car_x_before = order_hisotry_car_dtos[i-1].children[2].textContent;
+							car_y_before = order_hisotry_car_dtos[i-1].children[3].textContent;
+						}
 						var car_date = order_hisotry_car_dtos[i].children[4].textContent;
 						
 						var car_location = new daum.maps.LatLng(car_y,car_x);
@@ -47,9 +51,24 @@ $(document).ready(
 						// 마커가 지도 위에 표시되도록 설정합니다
 						car_marker.setMap(map);
 						
-						//지도 중심 설정
-						map.setCenter(car_location);
+						if(i !=0 ){
+							var polyline = new daum.maps.Polyline({
+							    map: map,
+							    path: [
+							        new daum.maps.LatLng(car_y_before, car_x_before),
+							        new daum.maps.LatLng(car_y, car_x) 
+							    ],
+							    strokeWeight: 4,
+							    strokeColor: '#FF99FF',
+							    strokeOpacity: 1.0,
+							    strokeStyle: 'solid'
+							});
+						}
 						
+						//지도 중심 설정
+						if(i==0){
+							map.setCenter(car_location);
+						}
 					}
 					
 				},
@@ -58,8 +77,7 @@ $(document).ready(
 				}
 			}
 		);
-	}		
-);
+	},2000);	
 //-->
 </script>
 

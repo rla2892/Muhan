@@ -25,8 +25,8 @@ public class Test_insert_car_Handler implements CommandHandler{
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
-		double car_x = 127.0305572 + Math.random()*0.01;
-		double car_y = 37.49843089 + Math.random()*0.01;
+		double car_x = 127.0305572 + Math.random()*0.006;
+		double car_y = 37.49843089 + Math.random()*0.006;
 		
 		Order_history_car_DataBean order_history_car_dto = new Order_history_car_DataBean();
 		order_history_car_dto.setCar_id("car1");
