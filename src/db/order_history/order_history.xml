@@ -105,7 +105,7 @@
 		select * from mh_order_history where to_char(order_date,'yyyy') = to_char(sysdate,'yyyy')
 	</select>
 	<select id="selectCarLocations" resultType="db.order_history.Order_history_car_DataBean">
-		select * from mh_car
+		select * from mh_car where order_no=#{order_no} order by car_date desc
 	</select>
 	<insert id="insertCarLocation" parameterType="db.order_history.Order_history_car_DataBean">
 		insert into mh_car

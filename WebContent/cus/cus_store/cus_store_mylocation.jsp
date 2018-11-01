@@ -118,7 +118,7 @@ function success(position) {
 	var mylongitude = position.coords.longitude;
 	var mylocation = new daum.maps.LatLng(mylatitude,mylongitude);
 	
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+	var mapContainer = document.getElementById('map'); // 지도를 표시할 div  
 	mapOption = { 
 	    center: mylocation, // 지도의 중심좌표
 	    level: 6 // 지도의 확대 레벨
