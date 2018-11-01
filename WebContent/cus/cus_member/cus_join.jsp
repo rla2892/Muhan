@@ -260,6 +260,7 @@ function IdCheck() {
 					idck = 1;
 				} else {
 					$('#IdCheckMessagegg').html("사용가능한 아이디입니다.");
+					idck = 2;
 				}
 			},
 			error : function(error) {
