@@ -4,15 +4,7 @@
 <html>
 <head>
 <script src="cus/cus_member/cus_join_checking_script.js"></script>
-<%-- <link rel="stylesheet" type="text/css"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<script src="/Muhan/jquery-3.3.1.js"></script> --%>
+
 <%@include file="/cus/cus_setting.jsp"%>
 
 <%@include file="/cus/cus_script.jsp" %>
