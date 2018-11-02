@@ -48,23 +48,35 @@ function drawMaterial() {
 	
 	var data = google.visualization.arrayToDataTable(mydata);
 	
+	//타임스케일
+	var time_scale = document.getElementById("time_scale").value;
+	var time_scale_title;//제목
+	
+	if(time_scale==1 || time_scale==""){
+		time_scale_title="오늘의 메뉴별 매출액";
+	}else if(time_scale==2){
+		time_scale_title="이번달의 메뉴별 매출액";
+	}else if(time_scale==3){
+		time_scale_title="이번 연도의 메뉴별 매출액";
+	}else if(time_scale==4){
+		time_scale_title="전체 기간 메뉴별 매출액";
+	}
+	
 	
       var materialOptions = {
-        chart: {
-          title: '메뉴별 매출액'
-        },
-        hAxis: {
-          title: '매출액(원)',
-          minValue: 0,
-          format: 'decimal'
-        },
-        vAxis: {
-          title: '메뉴'
-        },
-        bars: 'horizontal',
-        width: 1000,
-        height: 1200,
-        format: 'none'
+		chart: {
+		title: time_scale_title,
+		},
+		hAxis: {
+			title: '매출액(원)',
+			minValue: 0,
+		},
+		vAxis: {
+			title: '메뉴',
+		},
+		bars: 'horizontal',
+		width: 1000,
+		height: 1200,
       };
       var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
       materialChart.draw(data, materialOptions);
