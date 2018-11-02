@@ -48,15 +48,14 @@
   	chart.draw(data, options);
   }
   
-  function updateMonthRevenue() {
-		var target = document.getElementById("month");
-		alert(target.options[target.selectedIndex].value);
+  function updateMonthRevenue(value) {
+		location.href="Store_revenue_month.do?month="+value;
 	}
   
   </script>
  <main>
  	<jsp:include page="store_aside_order.jsp" flush="false"/>
- <select id="month" name="month">
+ <select id="month" name="month" onchange="updateMonthRevenue(this.value)">
     <option value="hide">-- 월 선택 --</option>
     <option value="01">1월</option>
     <option value="02">2월</option>
@@ -71,6 +70,6 @@
     <option value="11">11월</option>
     <option value="12">12월</option>
 </select>
-<button type="button" class="btn btn-md" onclick="updateMonthRevenue()">조회</button> 
+<button type="button" class="btn btn-md">조회</button> 
  	<div class="container" id="chart_div"></div>
  </main>
