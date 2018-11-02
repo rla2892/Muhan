@@ -17,6 +17,9 @@ public class Cus_Delivery_info_Handler implements CommandHandler {
 	public void androidTest(HttpServletRequest request) { 
 		//int order_no=Integer.parseInt(request.getParameter("order_no"));
 		System.out.println("주문번호:"+request.getParameter("order_no"));
+		
+		
+		System.out.println("위도:"+request.getParameter("lat")+"경도"+request.getParameter("lng"));
 	}
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {

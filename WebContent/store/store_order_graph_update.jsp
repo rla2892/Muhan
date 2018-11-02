@@ -6,8 +6,8 @@
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawUpdate);
 
+var itemNum=${order_history_dto.size()};
 function drawUpdate() {
-	var itemNum=${order_history_dto.size()};
 	//상품 이름/매출
 	var menu_name = document.getElementsByName("name"); 
 	var menu_price = document.getElementsByName("price"); 
@@ -22,6 +22,7 @@ function drawUpdate() {
 	data.addColumn('string', '품목');
 	data.addColumn('number', '매출액(원)');
 	data.addColumn('number','판매개수(개)');
+	
 	
 	data.addRows(storedata);
 	
@@ -38,10 +39,10 @@ function drawUpdate() {
   	        1: {axis:'판매개수(개)'}
   	      },
           axes: {
-            x: {
-            	'매출액(원)': { label: '매출액(원)'}, // Top x-axis.
-            	'판매개수(개)': {side: 'top', label: '판매개수(개)'}
-            }
+              x: {
+              	'매출액(원)': { label: '매출액(원)',format: 'decimal' }, // Top x-axis.
+              	'판매개수(개)': {side: 'top', label: '판매개수(개)'}
+              }
           },
           bar: { groupWidth: "90%"}
 	    };
@@ -53,7 +54,10 @@ function drawUpdate() {
 	       var classicChart = new google.charts.Bar(chartDiv);
 	       classicChart.draw(data, classicOptions);
 	     } 
-	    drawClassicChart();
+	    if(itemNum>0)drawClassicChart();
+	    else{
+	    	chartDiv.append("매출이 없습니다");
+	    }
   	}
 </script>
 <c:forEach var="order_history" items="${order_history_dto}">

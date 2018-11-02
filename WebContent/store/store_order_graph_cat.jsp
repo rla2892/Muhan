@@ -10,10 +10,10 @@
 	google.charts.load('current', {packages: ['corechart', 'bar']});
 	google.charts.setOnLoadCallback(drawBasic);
 	
+	//품목 개수
+	var itemNum=${order_history_dto.size()};
 	function drawBasic() {
-		//품목 개수
-		var itemNum=${order_history_dto.size()};
-		
+			
 		//상품 이름/매출
 		var menu_name = document.getElementsByName("menu_name"); 
 		var menu_price = document.getElementsByName("menu_price"); 
@@ -49,12 +49,12 @@
           chart: { title: '이번달 품목별 매출'},
           bars: 'horizontal', // Required for Material Bar Charts.
           series: {
-  	        0: {axis:'매출액(원)',format: '시간'},
-  	        1: {axis:'판매개수(개)'}
+  	        0: {axis:'판매개수(개)'},
+  	        1: {axis:'매출액(원)'}
   	      },
           axes: {
             x: {
-            	'매출액(원)': { label: '매출액(원)',format: 'decimal'}, // Top x-axis.
+            	'매출액(원)': { label: '매출액(원)'}, // Top x-axis.
             	'판매개수(개)': {side: 'top', label: '판매개수(개)'}
             }
           },
@@ -69,7 +69,10 @@
 	       classicChart.draw(data, classicOptions);
 	     } 
 	    //drawMaterialChart();
-	    drawClassicChart();
+	    if(itemNum>0)drawClassicChart();
+	    else{
+	    	chartDiv.append("매출이 없습니다")
+	    }
 	}
 
 	var today=new Date();
