@@ -8,7 +8,6 @@
 *::after {
   box-sizing: border-box;
 }
-
 body {
   color: #999999;
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -48,6 +47,8 @@ img {
 .cards__item {
   display: flex;
   padding: 1rem;
+  position: relative;
+/*   z-index: -1; */
 }
 @media (min-width: 40rem) {
   .cards__item {
@@ -126,7 +127,6 @@ img {
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
-
 </style>
 <ul class="cards">
   <li class="cards__item">
