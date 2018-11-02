@@ -27,7 +27,7 @@
 		
 		//그래프 모양
 		var options = {
-			title: '이번년도 월별 매출액',
+			title: '해당년도 월별 매출액',
 			hAxis: {
 				title: '월별(월)',
 				format: '월',
@@ -46,8 +46,26 @@
   	var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
   	chart.draw(data, options);
   }
+  
+  function updateYearRevenue(value) {
+		location.href="Store_revenue_year.do?year="+value;
+	}
   </script>
  <main>
  	<jsp:include page="store_aside_order.jsp" flush="false"/>
+<div class="container">
+	<div class="row">
+		년도 : &nbsp;<select id="year" name="year" onchange="updateYearRevenue(this.value)">
+			<option value="hide">--연도 선택--</option>
+				<c:set var="today" value="<%=new java.util.Date()%>" />
+				<fmt:formatDate value="${today}" pattern="yyyy" var="start"/> 
+				<c:forEach begin="0" end="4" var="idx" step="1">
+		    <option value="<c:out value="${start - idx}" />">
+				<c:out value="${start - idx}" /></option>
+				</c:forEach>
+		</select>
+	</div>
+<br>
  	<div class="container" id="chart_div"></div>
+ </div>
  </main>

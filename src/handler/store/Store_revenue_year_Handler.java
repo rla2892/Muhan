@@ -28,14 +28,14 @@ public class Store_revenue_year_Handler implements CommandHandler {
 	@RequestMapping("/Store_revenue_year")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		//추후에 Integer.parseInt(request.getParameter("month")); 로 값 받아서 하는 걸로 수정!
-		String year = "2018";
+		Calendar calendar = Calendar.getInstance();
+		String year = request.getParameter("year") == null? Integer.toString(calendar.get(Calendar.YEAR)) : request.getParameter("year");
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("store_id", (String) request.getSession().getAttribute("store_id"));
 		map.put("year", year);
 		List<Order_history_DataBean_for_store_Timegraph> order_history_year_dtos = order_history_dao.selectOrdersForYearByStore(map);
-		Calendar calendar = Calendar.getInstance();
+		
 		Map<Integer, Integer> yearmap = new TreeMap<Integer, Integer>();
 		Gson gson = new Gson();
 		String jsonyearmap = "";
