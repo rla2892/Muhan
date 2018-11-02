@@ -6,6 +6,18 @@
 <html>
 	<head>
 		<%@include file="/cus/cus_head.jsp"%>
+<style>
+.jumbotron{
+    background: url("/Muhan/cus/cus_images/KakaoTalk_20181101_185.png") no-repeat center center; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+/* jumbotron image */
+
+
+</style>
 	</head>
 	<body>
 		<%@include file="/cus/cus_topNav.jsp"%>
@@ -13,13 +25,14 @@
 		<!-- Descriptor Jumbotron -->
 		<div class="jumbotron mt-1">
 			<h1 class="display-5 text-center font-weight-bold pt-4">메뉴보기</h1>
+			
 		</div>
 		
 		<%@include file="/cus/cus_menu/cus_menu_subNav.jsp"%>
 		
 		<!-- Container -->
 		<div class="container">
-
+			
 			<!-- Menu List shown in Cards -->
 			<div class="card-deck mt-4 mb-4">
 				<c:forEach var="menu" items="${menus}">

@@ -24,16 +24,32 @@ public class Test_insert_car_Handler implements CommandHandler{
 	@RequestMapping("/test_insert_car")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		
+		int order_no;
+		if(request.getParameter("order_no") == null || "".equals(request.getParameter("order_no"))) {
+			order_no=1;
+		}else{
+			order_no=Integer.parseInt(request.getParameter("order_no"));
+		}
+		System.out.println(order_no);
+		
+		double car_x = 127.0305572 + Math.random()*0.006;
+		double car_y = 37.49843089 + Math.random()*0.006;
+		
 		Order_history_car_DataBean order_history_car_dto = new Order_history_car_DataBean();
 		order_history_car_dto.setCar_id("car1");
-		order_history_car_dto.setOrder_no(1);
-		order_history_car_dto.setCar_x("127.0305562");
-		order_history_car_dto.setCar_y("37.49843079 ");
+		order_history_car_dto.setOrder_no(order_no);
+		order_history_car_dto.setCar_x(""+car_x);
+		order_history_car_dto.setCar_y(""+car_y);
 		
 		Timestamp car_date = new Timestamp( System.currentTimeMillis() );
 		
 		order_history_car_dto.setCar_date(car_date);
-		int result = order_history_dao.insertCarLocation(order_history_car_dto);
+		
+		if(request.getParameter("order_no") == null || "".equals(request.getParameter("order_no"))) {
+		}else{
+			int result = order_history_dao.insertCarLocation(order_history_car_dto);
+		}
 		return new ModelAndView( "yyy/test_insert_car" );
 	}
 }
