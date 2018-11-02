@@ -28,7 +28,7 @@
 		
 		//그래프 모양
 		var options = {
-			title: '이번달 일별 매출액',
+			title: '해당 월 일별 매출액',
 			hAxis: {
 				title: '일별(일)',
 				format: '일',
@@ -55,8 +55,10 @@
   </script>
  <main>
  	<jsp:include page="store_aside_order.jsp" flush="false"/>
- <select id="month" name="month" onchange="updateMonthRevenue(this.value)">
-    <option value="hide">-- 월 선택 --</option>
+ <div class="container">
+ <div class="row">
+  월 :&nbsp;<select id="month" name="month" onchange="updateMonthRevenue(this.value)">
+   <option value="hide">-- 월 선택 --</option>
     <option value="01">1월</option>
     <option value="02">2월</option>
     <option value="03">3월</option>
@@ -70,6 +72,8 @@
     <option value="11">11월</option>
     <option value="12">12월</option>
 </select>
-<button type="button" class="btn btn-md">조회</button> 
+</div>
+</div>
+<br>
  	<div class="container" id="chart_div"></div>
  </main>
