@@ -536,8 +536,8 @@ body.okayNav-loaded {
                 expand_width = space_taken + _last_visible_child_width + _toggle_icon_width,
                 expandAll_width = space_taken - nav_full_width + _nav_default_width;
           
-            console.log('Nav width: ' + nav_full_width);
-            console.log('Visible nav + toggle icon: ' + collapse_width);
+            //console.log('Nav width: ' + nav_full_width);
+            //console.log('Visible nav + toggle icon: ' + collapse_width);
 
             if (wrapper_width > expandAll_width) {
                 self._expandAllItems();
