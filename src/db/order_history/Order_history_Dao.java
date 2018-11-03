@@ -55,7 +55,11 @@ public interface Order_history_Dao {
 	// 장성열
 	
 	// 임상혁
-	
+	//점주측 상품별 오늘 매출
+	public List<Order_history_DataBean_for_graph> selectOrdersStatusByAllStore(Map<String,String> map);
+	//점주측 카테고리 별 오늘 매출
+	public List<Order_history_DataBean_for_graph> selectMonthSalesbyAllCat(Map<String,String> map);
+		
 	// 손소라
 	//점주측 상품별 이번 달 매출
 	public List<Order_history_DataBean_for_graph> selectOrdersStatusByStore(Map<String,String> map);
