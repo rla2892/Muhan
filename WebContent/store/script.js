@@ -98,6 +98,17 @@ function updateGraph(){
 	var page="Store_order_graph_update.do?menu_category="+menu_category+"&year="+year+"&month="+month;
 	$('#chartArea').load(page);	
 }
+
+function updateGraphAll(){
+	var year=$("select[name=yearGroup]").val();
+	var month=$("select[name=monthGroup]").val();
+	var day=$("select[name=dayGroup]").val();
+	var menu_category=$("select[name=itemGroup]").val();
+	
+	$('#chartArea').empty();
+	var page="Store_order_graph_cat_now_Update.do?menu_category="+menu_category+"&year="+year+"&month="+month+"&day="+day;
+	$('#chartArea').load(page);	
+}
 function setCategory(menu_category){
 	var category;
 	switch(menu_category){
