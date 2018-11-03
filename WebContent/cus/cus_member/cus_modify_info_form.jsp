@@ -25,10 +25,13 @@
       
 
      <form class="form-horizontal" name="joinform" method="post" action="cus_modify_info_pro.do" onsubmit="return modifyCheck()">
-     			
-        		<h2 class="text-center" >내 정보수정</h2>
-        		<br>
+     		
+        		<h2 class="text-left text-dark" >내 정보수정</h2>
+        		<br><br>
+        	
+        		
 		        <div class="form-group row">
+		        
 					<label for="nickname" class="col-sm-3 col-form-label">아이디</label>
 					<div class="col-sm-8"><input class="form-control" type="text" value="${memberDto.cus_id}" readonly></div>
 					
@@ -61,13 +64,13 @@
 		        <div class="form-group row">
 		           <label for="inputNickname" class="col-sm-3 col-form-label">배달지 주소</label>   <!--    Address     -->
 		           
-		          	<div class="col-sm-8">
-		            	<input class="form-control col-sm-12" name="address" id="cus_address" type="text" placeholder="이름" value="${memberDto.cus_address}">
-						<div>		            	
+		          	<div class="col-sm-8 row">
+		            	&nbsp;&nbsp;&nbsp;<input class="form-control col-sm-8 "  name="address" id="cus_address" type="text" placeholder="이름" value="${memberDto.cus_address}">
+							            	
 		            	<span style="float:right">
-		            	<button class="btn btn-md btn-secondary" type="button" onclick="sample4_execDaumPostcode()" >주소검색</button>
+		            	&nbsp;<button class="btn btn-md btn-secondary" type="button" onclick="sample4_execDaumPostcode()" >주소검색</button>
 		            	</span>
-		            	</div>
+		            	
 		            </div>
 		            
 		        </div>

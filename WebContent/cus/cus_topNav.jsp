@@ -74,7 +74,7 @@
 	<div class="collapse navbar-collapse" id="navbarCollapse">
 		<ul class="navbar-nav" id="mainNavbar">
 			<li class="nav-item">
-				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="cus_menu.do?menu_category=4,5">MENU</a>
+				<a class="nav-link ml-2 mr-2 pl-2 text-white" href="cus_menu.do?menu_category=4,5">MENU</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="cus_store.do">STORE</a>
@@ -82,6 +82,11 @@
 			<li class="nav-item">
 				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="cus_review.do">REVIEW</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="cus_chart.do">CHART</a>
+			</li>
+			
+			
 		</ul>
 	</div>	
 
