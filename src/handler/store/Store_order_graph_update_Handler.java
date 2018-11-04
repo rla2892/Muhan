@@ -29,6 +29,8 @@ public class Store_order_graph_update_Handler implements CommandHandler{
 		String store_id= (String)request.getSession().getAttribute("store_id");
 		String year=request.getParameter("year");
 		String month=request.getParameter("month");
+		if(month.length()==1)month="0"+month;
+		
 		String menu_category=request.getParameter("menu_category");
 
 		List<Order_history_DataBean_for_graph>order_history_dto;

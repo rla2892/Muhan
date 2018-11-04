@@ -50,7 +50,7 @@ function drawUpdate() {
 		//그래프 그리기 시행
 		 var chartDiv=document.getElementById('chart_div');
 		
-		   function drawClassicChart() {
+		 function drawClassicChart() {
 	       var classicChart = new google.charts.Bar(chartDiv);
 	       classicChart.draw(data, classicOptions);
 	     } 

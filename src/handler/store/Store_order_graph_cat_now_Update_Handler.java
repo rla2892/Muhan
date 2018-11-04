@@ -30,6 +30,8 @@ public class Store_order_graph_cat_now_Update_Handler implements CommandHandler{
 		String year=request.getParameter("year");
 		String month=request.getParameter("month");
 		String day=request.getParameter("day");
+		if(day.length()==1)day="0"+day;
+		
 		String menu_category=request.getParameter("menu_category");
 
 		List<Order_history_DataBean_for_graph>order_history_dto;

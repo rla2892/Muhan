@@ -126,13 +126,13 @@ function setCategory(menu_category){
 			return "신제품-버거 ";break;	
 	}
 }
-function changeCategory(){
+/*function changeCategory(){
 	var categorySelect = document.getElementById("category");
     
     // select element에서 선택된 option의 value가 저장된다.
     var category = categorySelect.options[categorySelect.selectedIndex].value;
  
-}
+}*/
 function setHeight(itemNum){
 	if(itemNum<3){
 		return 200*itemNum;
