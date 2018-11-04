@@ -28,6 +28,8 @@ public class Store_revenue_day_Handler implements CommandHandler {
 	@RequestMapping("/Store_revenue_day")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		String datepick = request.getParameter("datepick");
+		System.out.println(datepick);
 		String store_id = (String) request.getSession().getAttribute("store_id");
 		List<Order_history_DataBean_for_store_Timegraph> order_history_day_dtos = order_history_dao.selectOrdersForDayByStore(store_id);
 		Calendar calendar = Calendar.getInstance();

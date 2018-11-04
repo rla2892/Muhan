@@ -60,6 +60,7 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
  </style>
 	</head>
 	<body class="login" onload="loginfocus()">
@@ -93,7 +94,7 @@ body {
 					<button type="button" class="btn btn-success btn-block" id="joinButton">		
 						회원가입
 					</button>
-					<button type="button" class="btn btn-success btn-block" id="findIdPwButton">		
+					<button type="button" class="btn btn-success btn-block" id="findIdPwButton"     style="margin-top: 0px">		
 						아이디/패스워드 찾기
 					</button>
 				</div>

@@ -3,6 +3,9 @@
 <%@ include file="store_setting.jsp"%>
 <jsp:include page="store_topNav.jsp" flush="false"/>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
 <c:set var="jsondaymap" value="${jsondaymap}"/>
 
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -46,8 +49,26 @@
   	var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
   	chart.draw(data, options);
   }
+  
+  $( function() {
+	    $( "#datepicker" ).datepicker({
+	    	dateFormat: 'yy-mm-dd',
+	    });
+	  } );
+  
+/*   function updateDayRevenue(value) {
+		location.href="Store_revenue_day.do?day="+value;
+	}
+  
+ */
   </script>
  <main>
  	<jsp:include page="store_aside_order.jsp" flush="false"/>
+ <div class="container">
+	 <div class="row">
+	 	날짜 : &nbsp;<input type="text" id="datepicker">
+	 </div>
+ </div>
+ <br>
  	<div class="container" id="chart_div"></div>
  </main>

@@ -12,7 +12,6 @@
 <%@include file="/cus/cus_topNav.jsp" %>
 <%@include file="/cus/cus_member/cus_member_subNav.jsp" %>
 
-
 <style>
 	#a{
 		margin-top:50px;

@@ -18,18 +18,19 @@ import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class Store_order_graph_update_Handler implements CommandHandler{
+public class Store_order_graph_cat_now_Update_Handler implements CommandHandler{
 	@Resource
 	private Order_history_Dao order_histroy_dao;
 	
-	@RequestMapping("Store_order_graph_update")
+	@RequestMapping("Store_order_graph_cat_now_Update")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException{ 	
 
 		String store_id= (String)request.getSession().getAttribute("store_id");
 		String year=request.getParameter("year");
 		String month=request.getParameter("month");
-		if(month.length()==1)month="0"+month;
+		String day=request.getParameter("day");
+		if(day.length()==1)day="0"+day;
 		
 		String menu_category=request.getParameter("menu_category");
 
@@ -37,18 +38,19 @@ public class Store_order_graph_update_Handler implements CommandHandler{
 		
 		Map<String, String>map=new HashMap<String, String>();
 		map.put("store_id", store_id);
-		map.put("search_month",year+"-"+month);
+		map.put("search_month",year+"-"+month+"-"+day);
 		
 		if(menu_category.equals("0")) {//전체
-			order_history_dto=order_histroy_dao.selectOrdersStatusByStore(map);
+			order_history_dto=order_histroy_dao.selectOrdersStatusByAllStore(map);
 		}else {//카테고리별
 			map.put("menu_category", menu_category);
-			order_history_dto=order_histroy_dao.selectMonthSalesbyCat(map);
+			order_history_dto=order_histroy_dao.selectMonthSalesbyAllCat(map);
 		}
 		request.setAttribute("order_history_dto", order_history_dto);
 		request.setAttribute("year",year);
 		request.setAttribute("month", month);
+		request.setAttribute("day", day);
 		request.setAttribute("menu_category", menu_category);
-		return new ModelAndView("store/store_order_graph_update");
+		return new ModelAndView("store/store_order_graph_cat_now_Update");
 	}
 }

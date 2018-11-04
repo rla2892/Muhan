@@ -98,6 +98,17 @@ function updateGraph(){
 	var page="Store_order_graph_update.do?menu_category="+menu_category+"&year="+year+"&month="+month;
 	$('#chartArea').load(page);	
 }
+
+function updateGraphAll(){
+	var year=$("select[name=yearGroup]").val();
+	var month=$("select[name=monthGroup]").val();
+	var day=$("select[name=dayGroup]").val();
+	var menu_category=$("select[name=itemGroup]").val();
+	
+	$('#chartArea').empty();
+	var page="Store_order_graph_cat_now_Update.do?menu_category="+menu_category+"&year="+year+"&month="+month+"&day="+day;
+	$('#chartArea').load(page);	
+}
 function setCategory(menu_category){
 	var category;
 	switch(menu_category){
@@ -115,13 +126,13 @@ function setCategory(menu_category){
 			return "신제품-버거 ";break;	
 	}
 }
-function changeCategory(){
+/*function changeCategory(){
 	var categorySelect = document.getElementById("category");
     
     // select element에서 선택된 option의 value가 저장된다.
     var category = categorySelect.options[categorySelect.selectedIndex].value;
  
-}
+}*/
 function setHeight(itemNum){
 	if(itemNum<3){
 		return 200*itemNum;

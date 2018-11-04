@@ -4,10 +4,10 @@
 <script>
 //그래프
 google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawUpdate);
+google.charts.setOnLoadCallback(drawDailyUpdate);
 
 var itemNum=${order_history_dto.size()};
-function drawUpdate() {
+function drawDailyUpdate() {
 	//상품 이름/매출
 	var menu_name = document.getElementsByName("name"); 
 	var menu_price = document.getElementsByName("price"); 
@@ -26,7 +26,7 @@ function drawUpdate() {
 	
 	data.addRows(storedata);
 	
-	var charttitle=""+${year}+"년 "+${month}+"월 "+setCategory(${menu_category})+"품목별 매출액과 판매개수";
+	var charttitle=""+${year}+"년 "+${month}+"월 "+${day}+"일"+setCategory(${menu_category})+"품목별 매출액과 판매개수";
 	//그래프 모양 
     var classicOptions = {
   	      width:1100,
@@ -50,7 +50,7 @@ function drawUpdate() {
 		//그래프 그리기 시행
 		 var chartDiv=document.getElementById('chart_div');
 		
-		 function drawClassicChart() {
+		   function drawClassicChart() {
 	       var classicChart = new google.charts.Bar(chartDiv);
 	       classicChart.draw(data, classicOptions);
 	     } 
