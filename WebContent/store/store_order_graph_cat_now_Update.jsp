@@ -4,10 +4,10 @@
 <script>
 //그래프
 google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawUpdate);
+google.charts.setOnLoadCallback(drawDailyUpdate);
 
 var itemNum=${order_history_dto.size()};
-function drawUpdate() {
+function drawDailyUpdate() {
 	//상품 이름/매출
 	var menu_name = document.getElementsByName("name"); 
 	var menu_price = document.getElementsByName("price"); 

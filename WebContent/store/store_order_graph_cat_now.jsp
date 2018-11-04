@@ -7,11 +7,11 @@
 <script>
 //그래프
 	google.charts.load('current', {packages: ['corechart', 'bar']});
-	google.charts.setOnLoadCallback(drawBasic);
+	google.charts.setOnLoadCallback(drawDailyChart);
 	
 	//품목 개수
 	var itemNum=${order_history_dto.size()};
-	function drawBasic() {
+	function drawDailyChart() {
 			
 		//상품 이름/매출
 		var menu_name = document.getElementsByName("menu_name"); 
@@ -63,13 +63,14 @@
 		//그래프 그리기 시행
 		 var chartDiv=document.getElementById('chart_div');
 		
-		   function drawClassicChart() {
+		 function drawClassicChart() {
 	       var classicChart = new google.charts.Bar(chartDiv);
 	       classicChart.draw(data, classicOptions);
 	     } 
 	    //drawMaterialChart();
-	    if(itemNum>0)drawClassicChart();
-	    else{
+	    if(itemNum>0){
+	    	drawClassicChart();
+	    }else{
 	    	chartDiv.append("매출이 없습니다")
 	    }
 	}
