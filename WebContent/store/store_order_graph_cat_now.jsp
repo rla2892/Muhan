@@ -45,7 +45,7 @@
 	      width:1100,
           height: setHeight(itemNum),
           legend: { position: 'top' },
-          chart: { title: '이번달 품목별 매출'},
+          chart: { title: '오늘 품목별 매출'},
           bars: 'horizontal', // Required for Material Bar Charts.
           series: {
   	        0: {axis:'판매개수(개)'},
