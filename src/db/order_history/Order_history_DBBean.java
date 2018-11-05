@@ -167,5 +167,10 @@ public class Order_history_DBBean implements Order_history_Dao {
 	@Override
 	public List<Order_history_DataBean_for_graph> selectMonthSalesbyCat(Map<String, String> map) {
 		return session.selectList("Order_history.selectMonthSalesbyCat",map);
-	}	
+	}
+
+	@Override
+	public int updateDeliveryStatus(Map<String, Integer> map) {
+		return session.update("Order_history.updateDeliveryStatus", map);
+	}
 }

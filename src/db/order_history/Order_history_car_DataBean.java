@@ -37,7 +37,5 @@ public class Order_history_car_DataBean {
 	}
 	public void setCar_date(Timestamp car_date) {
 		this.car_date = car_date;
-	}
-	
-	
+	}	
 }
