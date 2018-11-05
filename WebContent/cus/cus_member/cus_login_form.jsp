@@ -1,16 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="/cus/cus_setting.jsp"%>
 <%@include file="/cus/cus_head.jsp"%>
 <%@include file="/cus/cus_topNav.jsp"%>
+<%@include file="/cus/cus_script.jsp"%>
+<%@include file="/cus/cus_setting.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<html>
-	<head>
-	<meta charset="utf-8">
+<html lang="ko">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./jquery-3.3.1.js"></script>
+<script src="/Muhan/cus/cus_member/cus_join_checking_script.js"></script>
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%@include file="/cus/cus_script.jsp"%>
-    <style>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">	
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
+<style type="text/css">
 body {
   height: 100%;
 }
@@ -32,10 +49,7 @@ body {
   width: 100%;
   max-width: 440px;
   padding: 15px;
-  margin-top: 10px;
-  margin-left: 530px;
-  margin-bottom: 500px;
-  margin-right: 300px;
+  margin: auto;
 }
 .form-signin .checkbox {
   font-weight: 400;
@@ -60,12 +74,11 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-
- </style>
-	</head>
+</style> 
+	</head>		
 	<body class="login" onload="loginfocus()">
-			<form class="form-signin" name="loginform" method="post" role="form" action="cus_login_pro.do" onsubmit="return logincheck()">
-  				<img class="pt-0 mt-0 mb-6" src="/Muhan/cus/cus_images/lot.png" alt="logo" width="400" height="250">
+			<form class="form-signin" name="loginform" method="post" role="form" action="cus_login_pro.do" onsubmit="return logincheck()" style="margin-top: 10px;">
+  				<img class="pt-0 mt-0 mb-4" src="/Muhan/cus/cus_images/lot.png" alt="logo" width="400" height="250">
   				<input type="text" id="cus_id" name="cus_id" class="form-control" 
      				placeholder="아이디" required autofocus>
  	 				<script type="text/javascript">
