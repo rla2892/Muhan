@@ -1,5 +1,6 @@
 package handler.admin.order;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ import db.order_history.Order_history_Dao;
 import db.order_history.Order_history_DataBean_for_recieve;
 import db.store_member.Store_member_Dao;
 import db.store_member.Store_member_DataBean;
+import db.store_member.Store_member_DataBean_for_sales;
 import handler.CommandHandler;
 import handler.HandlerException;
 
@@ -29,6 +31,9 @@ public class Admin_order_graph_store implements CommandHandler{
 	
 	@Resource
 	private Store_member_Dao store_member_dao;
+	
+	@Resource
+	private Menu_Dao menu_dao;
 	
 	@RequestMapping("/Admin_order_graph_store")
 	@Override
@@ -64,25 +69,33 @@ public class Admin_order_graph_store implements CommandHandler{
 		}
 		
 		//모든 스토어 불러오기
-		//List<Store_member_DataBean> store_member_dtos = store_member_dao.selectStores(map);
+		List<Store_member_DataBean> store_member_dtos = store_member_dao.selectStoresAll();
+		//System.out.println(store_member_dtos.size());
 		
-		//데이터 만들기 위한 맵 만들기 <시간, 매출액>
-		Map<String,Integer> menu_sales = new HashMap<String,Integer>();
-//		for(int i=0; i<menu_dtos.size(); i++) {
-//			String menu_name = menu_dtos.get(i).getMenu_name();
-//			int menu_id = menu_dtos.get(i).getMenu_id();
-//			int menu_price = menu_dtos.get(i).getMenu_price();
-//			int sales=0;
-//			for(int j=0; j<order_history_dtos.size(); j++) {
-//				if(menu_id == order_history_dtos.get(j).getMenu_id()) {
-//					sales += order_history_dtos.get(j).getOrder_qnt() * menu_price;
-//				}
-//			}
-//			
-//			menu_sales.put(menu_name , sales);
-//		}
-//		System.out.println(menu_sales.size());
-//		request.setAttribute("menu_sales", menu_sales);
+		//데이터 만들기 위한 맵 만들기 <매장, 매출액>
+		//Map<String,Integer> store_sales = new HashMap<String,Integer>();
+		List<Store_member_DataBean_for_sales> store_sales = new ArrayList<Store_member_DataBean_for_sales>();
+		for(int i=0; i<store_member_dtos.size(); i++) {
+			Store_member_DataBean_for_sales store_member_dto_for_sale = new Store_member_DataBean_for_sales();
+			String store_name = store_member_dtos.get(i).getStore_name();
+			String store_id = store_member_dtos.get(i).getStore_id();
+			store_member_dto_for_sale.setStore_name(store_name);
+			store_member_dto_for_sale.setStore_id(store_id);
+			
+			int sales=0;
+			for(int j=0; j<order_history_dtos.size(); j++) {
+				if(store_id.equals( order_history_dtos.get(j).getStore_id() ) ) {
+					int menu_price = menu_dao.selectMenu( order_history_dtos.get(j).getMenu_id() ).getMenu_price();
+					sales += order_history_dtos.get(j).getOrder_qnt() * menu_price;
+				}
+			}
+			store_member_dto_for_sale.setStore_sale(sales);
+			
+			store_sales.add(store_member_dto_for_sale);
+			//store_sales.set(i, store_member_dto_for_sale);
+		}
+		//System.out.println(store_sales.size());
+		request.setAttribute("store_sales", store_sales);
 		return new ModelAndView("admin/admin_order/admin_order_graph_store");
 	}
 

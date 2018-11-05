@@ -37,4 +37,16 @@ public interface Store_member_Dao {
 	public List<Store_member_coords_DataBean> selectLonLat( String store_id );		//store 전용 매장 위도 경도 받기
 	
 	public String getRegDate(String store_id);//store 등록 날짜 가져오기
+	
+//3차	////////////////////////////////////////////////////////
+	//김상진
+	public List<Store_member_DataBean> selectStoresAll();	//전체 매장 출력
+	
+	//장성열
+	
+	//최은혜
+	
+	//임상혁
+	
+	//손소라
 }
