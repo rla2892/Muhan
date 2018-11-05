@@ -149,7 +149,15 @@ public class Order_history_DBBean implements Order_history_Dao {
 	// 장성열
 	
 	// 임상혁
-	
+	@Override
+	public List<Order_history_DataBean_for_graph> selectOrdersStatusByAllStore(Map<String, String> map) {
+		return session.selectList("Order_history.selectOrdersStatusByAllStore",map);
+	}
+
+	@Override
+	public List<Order_history_DataBean_for_graph> selectMonthSalesbyAllCat(Map<String, String> map) {
+		return session.selectList("Order_history.selectMonthSalesbyAllCat",map);
+	}	
 	// 손소라
 	@Override
 	public List<Order_history_DataBean_for_graph> selectOrdersStatusByStore(Map<String, String> map) {

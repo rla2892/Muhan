@@ -85,16 +85,13 @@ body {
 				
 				<input type="hidden" name="identifier" value="${identifier}">
 				<!-- 0: 일반 로그인 / 1: 바로 주문하기를 통해서 로그인 페이지에 접근한 경우 -->
-				<button class="btn btn-success btn-block" type="submit">로그인</button>
+					<button class="btn btn-lg btn-secondary btn-block" type="submit">로그인</button>
 				
-				<!-- <button type="submit" class="btn btn-success btn-block">
-					<span class="text-dark font-weight-bold">로그인</span>
-				</button> -->
 				<div class="form-group">
-					<button type="button" class="btn btn-success btn-block" id="joinButton">		
+					<button type="button" class="btn btn-lg btn-secondary btn-block" id="joinButton">		
 						회원가입
 					</button>
-					<button type="button" class="btn btn-success btn-block" id="findIdPwButton"     style="margin-top: 0px">		
+					<button type="button" class="btn btn-lg btn-secondary btn-block" id="findIdPwButton"     style="margin-top: 0px">		
 						아이디/패스워드 찾기
 					</button>
 				</div>

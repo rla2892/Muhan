@@ -114,4 +114,18 @@ public class Store_member_DBBean implements Store_member_Dao{
 	public String getRegDate(String store_id) {
 		return session.selectOne("Store_member.getRegDate",store_id);
 	}
+//3차 /////////////////////////////////////////////////////////////////////
+	//김상진
+	@Override
+	public List<Store_member_DataBean> selectStoresAll() {
+		return session.selectList("Store_member.selectStoresAll");
+	}
+	//장성열
+	
+	//최은혜
+	
+	//임상혁
+	
+	//손소라
+	
 }

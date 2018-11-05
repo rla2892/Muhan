@@ -26,7 +26,7 @@ function drawUpdate() {
 	
 	data.addRows(storedata);
 	
-	var charttitle=""+${year}+"년 "+${month}+"월 "+setCategory(${menu_category})+"품목별 매출액과 판매개수";
+	var charttitle=""+${year}+"년 "+${month}+"월 "+${day}+"일"+setCategory(${menu_category})+"품목별 매출액과 판매개수";
 	//그래프 모양 
     var classicOptions = {
   	      width:1100,
@@ -48,17 +48,17 @@ function drawUpdate() {
 	    };
 
 		//그래프 그리기 시행
-		 var chartDiv=document.getElementById('chart_div');
-		
-		 function drawClassicChart() {
-	       var classicChart = new google.charts.Bar(chartDiv);
-	       classicChart.draw(data, classicOptions);
-	     } 
-	    if(itemNum>0)drawClassicChart();
-	    else{
-	    	chartDiv.append("매출이 없습니다");
-	    }
-  	}
+    var chartDiv=document.getElementById('chart_div');
+	
+	 function drawClassicChart() {
+      var classicChart = new google.charts.Bar(chartDiv);
+      classicChart.draw(data, classicOptions);
+    } 
+   if(itemNum>0)drawClassicChart();
+   else{
+   	chartDiv.append("매출이 없습니다");
+   }
+	}
 </script>
 <c:forEach var="order_history" items="${order_history_dto}">
 	<input type="hidden" name="name" value="${order_history.menu_name}">

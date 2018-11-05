@@ -222,5 +222,16 @@
 		<!-- 손소라 추가 1026-->
 	<select id="getRegDate" parameterType="String" resultType="String">
 		select To_char(owner_reg_date,'yyyy-mm-dd') from mh_store_member where store_id=#{store_id}
-	</select>	
+	</select>
+	
+<!-- 3차///////////////////////////////////////////////////////////////////////// -->
+
+	<!-- 김상진 -->		
+	<select id="selectStoresAll" resultType="db.store_member.Store_member_DataBean">
+		select * from mh_store_member
+	</select>
+	<!-- 장성열 -->		
+	<!-- 최은혜 -->		
+	<!-- 임상혁 -->		
+	<!-- 손소라 -->		
 </mapper>
