@@ -18,9 +18,10 @@
 		<%@include file="/cus/cus_member/cus_member_subNav.jsp" %>
   
 	<div class="mx-auto" id="a" style="width: 800px;" >
-		<!-- <div class="page-header text-center">
-    	    <h5>회원수정</h5>
-        </div> -->
+		<div class="page-header text-left">
+    	    <h2 class="text-dark ">${customer_member_dto.cus_id}님의 정보</h2>
+        </div> 
+        <br>
 	 	<div class="row">
 	 		<div class="col-md-3 bg-secondary text-white rounded-left"><h5>아이디</h5></div>
 	 		<div class="col-md-9 bg-dark text-white rounded-right text-center"><h5>${customer_member_dto.cus_id}</h5></div>
