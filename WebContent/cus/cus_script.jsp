@@ -174,7 +174,6 @@
 										newmessage += '<button class="btn btn-sm btn-warning ml-2 msgCheck" name='+jsonalarms[i]['order_no']+'>확인</button> <br><br>';
 									} else if (jsonalarms[i]['order_status'] == 3) {
 										newmessage += '주문번호 '+jsonalarms[i]['order_no']+':<br>주문이 배달되었습니다.<br>';
-										newmessage += '<button class="btn btn-sm btn-warning ml-2 msgCheck" name='+jsonalarms[i]['order_no']+'>확인</button> <br><br>';
 									}
 								}
 								$('.message').html(newmessage);
