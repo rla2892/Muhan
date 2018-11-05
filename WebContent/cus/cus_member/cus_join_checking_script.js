@@ -10,7 +10,7 @@ function toMain() {
 
 function joincheck() {
 	if (confirm("회원가입을 하시겠습니까?")) {
-	if (idck == 0) {
+	if (idck == 1) {
 		alert('아이디 중복체크를 해주세요');
 		return false;
 	}else if (joinform.confirm.value == 0){

@@ -3,18 +3,15 @@
 <%@ include file="store_setting.jsp"%>
 <jsp:include page="store_topNav.jsp" flush="false"/>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
-<c:set var="jsondaymap" value="${jsondaymap}"/>
+<c:set var="jsonyearmap" value="${jsonyearmap}"/>
 
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
-  var jsondayparse = JSON.parse('${jsondaymap}');
+  var jsonyearparse = JSON.parse('${jsonyearmap}');
   
-  var daydata = [];
-   for(var i in jsondayparse) {
-	   daydata.push( [ i , jsondayparse[i]] );
+  var yeardata = [];
+   for(var i in jsonyearparse) {
+	   yeardata.push( [ i , jsonyearparse[i]] );
   } 
   
   google.charts.load('current', {packages: ['corechart', 'bar']});
@@ -23,17 +20,17 @@
   function drawBasic() {
 		
 		var data = new google.visualization.DataTable();
-		data.addColumn('string', '시간');
+		data.addColumn('string', '월');
 		data.addColumn('number', '매출액');
 		
-		data.addRows(daydata);
+		data.addRows(yeardata);
 		
 		//그래프 모양
 		var options = {
-			title: '오늘의 시간대별 매출액',
+			title: '해당년도 월별 매출액',
 			hAxis: {
-				title: '시간대(시)',
-				format: '시간',
+				title: '월별(월)',
+				format: '월',
 				viewWindow: {
 					min: [7, 30, 0],
 					max: [57, 30, 0]
@@ -50,25 +47,25 @@
   	chart.draw(data, options);
   }
   
-  $( function() {
-	    $( "#datepicker" ).datepicker({
-	    	dateFormat: 'yy-mm-dd',
-	    });
-	  } );
-  
-/*   function updateDayRevenue(value) {
-		location.href="Store_revenue_day.do?day="+value;
+  function updateYearRevenue(value) {
+		location.href="Store_revenue_year.do?year="+value;
 	}
-  
- */
   </script>
  <main>
  	<jsp:include page="store_aside_order.jsp" flush="false"/>
- <div class="container">
-	 <div class="row">
-	 	날짜 : &nbsp;<input type="text" id="datepicker">
-	 </div>
- </div>
- <br>
+<div class="container">
+	<div class="row">
+		년도 : &nbsp;<select id="year" name="year" onchange="updateYearRevenue(this.value)">
+			<option value="hide">--연도 선택--</option>
+				<c:set var="today" value="<%=new java.util.Date()%>" />
+				<fmt:formatDate value="${today}" pattern="yyyy" var="start"/> 
+				<c:forEach begin="0" end="4" var="idx" step="1">
+		    <option value="<c:out value="${start - idx}" />">
+				<c:out value="${start - idx}" /></option>
+				</c:forEach>
+		</select>
+	</div>
+<br>
  	<div class="container" id="chart_div"></div>
+ </div>
  </main>

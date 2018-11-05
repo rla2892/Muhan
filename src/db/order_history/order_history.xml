@@ -104,6 +104,14 @@
 	<select id="selectOrdersAllYear" resultType="db.order_history.Order_history_DataBean_for_recieve">
 		select * from mh_order_history where to_char(order_date,'yyyy') = to_char(sysdate,'yyyy')
 	</select>
+	<select id="selectCarLocations" resultType="db.order_history.Order_history_car_DataBean">
+		select * from mh_car where order_no=#{order_no} order by car_date desc
+	</select>
+	<insert id="insertCarLocation" parameterType="db.order_history.Order_history_car_DataBean">
+		insert into mh_car
+		values(#{car_id}, #{order_no}, #{car_x}, #{car_y}, #{car_date})
+	</insert>
+	
 	<!-- 최은혜 -->
 	<select id="selectOrdersForDayByStore" parameterType="String" resultType="db.order_history.Order_history_DataBean_for_store_Timegraph">
 		select oh.order_date, oh.order_qnt, m.menu_price
@@ -120,9 +128,31 @@
 		and to_char(order_date, 'mm')=#{month}
 		and oh.store_id=#{store_id}
 		order by oh.order_date asc
-	</select>	
+	</select>
+	<select id="selectOrdersForYearByStore"	parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean_for_store_Timegraph">
+		select oh.order_date, oh.order_qnt, m.menu_price
+		from mh_order_history oh, mh_menu m
+		where oh.menu_id=m.menu_id
+		and to_char(order_date, 'yyyy')=#{year}
+		and oh.store_id=#{store_id}
+		order by oh.order_date asc
+	</select>
 	<!-- 장성열 -->
 	<!-- 임상혁 -->
+	<select id="selectOrdersStatusByAllStore" resultType="db.order_history.Order_history_DataBean_for_graph" parameterType="java.util.Map">
+		select m.menu_name,m.menu_category,sum(menu_price) as menu_price,count(h.menu_id) as menu_num 
+		from mh_menu m, mh_order_history h 
+		where h.menu_id=m.menu_id and store_id=#{store_id} and to_char(order_date,'yyyy-mm-dd')=#{search_month}
+		group by h.menu_id,m.menu_name,m.menu_category
+	</select>
+	<select id="selectMonthSalesbyAllCat" parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean_for_graph">
+		select m.menu_name,count(h.menu_id) as menu_num,NVL2(h.menu_id,sum(menu_price),0) as menu_price
+		from mh_menu m left outer join mh_order_history h 
+		on h.menu_id=m.menu_id 
+		and store_id=#{store_id} and to_char(order_date,'yyyy-mm-dd')=#{search_month} 
+		where menu_category=To_number(#{menu_category})
+		group by h.menu_id,m.menu_name
+	</select>
 	<!-- 손소라 -->
 	<select id="selectStoreOrder" resultType="db.order_history.Order_history_DataBean_for_graph" parameterType="java.util.Map">
 		select m.menu_name,m.menu_category,sum(menu_price) as menu_price,count(h.menu_id) as menu_num 

@@ -128,6 +128,14 @@ public class Order_history_DBBean implements Order_history_Dao {
 	public List<Order_history_DataBean_for_recieve> selectOrdersAllYear() {
 		return session.selectList("Order_history.selectOrdersAllYear");
 	}
+	@Override
+	public List<Order_history_car_DataBean> selectCarLocations(int order_no) {
+		return session.selectList("Order_history.selectCarLocations",order_no);
+	}
+	@Override
+	public int insertCarLocation(Order_history_car_DataBean order_history_car_dto) {
+		return session.insert("Order_history.insertCarLocation", order_history_car_dto);
+	}
 	
 	// 최은혜
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore( String store_id ) {
@@ -136,10 +144,21 @@ public class Order_history_DBBean implements Order_history_Dao {
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForMonthByStore( Map<String, String> map ) {
 		return session.selectList("Order_history.selectOrdersForMonthByStore", map );
 	}
+	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForYearByStore ( Map<String, String> map ) {
+		return session.selectList("Order_history.selectOrdersForYearByStore", map );
+	}
 	// 장성열
 	
 	// 임상혁
-	
+	@Override
+	public List<Order_history_DataBean_for_graph> selectOrdersStatusByAllStore(Map<String, String> map) {
+		return session.selectList("Order_history.selectOrdersStatusByAllStore",map);
+	}
+
+	@Override
+	public List<Order_history_DataBean_for_graph> selectMonthSalesbyAllCat(Map<String, String> map) {
+		return session.selectList("Order_history.selectMonthSalesbyAllCat",map);
+	}	
 	// 손소라
 	@Override
 	public List<Order_history_DataBean_for_graph> selectOrdersStatusByStore(Map<String, String> map) {

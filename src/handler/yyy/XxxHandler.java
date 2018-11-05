@@ -27,11 +27,7 @@ public class XxxHandler implements CommandHandler {
 	@RequestMapping("/xxx")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		List<Menu_DataBean> menu_dtos = menu_dao.selectMenus();
-		String test = menu_dtos.get(0).getMenu_name();
-		request.setAttribute("test", test);
-		request.setAttribute("menu_dtos", menu_dtos);
+		
 		
 		return new ModelAndView( "yyy/xxx" );
 	}
