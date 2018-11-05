@@ -65,5 +65,7 @@ public interface Order_history_Dao {
 	public List<Order_history_DataBean_for_graph> selectOrdersStatusByStore(Map<String,String> map);
 	//점주측 카테고리 별 월 매출
 	public List<Order_history_DataBean_for_graph> selectMonthSalesbyCat(Map<String,String> map);
+	//배달 상태 업데이트
+	public int updateDeliveryStatus(Map<String,Integer> map);
 }
 

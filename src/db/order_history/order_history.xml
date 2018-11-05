@@ -109,7 +109,7 @@
 	</select>
 	<insert id="insertCarLocation" parameterType="db.order_history.Order_history_car_DataBean">
 		insert into mh_car
-		values(#{car_id}, #{order_no}, #{car_x}, #{car_y}, #{car_date})
+		values(#{car_id}, #{order_no}, #{car_x}, #{car_y}, sysdate)
 	</insert>
 	
 	<!-- 최은혜 -->
@@ -168,5 +168,7 @@
 		where menu_category=To_number(#{menu_category})
 		group by h.menu_id,m.menu_name
 	</select>
-	
+	<update id="updateDeliveryStatus" parameterType="java.util.Map">
+		update mh_order_history set order_status=${order_status} where order_no=${order_no} 
+	</update>
 </mapper>
