@@ -9,8 +9,17 @@
 		<%@include file="/cus/cus_topNav.jsp"%>
 		<%@include file="/cus/cus_member/cus_member_subNav.jsp"%>
 
-<div id="map" style="width:900px;height:500px;"></div>
-<div id="testdiv"></div>
+<div class="container">
+	<div class="col-sm-8" id="map" style="width:100%;height:73%;"></div>
+	<div class="col-sm-4 alignment-center">
+		<h1>배달상태</h1>
+		<c:if test="${order_status eq 1}">1 주문 대기</c:if>
+		<c:if test="${order_status eq 2}">2 주문 접수</c:if>
+		<c:if test="${order_status eq 3}">3 주문 확인</c:if>
+		<c:if test="${order_status eq 4}">4 주문 완료</c:if>
+	</div>
+</div>
+
 <input type="hidden" name="cus_address" id="cus_address" value="${cus_address}">
 
 <%@include file="/cus/cus_fixedFooter.jsp"%>

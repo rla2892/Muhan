@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import db.order_history.Order_history_Dao;
 import db.order_history.Order_history_DataBean_for_Alarm;
@@ -25,40 +26,27 @@ import handler.HandlerException;
 public class Cus_Alarm_Handler implements CommandHandler{
 
 	@Resource
-	private Order_history_Dao orderHistoryDao;
+	private Order_history_Dao order_history_dao;	
 	
-	@RequestMapping(value="/cus_ajaxResponse", method=RequestMethod.GET)
+	@RequestMapping(value="/cus_alarmResponse.do", method=RequestMethod.GET)
 	@ResponseBody
 	public String ajaxResponse(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-
+		String jsonFromJavaArrayList = "";
 		String cus_id=(String)request.getSession().getAttribute("cus_id");
-		
-		Map<String, String> ajaxResponseData=new HashMap<String, String>();
-//		List<Order_history_DataBean_for_Alarm> orderStatus=orderHistoryDao.checkOrderStatus(cus_id);
-		Order_history_DataBean_for_Alarm orderStatus=orderHistoryDao.checkOrderStatus(cus_id);
-		
-		if (orderStatus==null) {
-			ajaxResponseData.put("orderNo", "0");
-			ajaxResponseData.put("orderStatus", "0");
-		} else {
-//			ajaxResponseData.put("orderNo", String.valueOf(orderStatus.get(0).getOrder_no()));
-//			ajaxResponseData.put("orderStatus", String.valueOf(orderStatus.get(0).getOrder_status()));
-			ajaxResponseData.put("orderNo", String.valueOf(orderStatus.getOrder_no()));
-			ajaxResponseData.put("orderStatus", String.valueOf(orderStatus.getOrder_status()));
-		}
-		
-		String ajaxResult=new Gson().toJson(ajaxResponseData);		
-		return ajaxResult;
+		List<Order_history_DataBean_for_Alarm> alarms = order_history_dao.checkOrderStatus(cus_id);
+		Gson gsonBuilder = new GsonBuilder().create();
+		jsonFromJavaArrayList = gsonBuilder.toJson(alarms);
+			
+		return jsonFromJavaArrayList;
 	}
 	
 	@RequestMapping(value="/cus_ajaxOrderStatusUpdate", method=RequestMethod.GET)
 	@ResponseBody
-	public String ajaxUpdateResponse(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		
+	public int ajaxUpdateResponse(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		int order_no=Integer.parseInt(request.getParameter("order_no"));
-		String ajaxUpdateResult=String.valueOf(orderHistoryDao.ajaxUpdateOrderStatus(order_no));
+		int result = order_history_dao.ajaxUpdateOrderStatus(order_no);
 		
-		return ajaxUpdateResult;
+		return result;
 	}
 	
 	@Override
