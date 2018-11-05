@@ -37,13 +37,13 @@
 	
 	<select parameterType="java.util.Map" resultType="int" id="checkOrders">
 		select count(*) from mh_order_history where store_id=#{store_id} 
-		and to_char(order_date, 'yyyy-mm-dd')=#{order_date} and order_status in (1, 2) 
+		and to_char(order_date, 'yyyy-mm-dd')=#{order_date} and order_status in (1, 2, 4) 
 	</select>
 
 	<select parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean_for_store2" id="selectOrderDetails">
 		select m.menu_name, oh.order_qnt 
 		from mh_menu m, mh_order_history oh 
-		where to_char(order_date, 'yyyy-mm-dd')=#{order_date} and order_status in (1, 2) 
+		where to_char(order_date, 'yyyy-mm-dd')=#{order_date} and order_status in (1, 2, 4) 
 		and order_no=#{order_no} 
 		and oh.menu_id=m.menu_id 
 	</select>
@@ -51,7 +51,7 @@
 	<select parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean_for_store1" id="selectOrdersByDate">
 		select distinct oh.order_no, oh.order_date, oh.order_status, cm.cus_id, cm.cus_address, cm.cus_address2, cm.cus_tel, cm.cus_email 
 		from mh_order_history oh, mh_customer_member cm 
-		where store_id=#{store_id} and to_char(order_date, 'yyyy-mm-dd')=#{order_date} and order_status in (1, 2)
+		where store_id=#{store_id} and to_char(order_date, 'yyyy-mm-dd')=#{order_date} and order_status in (1, 2, 4)
 		and oh.cus_id = cm.cus_id order by order_date asc 
 	</select>
 	
@@ -83,7 +83,7 @@
 	
 	<!-- HY 추가 - 알람처리 -->
 	<select id="checkOrderStatus" parameterType="String" resultType="db.order_history.Order_history_DataBean_for_Alarm">
-		select distinct order_no, order_status from mh_order_history where cus_id=#{cus_id} and order_no=(select max(order_no) from mh_order_history where cus_id=#{cus_id})
+		select distinct order_no, order_status from mh_order_history where cus_id=#{cus_id} and to_char(order_date, 'yyyy-mm-dd')=to_char(sysdate, 'yyyy-mm-dd') and order_status in (2, 3)
 	</select>
 	<update id="ajaxUpdateOrderStatus" parameterType="int">
 		update mh_order_history set order_status=4 where order_no=#{order_no} 

@@ -6,14 +6,17 @@
 <script src="/Muhan/jquery-3.3.1.js"></script>
 <div class="container" >
 <form class="form_contact">
+<br>
 <h3>선택하신 주문의 상세정보</h3>
 <br>
 <label>[ 주문 메뉴명 및 수량 ]</label>
+<br>
 <c:forEach var="orderdetail" items="${orderdetails}">
 	<label>
 		${orderdetail.menu_name}&nbsp; ${orderdetail.order_qnt}개&nbsp;
 	</label>
 </c:forEach>
+<br>
 <br>
 <label>[ 배달 주소 ]</label>
 	<label id="address">

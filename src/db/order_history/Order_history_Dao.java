@@ -32,9 +32,8 @@ public interface Order_history_Dao {
 	
 	//store 전용. 주문 상태 바꾸기
 	
-	// HY 추가
-//	public List<Order_history_DataBean_for_Alarm> checkOrderStatus(String cus_id);						// customer 전용. 주문 상태 출력.
-	public Order_history_DataBean_for_Alarm checkOrderStatus(String cus_id);						// customer 전용. 주문 상태 출력.
+	// HY 추가			
+	public List<Order_history_DataBean_for_Alarm> checkOrderStatus( String cus_id );					// customer 전용. 주문 상태 출력.
 	public int ajaxUpdateOrderStatus(int order_no);													// customer 전용. 주문 상태 4로 업데이트.
 	
 	// 3차 프로젝트 부분	/////////////////////////////////////////////////////////////////////////////////////////////////////////
