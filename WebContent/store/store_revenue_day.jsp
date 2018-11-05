@@ -53,20 +53,19 @@
   $( function() {
 	    $( "#datepicker" ).datepicker({
 	    	dateFormat: 'yy-mm-dd',
+ 	    	onSelect: function(dateText, inst) {
+	    	      $("input[name='datepick']").val(dateText);
+	    	      location.href="Store_revenue_day.do?day="+dateText;
+	    	    } 
 	    });
 	  } );
   
-/*   function updateDayRevenue(value) {
-		location.href="Store_revenue_day.do?day="+value;
-	}
-  
- */
   </script>
  <main>
  	<jsp:include page="store_aside_order.jsp" flush="false"/>
  <div class="container">
 	 <div class="row">
-	 	날짜 : &nbsp;<input type="text" id="datepicker">
+	 	날짜 : &nbsp;<input type="text" id="datepicker" name="day">
 	 </div>
  </div>
  <br>

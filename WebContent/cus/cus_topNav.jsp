@@ -112,7 +112,6 @@
 				<div class="dropdown-divider"></div>
 				<div class="justify-content-center">
 					<div class="message mt-1 pl-3 pr-3">새 메세지가 없습니다.</div>
-					<button class="btn btn-sm btn-warning ml-2 msgCheck" disabled>확인</button>
 				</div>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item logout" href="cus_logout.do">로그아웃</a>

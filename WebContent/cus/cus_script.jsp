@@ -153,68 +153,31 @@
 	);
 
 	
-	$(window).on(
+ 	$(window).on(
 		'load',
 		function(event) {
 			if(sessionStorage.getItem('cus_id')) {
 				function updateMsg() {
 					$.ajax({
-						url: 'cus_ajaxResponse.do',
+						url: 'cus_alarmResponse.do',
 						contentType: 'application/json; charset="UTF-8"',
 						cache: false,
 						success: function(data) {
-							var order=JSON.parse(data);
-							var orderNo=order.orderNo;
-							var orderStatus=order.orderStatus;
-							
-							console.log('ajaxResponse 수신 성공. 주문번호: '+orderNo+' 주문상태: '+orderStatus);
-							
-							if(orderStatus=='1') {
-								sessionStorage.setItem('msgCount', 4);
-							} else if(orderStatus=='2') {
-								$('.message').html('주문번호 '+orderNo+':<br>주문이 접수되었습니다.');
-								$('.msgCheck').attr('disabled', false);
-								
-								if(eval(sessionStorage.getItem('msgCount'))<=3) {
-									$('.message').html('새 메세지가 없습니다.');
-									$('.msgCheck').attr('disabled', true);
-								}
-								
-							} else if(orderStatus=='3') {
-								sessionStorage.setItem('msgCount', 3);
-								$('.message').html('주문번호 '+orderNo+':<br>주문이 배달되었습니다.');
-								$('.msgCheck').attr('disabled', false);
-								
-								if(eval(sessionStorage.getItem('msgCount'))<=2) {
-									$('.message').html('새 메세지가 없습니다.');
-									$('.msgCheck').attr('disabled', true);
-								}
-								
-								$.ajax({
-									url: 'cus_ajaxOrderStatusUpdate.do',
-									contentType: 'application/json; charset="UTF-8"',
-									data: {
-										order_no: orderNo
-									},
-									cache: false,
-									success: function(data) {
-										console.log('orderStatus Update 성공');
-									},
-									error: function(e) {
-										console.log('orderStatus Update 실패');
-									}
-								});
-								
-							} else if(orderStatus=='4'){
-								sessionStorage.setItem('msgCount', 2);
-								if(eval(sessionStorage.getItem('msgCount'))<=1) {
-									$('.message').html('새 메세지가 없습니다.');
-									$('.msgCheck').attr('disabled', true);						
-								}
-								
-							} else {
+							var jsonalarms = JSON.parse(data);
+							var newmessage = '';
+							if (data == '') {
 								$('.message').html('새 메세지가 없습니다.');
-								$('.msgCheck').attr('disabled', true);
+							} else if ( data != '') {
+								for(var i in jsonalarms) {
+									if( jsonalarms[i]['order_status'] == 2 ) {
+										newmessage += '주문번호 '+jsonalarms[i]['order_no']+':<br>주문이 접수되었습니다.<br>';
+										newmessage += '<button class="btn btn-sm btn-warning ml-2 msgCheck" name='+jsonalarms[i]['order_no']+'>확인</button> <br><br>';
+									} else if (jsonalarms[i]['order_status'] == 3) {
+										newmessage += '주문번호 '+jsonalarms[i]['order_no']+':<br>주문이 배달되었습니다.<br>';
+										newmessage += '<button class="btn btn-sm btn-warning ml-2 msgCheck" name='+jsonalarms[i]['order_no']+'>확인</button> <br><br>';
+									}
+								}
+								$('.message').html(newmessage);
 							}
 						},
 						error:function(e) {
@@ -225,9 +188,28 @@
 				var ajaxIntervalSetter=setInterval(updateMsg, 3000);
 			}
 		}
-	);
-	
-	
+	); 
+ 	
+ 	$(document).on("click",".msgCheck", function(e){ 
+		var updatealarm = e.target.name;
+		$.ajax({
+			url: 'cus_ajaxOrderStatusUpdate.do',
+			contentType: 'application/json; charset="UTF-8"',
+			data: {
+				order_no: updatealarm
+			},
+			cache: false,
+			success: function(data) {
+				if ( data == 1 ) {
+					$('.message').html('새 메세지가 없습니다.');
+				}			
+			},
+			error: function(e) {
+				console.log('orderStatus Update 실패');
+			}
+		});
+	 });	
+ 	
 	$(window).on(
 		'load',
 		function(event) {

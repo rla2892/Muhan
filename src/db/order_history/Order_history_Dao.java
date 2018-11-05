@@ -32,9 +32,8 @@ public interface Order_history_Dao {
 	
 	//store 전용. 주문 상태 바꾸기
 	
-	// HY 추가
-//	public List<Order_history_DataBean_for_Alarm> checkOrderStatus(String cus_id);						// customer 전용. 주문 상태 출력.
-	public Order_history_DataBean_for_Alarm checkOrderStatus(String cus_id);						// customer 전용. 주문 상태 출력.
+	// HY 추가			
+	public List<Order_history_DataBean_for_Alarm> checkOrderStatus( String cus_id );					// customer 전용. 주문 상태 출력.
 	public int ajaxUpdateOrderStatus(int order_no);													// customer 전용. 주문 상태 4로 업데이트.
 	
 	// 3차 프로젝트 부분	/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,7 +48,7 @@ public interface Order_history_Dao {
 	public int insertCarLocation(Order_history_car_DataBean order_history_car_dto);	//차량 위치 넣어주기
 	
 	// 최은혜
-	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore ( String store_id );
+	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore ( Map<String, String> map );
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForMonthByStore ( Map<String, String> map );	
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForYearByStore( Map<String, String> map );
 	// 장성열
