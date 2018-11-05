@@ -4,14 +4,16 @@
 <%@ include file="store_setting.jsp"%>
 <script src="${project}script.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
 //그래프
-	google.charts.load('current', {packages: ['corechart', 'bar']});
-	google.charts.setOnLoadCallback(drawDailyChart);
+	
+   google.charts.load('current', {packages: ['corechart', 'bar']});
+	google.charts.setOnLoadCallback(drawBasic);
 	
 	//품목 개수
 	var itemNum=${order_history_dto.size()};
-	function drawDailyChart() {
+	function drawBasic() {
 			
 		//상품 이름/매출
 		var menu_name = document.getElementsByName("menu_name"); 
@@ -26,7 +28,7 @@
 		var data = new google.visualization.DataTable();
 		data.addColumn('string', '품목');
 		data.addColumn('number', '매출액(원)');
-		data.addColumn('number','판매개수(개)'); 
+		data.addColumn('number','판매개수(개)');
 		
 		var storedata=[];
 		for(var i=0;i<itemNum;i++){
@@ -39,6 +41,7 @@
 		data.addColumn('number','판매개수(개)');
 		
 		data.addRows(storedata);
+		
 		
 		//그래프 모양
 	    var classicOptions = {
@@ -62,15 +65,14 @@
 
 		//그래프 그리기 시행
 		 var chartDiv=document.getElementById('chart_div');
-		
-		 function drawClassicChart() {
+			
+		   function drawClassicChart() {
 	       var classicChart = new google.charts.Bar(chartDiv);
 	       classicChart.draw(data, classicOptions);
 	     } 
 	    //drawMaterialChart();
-	    if(itemNum>0){
-	    	drawClassicChart();
-	    }else{
+	    if(itemNum>0)drawClassicChart();
+	    else{
 	    	chartDiv.append("매출이 없습니다")
 	    }
 	}
