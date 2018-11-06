@@ -84,8 +84,8 @@ $(document).on("click","#completebutton", function(e){
 //-->
 </script>
 
-<body>
+<main>
 
-<div id="result"></div>
+	<div id="result"></div>
 
-</body>
+</main>
