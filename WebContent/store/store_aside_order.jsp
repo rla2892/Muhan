@@ -4,10 +4,11 @@
 <!--
 #sidebar {
     /* don't forget to add all the previously mentioned styles here too */
-    background: #7386D5;
+    background: #4A6572;
     color: #fff;
     transition: all 0.3s;
     min-height:500px!important;
+/*     margin-left:5px; */
 }
 a, a:hover, a:focus {
     color: inherit;
@@ -20,7 +21,7 @@ a, a:hover, a:focus {
     display: block;
 }
 #sidebar li a:hover {
-    color: #7386D5;
+    color: #4A6572;
     background: #fff;
 }
 #sidebar li li a{
@@ -28,8 +29,8 @@ a, a:hover, a:focus {
 }
 
 #sidebar li.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
+    color: black;
+    background:#F9AA33;
 }
 
 -->
