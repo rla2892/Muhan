@@ -52,9 +52,9 @@
 					</td>
 				</tr>
 			</table>	
-					<button class="btn btn-md btn-secondary" onclick="window.location.href='cus_car_view.do?order_no=${order_no}'">배달 현황</button>
+					
 			</div>
-		</body>
-			
-	<!-- 	</div> -->
+			<div class="col-sm3"style="text-align:center;">
+			<button class="btn btn-secondary"onclick="window.location.href='cus_car_view.do?order_no=${order_no}'">배달 현황</button>
+		</div>
 		<%@include file="/cus/cus_fixedFooter.jsp"%>
