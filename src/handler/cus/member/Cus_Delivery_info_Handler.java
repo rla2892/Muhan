@@ -36,7 +36,7 @@ public class Cus_Delivery_info_Handler implements CommandHandler {
 			order_status=DELIVERY_START;
 		}else if (delivery_status.equals("end")) {
 			order_status=DELIVERY_END;
-			order_history_dao.deleteCarLocations(order_no);//좌표 삭제
+			//order_history_dao.deleteCarLocations(order_no);//좌표 삭제
 		}
 		
 		Map<String, Integer>map=new HashMap<String,Integer>();
@@ -59,8 +59,8 @@ public class Cus_Delivery_info_Handler implements CommandHandler {
 		Order_history_car_DataBean order_history_car_dto=new Order_history_car_DataBean();
 		order_history_car_dto.setOrder_no(order_no);
 		order_history_car_dto.setCar_id(car_id);
-		order_history_car_dto.setCar_x(lat);
-		order_history_car_dto.setCar_y(lng);
+		order_history_car_dto.setCar_x(lng);
+		order_history_car_dto.setCar_y(lat);
 		
 		order_history_dao.insertCarLocation(order_history_car_dto);
 		
