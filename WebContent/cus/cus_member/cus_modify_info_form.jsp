@@ -4,12 +4,10 @@
 <html>
 <head>
 <script src="cus/cus_member/cus_join_checking_script.js"></script>
-
 <%@include file="/cus/cus_setting.jsp"%>
-
-<%@include file="/cus/cus_script.jsp" %>
-<%@include file="/cus/cus_head.jsp" %>
-<%@include file="/cus/cus_topNav.jsp" %>
+<%@include file="/cus/cus_script.jsp"%>
+<%@include file="/cus/cus_head.jsp"%>
+<%@include file="/cus/cus_topNav.jsp"%>
 <%@include file="/cus/cus_member/cus_member_subNav.jsp" %>
 
 <style>
