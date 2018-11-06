@@ -36,6 +36,7 @@ public class Cus_Delivery_info_Handler implements CommandHandler {
 			order_status=DELIVERY_START;
 		}else if (delivery_status.equals("end")) {
 			order_status=DELIVERY_END;
+			order_history_dao.deleteCarLocations(order_no);//좌표 삭제
 		}
 		
 		Map<String, Integer>map=new HashMap<String,Integer>();
