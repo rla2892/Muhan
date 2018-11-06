@@ -6,6 +6,18 @@
 <html>
 	<head>
 		<%@include file="/cus/cus_head.jsp"%>
+		
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128572661-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-128572661-1','none');
+</script>
+
+
 <style>
 .jumbotron{
     background: url("/Muhan/cus/cus_images/KakaoTalk_20181101_185.png") no-repeat center center; 
@@ -36,7 +48,7 @@
 			<!-- Menu List shown in Cards -->
 			<div class="card-deck mt-4 mb-4">
 				<c:forEach var="menu" items="${menus}">
-				<a class="menuListItem" href="cus_menu_details.do?menu_id=${menu.menu_id}">
+				<a class="menuListItem" href="cus_menu_details.do?menu_id=${menu.menu_id}" >
 					<div class="card mt-4 mb-4">
 						<img class="card-img-top img-fluid" src="/Muhan/menu_images/${menu.menu_image}" alt="Menu Img" width="150" height="100">
 						<div class="card-body text-center font-weight-bold flex-fill">

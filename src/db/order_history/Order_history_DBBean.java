@@ -97,12 +97,11 @@ public class Order_history_DBBean implements Order_history_Dao {
 	}
 	
 	// HY 추가
-	//public List<Order_history_DataBean_for_Alarm> checkOrderStatus(String cus_id) {
-	public Order_history_DataBean_for_Alarm checkOrderStatus(String cus_id) {
+
+	public List<Order_history_DataBean_for_Alarm> checkOrderStatus( String cus_id ) {
 		session.flushStatements();
 	    session.clearCache();
-		return session.selectOne("Order_history.checkOrderStatus", cus_id);
-		//return session.selectList("Order_history.checkOrderStatus", cus_id);
+		return session.selectList("Order_history.checkOrderStatus", cus_id );
 	}
 
 	public int ajaxUpdateOrderStatus(int order_no) {
@@ -138,8 +137,8 @@ public class Order_history_DBBean implements Order_history_Dao {
 	}
 	
 	// 최은혜
-	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore( String store_id ) {
-		return session.selectList("Order_history.selectOrdersForDayByStore", store_id );
+	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore( Map<String, String> map ) {
+		return session.selectList("Order_history.selectOrdersForDayByStore", map );
 	}
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForMonthByStore( Map<String, String> map ) {
 		return session.selectList("Order_history.selectOrdersForMonthByStore", map );

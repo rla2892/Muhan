@@ -1,6 +1,9 @@
 package handler.store;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -28,10 +31,14 @@ public class Store_revenue_day_Handler implements CommandHandler {
 	@RequestMapping("/Store_revenue_day")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		String datepick = request.getParameter("datepick");
-		System.out.println(datepick);
-		String store_id = (String) request.getSession().getAttribute("store_id");
-		List<Order_history_DataBean_for_store_Timegraph> order_history_day_dtos = order_history_dao.selectOrdersForDayByStore(store_id);
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String day = request.getParameter("day") == null? sdf.format(d).toString() : request.getParameter("day");
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("store_id", (String) request.getSession().getAttribute("store_id"));
+		map.put("day", day);
+		List<Order_history_DataBean_for_store_Timegraph> order_history_day_dtos = order_history_dao.selectOrdersForDayByStore(map);
 		Calendar calendar = Calendar.getInstance();
 		Map<Integer, Integer> daymap = new TreeMap<Integer, Integer>();
 		Gson gson = new Gson();
