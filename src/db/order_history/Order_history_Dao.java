@@ -67,5 +67,7 @@ public interface Order_history_Dao {
 	public List<Order_history_DataBean_for_graph> selectMonthSalesbyCat(Map<String,String> map);
 	//배달 상태 업데이트
 	public int updateDeliveryStatus(Map<String,Integer> map);
+	//배달 완료 후 위치 좌표 삭제
+	public int deleteCarLocations(int order_no);
 }
 
