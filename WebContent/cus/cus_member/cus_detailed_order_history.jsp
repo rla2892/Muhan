@@ -3,14 +3,16 @@
 <%@include file="/cus/cus_setting.jsp"%>
 <%@include file="/cus/cus_script.jsp" %>
 
-<link rel="stylesheet" type="text/css" href="/Muhan/cus/cus_theme.css">
+<!-- <link rel="stylesheet" type="text/css" href="/Muhan/cus/cus_theme.css"> -->
 		
 		<%@include file="/cus/cus_topNav.jsp"%>
 		<%@include file="/cus/cus_member/cus_member_subNav.jsp"%>
 		
 		<!-- Container -->
-		<div class="container mt-5 pt-5">
-		<table class="table table-sm table-responsive-lg table-striped table-hover text-center mt-3 mb-3">
+	
+	<body>
+	<div class="container mt-1 pt-5"> 
+		<table class="table table-sm table-responsive-lg table-striped table-hover text-center mt-2 mb-5">
 				<thead>
 					<tr>
 						<th scope="col" class="order_no" colspan="3">
@@ -49,7 +51,10 @@
 						<c:out value="${total}"/>
 					</td>
 				</tr>
-			</table>
-			<button onclick="window.location.href='cus_car_view.do?order_no=${order_no}'">배달 현황</button>
-		</div>
+			</table>	
+					<button class="btn btn-md btn-secondary" onclick="window.location.href='cus_car_view.do?order_no=${order_no}'">배달 현황</button>
+			</div>
+		</body>
+			
+	<!-- 	</div> -->
 		<%@include file="/cus/cus_fixedFooter.jsp"%>
