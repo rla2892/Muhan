@@ -19,7 +19,7 @@
 		
 		<!-- Container -->
 		<div class="container">
-			<table class="table table-sm table-responsive-lg table-striped table-hover text-center mt-3 mb-3">
+			<table class="table table-sm table-responsive-lg table-striped table-hover text-center mt-5 mb-5">
 				<thead>
 					<tr>
 						<th scope="col" class="reviewNo">글번호</th>
