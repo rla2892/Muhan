@@ -176,4 +176,9 @@ public class Order_history_DBBean implements Order_history_Dao {
 	public int updateDeliveryStatus(Map<String, Integer> map) {
 		return session.update("Order_history.updateDeliveryStatus", map);
 	}
+
+	@Override
+	public int deleteCarLocations(int order_no) {
+		return session.update("Order_history.deleteCarLocations",order_no);
+	}
 }

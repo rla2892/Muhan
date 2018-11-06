@@ -209,7 +209,6 @@ body.okayNav-loaded {
       <li><a href="Store_order_check.do">현재주문확인</a></li>
       <li><a href="Store_orders_location.do">모든 주문위치</a></li>
       <li><a href="Store_revenue_day.do">매출확인</a></li>
-      <li><a href="Store_order_graph_cat.do">카테고리관리</a></li>
       <li><a href="Store_weather.do">날씨확인</a></li>
       <li><a href="Store_modify_form.do">회원정보수정</a></li>
 <c:if test="${sessionScope.store_id eq null}">
