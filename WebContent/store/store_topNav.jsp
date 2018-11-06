@@ -202,7 +202,22 @@ body.okayNav-loaded {
   <a class="site-logo" href="Store_main.do">
            <img src="/Muhan/cus/cus_images/logo_red.png">
         </a>
+<c:if test="${sessionScope.store_id eq null}">
+  <nav role="navigation" id="nav-main" class="okayNav" onclick="sessionLogincheck()">
+    <ul>
+      <li><a href="Store_main.do">메인</a></li>
+      <li><a href="Store_main.do">현재주문확인</a></li>
+      <li><a href="Store_main.do">모든 주문위치</a></li>
+      <li><a href="Store_main.do">매출확인</a></li>
+      <li><a href="Store_main.do">카테고리관리</a></li>
+      <li><a href="Store_main.do">날씨확인</a></li>
+      <li><a href="Store_main.do">회원정보수정</a></li>
+      <li><a href="Store_main.do">로그인</a></li>
+    </ul>
+  </nav>
+</c:if>
 
+<c:if test="${sessionScope.store_id ne null}">
   <nav role="navigation" id="nav-main" class="okayNav">
     <ul>
       <li><a href="Store_main.do">메인</a></li>
@@ -212,18 +227,18 @@ body.okayNav-loaded {
       <li><a href="Store_order_graph_cat.do">카테고리관리</a></li>
       <li><a href="Store_weather.do">날씨확인</a></li>
       <li><a href="Store_modify_form.do">회원정보수정</a></li>
-<c:if test="${sessionScope.store_id eq null}">
-      <li><a href="Store_main.do">로그인</a></li>
-</c:if>
-<c:if test="${sessionScope.store_id ne null}">
-
-	<li><a href="Store_logout.do">로그아웃</a></li>
-</c:if>
+	  <li><a href="Store_logout.do">로그아웃</a></li>
     </ul>
   </nav>
+</c:if>       
+
 </header>
 <!-- /header -->
 <script type="text/javascript">
+function sessionLogincheck() {
+	alert("로그인 후 이용 가능 한 서비스입니다.");
+}
+
 (function($, window, document, undefined) {
 
     // Defaults
