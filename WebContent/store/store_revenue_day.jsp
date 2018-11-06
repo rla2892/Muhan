@@ -5,11 +5,16 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
+<style>
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+</style>
 <c:set var="jsondaymap" value="${jsondaymap}"/>
-
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
+ <script type="text/javascript">
   var jsondayparse = JSON.parse('${jsondaymap}');
   
   var daydata = [];
@@ -62,12 +67,16 @@
   
   </script>
  <main>
+ <div class="wrapper">
  	<jsp:include page="store_aside_order.jsp" flush="false"/>
- <div class="container">
-	 <div class="row">
-	 	날짜 : &nbsp;<input type="text" id="datepicker" name="day">
-	 </div>
- </div>
- <br>
- 	<div class="container" id="chart_div"></div>
+
+	<div class="container">
+		 <div class="row">
+		 	날짜 : &nbsp;<input type="text" id="datepicker" name="day">
+		 </div>
+		 <div class="row" id="chart_div">
+ 		 </div>
+	</div>
+</div>
+ 	
  </main>
