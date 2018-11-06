@@ -4,11 +4,10 @@
 <%@ include file="store_setting.jsp"%>
 <script src="${project}script.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
 //그래프
 	
-   google.charts.load('current', {packages: ['corechart', 'bar']});
+   	google.charts.load('current', {packages: ['corechart', 'bar']});
 	google.charts.setOnLoadCallback(drawBasic);
 	
 	//품목 개수
@@ -23,52 +22,38 @@
 		var storedata=[];
 		for(var i=0;i<itemNum;i++){
 			storedata.push([menu_name[i].value, parseInt(menu_price[i].value),parseInt(menu_num[i].value)]);
-		}
+		} 
 		
 		var data = new google.visualization.DataTable();
 		data.addColumn('string', '품목');
 		data.addColumn('number', '매출액(원)');
 		data.addColumn('number','판매개수(개)');
-		
-		var storedata=[];
-		for(var i=0;i<itemNum;i++){
-			storedata.push([menu_name[i].value, parseInt(menu_price[i].value),parseInt(menu_num[i].value)]);
-		}
-		
-		var data = new google.visualization.DataTable();
-		data.addColumn('string', '품목');
-		data.addColumn('number', '매출액(원)');
-		data.addColumn('number','판매개수(개)');
-		
+		 
 		data.addRows(storedata);
 		
-		
+		var classicOptions = {
+				width:1100,
+				height: setHeight(itemNum),
+		        title: '오늘 품목별 매출',
+		        chartArea: {width: '50%'},
+		        hAxis: {
+		        	 0: {axis:'매출액(원)'},
+		   	        1: {axis:'판매개수(개)'}
+		        },
+		        vAxis: {
+		        	 x: {
+		               	'매출액(원)': { label: '매출액(원)',format: 'decimal' }, // Top x-axis.
+		               	'판매개수(개)': {side: 'top', label: '판매개수(개)'}
+		               }
+		        }
+		      };
 		//그래프 모양
-	    var classicOptions = {
-	      width:1100,
-          height: setHeight(itemNum),
-          legend: { position: 'top' },
-          chart: { title: '오늘 품목별 매출'},
-          bars: 'horizontal', // Required for Material Bar Charts.
-          series: {
-  	        0: {axis:'판매개수(개)'},
-  	        1: {axis:'매출액(원)'}
-  	      },
-          axes: {
-            x: {
-            	'매출액(원)': { label: '매출액(원)'}, // Top x-axis.
-            	'판매개수(개)': {side: 'top', label: '판매개수(개)'}
-            }
-          },
-          bar: { groupWidth: "90%" }
-	    };
-
 		//그래프 그리기 시행
 		 var chartDiv=document.getElementById('chart_div');
 			
 		   function drawClassicChart() {
-	       var classicChart = new google.charts.Bar(chartDiv);
-	       classicChart.draw(data, classicOptions);
+			   var chart = new google.visualization.BarChart(chartDiv);
+			   chart.draw(data, classicOptions);
 	     } 
 	    //drawMaterialChart();
 	    if(itemNum>0)drawClassicChart();

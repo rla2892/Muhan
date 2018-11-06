@@ -146,6 +146,9 @@ public class Order_history_DBBean implements Order_history_Dao {
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForYearByStore ( Map<String, String> map ) {
 		return session.selectList("Order_history.selectOrdersForYearByStore", map );
 	}
+	public int ajaxUpdateDeliveryMsg( int order_no ) {
+		return session.update("Order_history.ajaxUpdateDeliveryMsg", order_no );
+	}
 	// 장성열
 	
 	// 임상혁

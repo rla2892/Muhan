@@ -174,6 +174,7 @@
 										newmessage += '<button class="btn btn-sm btn-warning ml-2 msgCheck" name='+jsonalarms[i]['order_no']+'>확인</button> <br><br>';
 									} else if (jsonalarms[i]['order_status'] == 3) {
 										newmessage += '주문번호 '+jsonalarms[i]['order_no']+':<br>주문이 배달되었습니다.<br>';
+										newmessage += '<button class="btn btn-sm btn-warning ml-2 msgDelivery" name='+jsonalarms[i]['order_no']+'>확인</button> <br><br>';
 									}
 								}
 								$('.message').html(newmessage);
@@ -208,7 +209,25 @@
 			}
 		});
 	 });	
- 	
+ 	$(document).on("click",".msgDelivery", function(e){ 
+		var updatealarm = e.target.name;
+		$.ajax({
+			url: 'cus_ajaxUpdateDeliveryMsg.do',
+			contentType: 'application/json; charset="UTF-8"',
+			data: {
+				order_no: updatealarm
+			},
+			cache: false,
+			success: function(data) {
+				if ( data == 1 ) {
+					$('.message').html('새 메세지가 없습니다.');
+				}			
+			},
+			error: function(e) {
+				console.log('orderStatus Update 실패');
+			}
+		});
+	 });
 	$(window).on(
 		'load',
 		function(event) {

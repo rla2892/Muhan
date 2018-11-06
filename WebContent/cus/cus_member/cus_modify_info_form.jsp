@@ -20,15 +20,13 @@
 </head>
 <article class="container">
       
-        <div class="mx-auto" style="width: 800px" id="a">
+        <div class="mx-auto" style="width: 700px" id="a">
       
 
      <form class="form-horizontal" name="joinform" method="post" action="cus_modify_info_pro.do" onsubmit="return modifyCheck()">
-     		
+     			
         		<h2 class="text-left text-dark" >내 정보수정</h2>
-        		<br><br>
-        	
-        		
+        		<br><br>  		
 		        <div class="form-group row">
 		        
 					<label for="nickname" class="col-sm-3 col-form-label">아이디</label>

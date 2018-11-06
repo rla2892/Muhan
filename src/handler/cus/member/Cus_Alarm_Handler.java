@@ -48,7 +48,14 @@ public class Cus_Alarm_Handler implements CommandHandler{
 		
 		return result;
 	}
-	
+	@RequestMapping(value="/cus_ajaxUpdateDeliveryMsg", method=RequestMethod.GET)
+	@ResponseBody
+	public int ajaxUpdateDeliveryMsg(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+		int order_no=Integer.parseInt(request.getParameter("order_no"));
+		int result = order_history_dao.ajaxUpdateDeliveryMsg(order_no);
+		
+		return result;
+	}
 	@Override
 	@RequestMapping("/cus_alarm")
 	@ResponseBody

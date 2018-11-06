@@ -137,6 +137,9 @@
 		and oh.store_id=#{store_id}
 		order by oh.order_date asc
 	</select>
+	<update id="ajaxUpdateDeliveryMsg" parameterType="int">
+		update mh_order_history set order_status=5 where order_no=#{order_no} 
+	</update>
 	<!-- 장성열 -->
 	<!-- 임상혁 -->
 	<select id="selectOrdersStatusByAllStore" resultType="db.order_history.Order_history_DataBean_for_graph" parameterType="java.util.Map">
