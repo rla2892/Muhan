@@ -74,7 +74,7 @@
 	<div class="collapse navbar-collapse" id="navbarCollapse">
 		<ul class="navbar-nav" id="mainNavbar">
 			<li class="nav-item">
-				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="cus_menu.do?menu_category=4,5">MENU</a>
+				<a class="nav-link ml-2 mr-2 pl-2 text-white" href="cus_menu.do?menu_category=4,5">MENU</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="cus_store.do">STORE</a>
@@ -82,6 +82,11 @@
 			<li class="nav-item">
 				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="cus_review.do">REVIEW</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="cus_chart.do">CHART</a>
+			</li>
+			
+			
 		</ul>
 	</div>	
 
@@ -107,7 +112,6 @@
 				<div class="dropdown-divider"></div>
 				<div class="justify-content-center">
 					<div class="message mt-1 pl-3 pr-3">새 메세지가 없습니다.</div>
-					<button class="btn btn-sm btn-warning ml-2 msgCheck" disabled>확인</button>
 				</div>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item logout" href="cus_logout.do">로그아웃</a>

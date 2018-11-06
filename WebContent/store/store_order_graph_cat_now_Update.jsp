@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
 //그래프
 google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawDailyUpdate);
+google.charts.setOnLoadCallback(drawUpdate);
 
 var itemNum=${order_history_dto.size()};
-function drawDailyUpdate() {
+function drawUpdate() {
 	//상품 이름/매출
 	var menu_name = document.getElementsByName("name"); 
 	var menu_price = document.getElementsByName("price"); 
@@ -48,17 +50,17 @@ function drawDailyUpdate() {
 	    };
 
 		//그래프 그리기 시행
-		 var chartDiv=document.getElementById('chart_div');
-		
-		   function drawClassicChart() {
-	       var classicChart = new google.charts.Bar(chartDiv);
-	       classicChart.draw(data, classicOptions);
-	     } 
-	    if(itemNum>0)drawClassicChart();
-	    else{
-	    	chartDiv.append("매출이 없습니다");
-	    }
-  	}
+    var chartDiv=document.getElementById('chart_div');
+	
+	 function drawClassicChart() {
+      var classicChart = new google.visualization.BarChart(chartDiv);
+      classicChart.draw(data, classicOptions);
+    	} 
+   		if(itemNum>0)drawClassicChart();
+  		 else{
+   			chartDiv.append("매출이 없습니다");
+   		}
+}
 </script>
 <c:forEach var="order_history" items="${order_history_dto}">
 	<input type="hidden" name="name" value="${order_history.menu_name}">

@@ -49,6 +49,9 @@ function crunchifyAjax() {
 					if ($('b').eq(i).text() === '2') {
 						$('b').eq(i).html('<img src="/Muhan/store/success.png" width="30" height="30">');
 					}
+					if ($('b').eq(i).text() === '4') {
+						$('b').eq(i).html('<img src="/Muhan/store/success.png" width="30" height="30">');
+					}
 				}
 				
 				}
@@ -81,8 +84,8 @@ $(document).on("click","#completebutton", function(e){
 //-->
 </script>
 
-<body>
+<main>
 
-<div id="result"></div>
+	<div id="result"></div>
 
-</body>
+</main>

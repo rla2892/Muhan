@@ -5,9 +5,9 @@
     <div class="col-sm-2 sidenav">
 
 		<div class="btn-group-vertical btn-group-lg">
-		  <button type="button" class="btn btn-primary" onclick="location='Admin_order_find.do'">전체 주문</button>
 		  <button type="button" class="btn btn-primary" onclick="location='Admin_order_graph_time.do'">시간별 매출액</button>
 		  <button type="button" class="btn btn-primary" onclick="location='Admin_order_graph_menu.do'">메뉴별 매출액</button>
+		  <button type="button" class="btn btn-primary" onclick="location='Admin_order_graph_store.do'">매장별 매출액</button>
 		</div>
 
     </div>

@@ -27,7 +27,7 @@
 		var data = new google.visualization.DataTable();
 		data.addColumn('string', '품목');
 		data.addColumn('number', '매출액(원)');
-		data.addColumn('number','판매개수(개)'); 
+		data.addColumn('number','판매개수(개)');
 		
 		var storedata=[];
 		for(var i=0;i<itemNum;i++){

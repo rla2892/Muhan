@@ -22,7 +22,7 @@ function searchStore() {
 		return false;
 	} else {
 		var url = "Cus_pay_store_search.do?keyword="+document.getElementById("keyword").value;
-		open( url, "confirm window", "toolbar=no, scrollbar=no, status=no, menubar=no, width=500px, height=300px" );
+		open( url, "confirm window", "toolbar=no, scrollbar=no, status=no, menubar=no, width=570px, height=300px" );
 	}
 }
 
@@ -32,7 +32,7 @@ function searchStoreByName() {
 		return false;
 	} else {
 		var url = "Cus_pay_store_search_name.do?keyword="+document.getElementById("keywordName").value;
-		open( url, "confirm window", "toolbar=no, scrollbar=no, status=no, menubar=no, width=500px, height=300px" );
+		open( url, "confirm window", "toolbar=no, scrollbar=no, status=no, menubar=no, width=570px, height=300px" );
 	}
 }
 

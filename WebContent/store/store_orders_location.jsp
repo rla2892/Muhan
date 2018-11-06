@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ include file="store_setting.jsp"%>
-<jsp:include page="store_topNav.jsp" flush="false"/>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4a71e70cec1bc28094794f6172871d86&libraries=services"></script>
 <script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=b217e571-641d-4a09-a856-897209fc048c"></script>
- 
+
+<jsp:include page="store_topNav.jsp" flush="false"/>
 <c:if test="${result eq 0}">
-<main>
-	<h1>${msg_noorder}</h1>
-</main>
+	<main>
+		<h1>${msg_noorder}</h1>
+	</main>
 </c:if>
 
 <c:if test="${result ne 0}">
@@ -20,13 +19,13 @@ main {
     text-align: center;
 }
 </style>
-<c:forEach var="order" items="${orders}">
-	<input name="cus_address" type="hidden" value="${order.cus_address}">
-	<%-- <input name="cus_tel" type="hidden" value="${order.cus_tel}"> --%>
-</c:forEach>
-<main>
-<div id="map" style="width:100%;height:100%;"></div>	
-</main>
+	<c:forEach var="order" items="${orders}">
+		<input name="cus_address" type="hidden" value="${order.cus_address}">
+		<%-- <input name="cus_tel" type="hidden" value="${order.cus_tel}"> --%>
+	</c:forEach>
+	<main>
+		<div id="map" style="width:100%;height:100%;"></div>	
+	</main>
 </c:if>
 
 <script>

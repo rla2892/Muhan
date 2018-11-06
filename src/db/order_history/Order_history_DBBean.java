@@ -97,12 +97,11 @@ public class Order_history_DBBean implements Order_history_Dao {
 	}
 	
 	// HY 추가
-	//public List<Order_history_DataBean_for_Alarm> checkOrderStatus(String cus_id) {
-	public Order_history_DataBean_for_Alarm checkOrderStatus(String cus_id) {
+
+	public List<Order_history_DataBean_for_Alarm> checkOrderStatus( String cus_id ) {
 		session.flushStatements();
 	    session.clearCache();
-		return session.selectOne("Order_history.checkOrderStatus", cus_id);
-		//return session.selectList("Order_history.checkOrderStatus", cus_id);
+		return session.selectList("Order_history.checkOrderStatus", cus_id );
 	}
 
 	public int ajaxUpdateOrderStatus(int order_no) {
@@ -138,14 +137,17 @@ public class Order_history_DBBean implements Order_history_Dao {
 	}
 	
 	// 최은혜
-	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore( String store_id ) {
-		return session.selectList("Order_history.selectOrdersForDayByStore", store_id );
+	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore( Map<String, String> map ) {
+		return session.selectList("Order_history.selectOrdersForDayByStore", map );
 	}
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForMonthByStore( Map<String, String> map ) {
 		return session.selectList("Order_history.selectOrdersForMonthByStore", map );
 	}
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForYearByStore ( Map<String, String> map ) {
 		return session.selectList("Order_history.selectOrdersForYearByStore", map );
+	}
+	public int ajaxUpdateDeliveryMsg( int order_no ) {
+		return session.update("Order_history.ajaxUpdateDeliveryMsg", order_no );
 	}
 	// 장성열
 	
@@ -168,5 +170,15 @@ public class Order_history_DBBean implements Order_history_Dao {
 	@Override
 	public List<Order_history_DataBean_for_graph> selectMonthSalesbyCat(Map<String, String> map) {
 		return session.selectList("Order_history.selectMonthSalesbyCat",map);
-	}	
+	}
+
+	@Override
+	public int updateDeliveryStatus(Map<String, Integer> map) {
+		return session.update("Order_history.updateDeliveryStatus", map);
+	}
+
+	@Override
+	public int deleteCarLocations(int order_no) {
+		return session.update("Order_history.deleteCarLocations",order_no);
+	}
 }
