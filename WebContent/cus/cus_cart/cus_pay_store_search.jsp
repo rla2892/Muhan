@@ -8,15 +8,17 @@
 검색결과가 없습니다.
 </c:if>
 <c:if test="${fn:length(store_member_dtos) ne 0}">
-
-<table class="table table-hover">
-	<tr>
-		<td>ID</td>
-		<td>주소</td>
-		<td>매장명</td>
-		<td>매장 전화</td>
-		<td>선택</td>
-	</tr>
+<div class="container">
+			<table class="table table-sm table-responsive-lg table-striped table-hover text-center mt-3 mb-3">
+				<thead>
+					<tr>
+						<th scope="col" class="reviewNo">ID</th>
+						<th scope="col" class="reviewWriter">주소</th>
+						<th scope="col" class="reviewSubject">매장명</th>
+						<th scope="col" class="reviewScore">매장 전화</th>
+						<th scope="col" class="reviewHits">선택</th>
+					</tr>
+				</thead>
 	<c:forEach var="store_member_dto" items="${store_member_dtos}">
 		<tr>
 			
@@ -24,7 +26,7 @@
 			<td>${store_member_dto.store_address}</td>
 			<td>${store_member_dto.store_name}</td>
 			<td>${store_member_dto.store_tel}</td>
-			<td><button onclick="setStore('${store_member_dto.store_id}','${store_member_dto.store_name}')">선택</button></td>
+			<td><button class="btn btn-md btn-secondary" onclick="setStore('${store_member_dto.store_id}','${store_member_dto.store_name}')">선택</button></td>
 		</tr>	
 	</c:forEach>
 	
@@ -44,6 +46,7 @@
 	<!--//////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	
 </table>
+</div>
 <c:if test="${startPage gt pageBlock}">
 	<a href="Cus_pay_store_search.do?keyword=${keyword}">[◀◀] </a>
 	<a href="Cus_pay_store_search.do?keyword=${keyword}&pageNum=${startPage-pageBlock}">[◀] </a>
