@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="store_setting.jsp"%>
 <!-- Sub-Navigation Bar, in place of Side Panel -->
+<meta name="viewport"
 
+		content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style type="text/css">
 * { box-sizing:border-box }
 *:before, *:after { box-sizing:inherit }
@@ -196,7 +198,7 @@ body.okayNav-loaded {
 } */
 </style>
 
-<header id="header">
+<header id="header" class="fixed-top">
   <a class="site-logo" href="Store_main.do">
            <img src="/Muhan/cus/cus_images/logo_red.png">
         </a>
