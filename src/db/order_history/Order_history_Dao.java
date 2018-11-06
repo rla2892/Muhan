@@ -51,6 +51,7 @@ public interface Order_history_Dao {
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore ( Map<String, String> map );
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForMonthByStore ( Map<String, String> map );	
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForYearByStore( Map<String, String> map );
+	public int ajaxUpdateDeliveryMsg( int order_no );	
 	// 장성열
 	
 	// 임상혁
