@@ -3,12 +3,12 @@
 <style>
 <!--
 #sidebar {
-    /* don't forget to add all the previously mentioned styles here too */
-    background: #4A6572;
-    color: #fff;
+    background: #fff;
+    color: gray;
     transition: all 0.3s;
     min-height:500px!important;
 /*     margin-left:5px; */
+	max-height:85%!important;
 }
 a, a:hover, a:focus {
     color: inherit;
@@ -21,8 +21,8 @@ a, a:hover, a:focus {
     display: block;
 }
 #sidebar li a:hover {
-    color: #4A6572;
-    background: #fff;
+    color: black;
+    background: lightgray;
 }
 #sidebar li li a{
 	font-size: 1.1em;
