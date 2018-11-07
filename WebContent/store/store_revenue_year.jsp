@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="store_setting.jsp"%>
+<style>
+	.wrapper {
+	    display: flex;
+	    width: 100%;
+	    align-items: stretch;
+	}
+</style>
 <jsp:include page="store_topNav.jsp" flush="false"/>
 
 <c:set var="jsonyearmap" value="${jsonyearmap}"/>
@@ -52,20 +59,22 @@
 	}
   </script>
  <main>
- 	<jsp:include page="store_aside_order.jsp" flush="false"/>
-<div class="container">
-	<div class="row">
-		년도 : &nbsp;<select id="year" name="year" onchange="updateYearRevenue(this.value)">
-			<option value="hide">--연도 선택--</option>
-				<c:set var="today" value="<%=new java.util.Date()%>" />
-				<fmt:formatDate value="${today}" pattern="yyyy" var="start"/> 
-				<c:forEach begin="0" end="4" var="idx" step="1">
-		    <option value="<c:out value="${start - idx}" />">
-				<c:out value="${start - idx}" /></option>
-				</c:forEach>
-		</select>
-	</div>
-<br>
- 	<div class="container" id="chart_div"></div>
- </div>
+	 <div class="wrapper">
+	 	<jsp:include page="store_aside_order.jsp" flush="false"/>
+		<div class="container">
+			<div class="row">
+				년도 : &nbsp;<select id="year" name="year" onchange="updateYearRevenue(this.value)">
+					<option value="hide">--연도 선택--</option>
+						<c:set var="today" value="<%=new java.util.Date()%>" />
+						<fmt:formatDate value="${today}" pattern="yyyy" var="start"/> 
+						<c:forEach begin="0" end="4" var="idx" step="1">
+				    <option value="<c:out value="${start - idx}" />">
+						<c:out value="${start - idx}" /></option>
+						</c:forEach>
+				</select>
+			</div>
+			<br>
+		 	<div class="row" id="chart_div"></div>
+		 </div>
+	 </div>
  </main>
