@@ -103,16 +103,16 @@ img {
   }
 }
 .card__image--flowers {
-  background-image: url(https://unsplash.it/800/600?image=82);
+  background-image: url("/Muhan/store/login_card1.gif");
 }
 .card__image--river {
-  background-image: url(https://unsplash.it/800/600?image=11);
+  background-image: url("/Muhan/store/login_card2.gif");
 }
 .card__image--record {
-  background-image: url(https://unsplash.it/800/600?image=39);
+  background-image: url("/Muhan/store/login_card3.gif");
 }
 .card__image--fence {
-  background-image: url(https://unsplash.it/800/600?image=59);
+  background-image: url("/Muhan/store/login_card4.gif");
 }
 .card__title {
   color: #696969;
@@ -133,9 +133,9 @@ img {
     <div class="card">
       <div class="card__image card__image--fence"></div>
       <div class="card__content">
-        <div class="card__title">Flex</div>
+        <div class="card__title">현재주문확인</div>
         <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto. </p>
-        <button class="btn btn--block card__btn">Button</button>
+        <button class="btn btn--block card__btn" onclick="location='Store_order_check.do'">Button</button>
       </div>
     </div>
   </li>
@@ -143,9 +143,9 @@ img {
     <div class="card">
       <div class="card__image card__image--river"></div>
       <div class="card__content">
-        <div class="card__title">Flex Grow</div>
+        <div class="card__title">모든주문위치</div>
         <p class="card__text">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.</p>
-        <button class="btn btn--block card__btn">Button</button>
+        <button class="btn btn--block card__btn" onclick="location='Store_orders_location.do'">Button</button>
       </div>
     </div>
   </li>
@@ -153,9 +153,9 @@ img {
     <div class="card">
       <div class="card__image card__image--record"></div>
       <div class="card__content">
-        <div class="card__title">Flex Shrink</div>
+        <div class="card__title">매출확인</div>
         <p class="card__text">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.</p>
-        <button class="btn btn--block card__btn">Button</button>
+        <button class="btn btn--block card__btn" onclick="location='Store_revenue_day.do'">Button</button>
       </div>
     </div>
   </li>
@@ -163,9 +163,9 @@ img {
     <div class="card">
       <div class="card__image card__image--flowers"></div>
       <div class="card__content">
-        <div class="card__title">Flex Basis</div>
+        <div class="card__title">회원정보수정</div>
         <p class="card__text">This defines the default size of an element before the remaining space is distributed. It can be a length (e.g. 20%, 5rem, etc.) or a keyword. The auto keyword means "look at my width or height property."</p>
-        <button class="btn btn--block card__btn">Button</button>
+        <button class="btn btn--block card__btn" onclick="location='Store_modify_form.do'">Button</button>
       </div>
     </div>
   </li>
