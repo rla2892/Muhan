@@ -24,18 +24,18 @@
 		//상품 이름/매출
 		var menu_name = document.getElementsByName("menu_name"); 
 		var menu_price = document.getElementsByName("menu_price"); 
-		var menu_num=document.getElementsByName("menu_num");
+	
 		
 		var storedata=[];
 		for(var i=0;i<itemNum;i++){
-			storedata.push([menu_name[i].value, parseInt(menu_price[i].value),parseInt(menu_num[i].value)]);
+			storedata.push([menu_name[i].value, parseInt(menu_price[i].value)]);
 		} 
-		
+
 		var data = new google.visualization.DataTable();
 		data.addColumn('string', '품목');
 		data.addColumn('number', '매출액(원)');
-		data.addColumn('number','판매개수(개)');
-		 
+		
+		
 		data.addRows(storedata);
 		
 		var classicOptions = {
@@ -44,13 +44,14 @@
 		        title: '오늘 품목별 매출',
 		        chartArea: {width: '50%'},
 		        hAxis: {
-		        	 0: {axis:'매출액(원)'},
-		   	        1: {axis:'판매개수(개)'}
+		        	
+		        	 0: {axis:'매출액(원)'}
+		        
 		        },
 		        vAxis: {
 		        	 x: {
-		               	'매출액(원)': { label: '매출액(원)',format: 'decimal' }, // Top x-axis.
-		               	'판매개수(개)': {side: 'top', label: '판매개수(개)'}
+		               	'매출액(원)': { label: '매출액(원)',format: 'decimal' } // Top x-axis.
+		              
 		               }
 		        }
 		      };
@@ -85,7 +86,7 @@
 					<input type="hidden" name="menu_name" value="${order_history.menu_name}">
 					<input type="hidden" name="menu_category" value="${order_history.menu_category}">
 					<input type="hidden" name="menu_price" value="${order_history.menu_price}">
-					<input type="hidden" name="menu_num" value="${order_history.menu_num}">
+					
 				</c:forEach>
 		
 				<br>
