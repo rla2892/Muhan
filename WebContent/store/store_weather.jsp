@@ -10,23 +10,24 @@
 </c:forEach>
 
 <main>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-xs-8 col-xs-push-2 col-md-push-3">
-      <div class="weather text-center" style="background-color: rgba(236, 240, 241, 0.8);
-  padding: 10px 0px;
-  border-radius: 5px;
-  ">
-        <h2 class="temp"></h2>
-        <h3><span class="city"></span>, <span class="country"></span></h3>
-        <div class="iconpic" style="">
-          <img src="" class=''>
-        </div>
-        <h4 class="weatherDetail"></h4>
-      </div><!--weather-->
-    </div>
-  </div><!--row-->
-  <br/>
+<div class="container-fluid">
+	<div class="row">
+	<div class="col-sm-4"></div>
+	<div class="col-sm-4">
+	      <div class="weather text-center" style="background-color: rgba(236, 240, 241, 0.8);
+	  padding: 10px 0px;
+	  border-radius: 5px;
+	  ">
+	        <h2 class="temp"></h2>
+	        <h3><span class="city"></span>, <span class="country"></span></h3>
+	        <div class="iconpic" style="">
+	          <img src="" class=''>
+	        </div>
+	        <h4 class="weatherDetail"></h4>
+	      </div><!--weather-->
+	</div>
+	<div class="col-sm-4"></div>
+	</div>
 </div>
 </main>
 
