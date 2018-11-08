@@ -19,9 +19,7 @@ public class Cus_Chart_Handler implements CommandHandler{
 	@RequestMapping("/cus_chart")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		String cus_id = (String) request.getSession().getAttribute("cus_id");
-		Customer_member_DataBean customer_member_dto = customer_member_dao.selectCustomer(cus_id);
-		request.setAttribute("customer_member_dto", customer_member_dto);
+		
 		return new ModelAndView("/cus/cus_member/cus_chart");
 	}
 
