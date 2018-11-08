@@ -8,6 +8,18 @@
 		<%@include file="/cus/cus_head.jsp"%>
 	</head>
 		
+<style>
+.jumbotron{
+    background: url("/Muhan/cus/cus_images/menu2.jpg") no-repeat center center; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+/* jumbotron image */
+
+
+</style>
 	<script type="text/javascript">
 	($("a[data-toggle=modal]")).click(function() {
 	   var target, url;
@@ -34,7 +46,7 @@
 			
 		<!-- Descriptor Jumbotron -->
 		<div class="jumbotron mt-1">
-			<h1 class="display-5 text-center font-weight-bold pt-4">매장 찾기</h1>
+			<h1 class="display-5 text-center font-weight-bold pt-4"></h1>
 		</div>
 		
 		<%@include file="/cus/cus_store/cus_store_subNav.jsp"%>

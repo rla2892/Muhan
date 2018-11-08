@@ -74,132 +74,6 @@
 					</tr>
 				
 					<tr>
-						<td>AZ 오리지널(착한점심)</td>
-						<td>491Kcal / 244g</td>
-						<td>27g</td>
-						<td>637mg</td>
-						<td>9g</td>
-						<td>15.1g</td>
-					</tr>
-				
-					<tr>
-						<td>핫크리스피버거(단체배달)</td>
-						<td>500Kcal / 190g</td>
-						<td>22g</td>
-						<td>868mg</td>
-						<td>4g</td>
-						<td>7.4g</td>
-					</tr>
-				
-					<tr>
-						<td>빅불버거(단체배달용)</td>
-						<td>569Kcal / 227g</td>
-						<td>31g</td>
-						<td>1189mg</td>
-						<td>8g</td>
-						<td>14.4g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)불고기버거</td>
-						<td>390Kcal / 154g</td>
-						<td>17g</td>
-						<td>713mg</td>
-						<td>8g</td>
-						<td>7.4g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)새우버거</td>
-						<td>462Kcal / 160g</td>
-						<td>13g</td>
-						<td>742mg</td>
-						<td>6g</td>
-						<td>4.8g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)핫크리스피버거</td>
-						<td>500Kcal / 190g</td>
-						<td>22g</td>
-						<td>868mg</td>
-						<td>4g</td>
-						<td>7.4g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)한우불고기버거</td>
-						<td>534Kcal / 241g</td>
-						<td>21g</td>
-						<td>1090mg</td>
-						<td>11g</td>
-						<td>11.8g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)와규OG버거</td>
-						<td>451Kcal / 198g</td>
-						<td>23g</td>
-						<td>651mg</td>
-						<td>8g</td>
-						<td>4.4g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)아재OG버거</td>
-						<td>491Kcal / 244g</td>
-						<td>27g</td>
-						<td>637mg</td>
-						<td>9g</td>
-						<td>15.1g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)클래식치즈버거</td>
-						<td>477Kcal / 143g</td>
-						<td>20g</td>
-						<td>641mg</td>
-						<td>6g</td>
-						<td>14.1g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)모짜베이컨버거</td>
-						<td>689Kcal / 221g</td>
-						<td>30g</td>
-						<td>844mg</td>
-						<td>4g</td>
-						<td>17.6g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)모짜더블버거</td>
-						<td>729Kcal / 241g</td>
-						<td>30g</td>
-						<td>1064mg</td>
-						<td>4g</td>
-						<td>19.3g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)모짜해쉬버거</td>
-						<td>670Kcal / 218g</td>
-						<td>16g</td>
-						<td>634mg</td>
-						<td>1g</td>
-						<td>14.1g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)티렉스버거</td>
-						<td>475Kcal / 213g</td>
-						<td>26g</td>
-						<td>874mg</td>
-						<td>7g</td>
-						<td>5.4g</td>
-					</tr>
-				
-					<tr>
 						<td>T-REX버거</td>
 						<td>475Kcal / 213g</td>
 						<td>26g</td>
@@ -659,123 +533,6 @@
 					</tr>
 				
 					<tr>
-						<td>(선물)화이어윙4</td>
-						<td>316Kcal / 147g</td>
-						<td>15g</td>
-						<td>486mg</td>
-						<td>0g</td>
-						<td>4.1g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)화이어윙2</td>
-						<td>158Kcal / 73g</td>
-						<td>8g</td>
-						<td>243mg</td>
-						<td>0g</td>
-						<td>2.2g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)휠레2</td>
-						<td>183Kcal / 77g</td>
-						<td>15g</td>
-						<td>370mg</td>
-						<td>0g</td>
-						<td>1.9g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)휠레4</td>
-						<td>366Kcal / 153g</td>
-						<td>29g</td>
-						<td>740mg</td>
-						<td>0g</td>
-						<td>3.8g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)치킨1조각</td>
-						<td>272Kcal / 130g</td>
-						<td>18g</td>
-						<td>694mg</td>
-						<td>2g</td>
-						<td>4.1g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)순살하프-콘샐러드</td>
-						<td>739Kcal / 244g</td>
-						<td>36g</td>
-						<td>1341mg</td>
-						<td>3g</td>
-						<td>13.0g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)치킨하프-콘샐러드</td>
-						<td>1232Kcal / 620g</td>
-						<td>74g</td>
-						<td>2967mg</td>
-						<td>7g</td>
-						<td>17.8g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)치킨하프-포테이토</td>
-						<td>1353Kcal / 609g</td>
-						<td>76g</td>
-						<td>3099mg</td>
-						<td>6g</td>
-						<td>19.7g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)치킨풀팩-포테이토</td>
-						<td>2711Kcal / 1261g</td>
-						<td>168g</td>
-						<td>6571mg</td>
-						<td>14g</td>
-						<td>40.2g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)치킨풀팩-콘샐러드</td>
-						<td>2590Kcal / 1272g</td>
-						<td>166g</td>
-						<td>6439mg</td>
-						<td>15g</td>
-						<td>38.3g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)순살풀팩-콘샐러드</td>
-						<td>1477Kcal / 1271g</td>
-						<td>165g</td>
-						<td>6438mg</td>
-						<td>6g</td>
-						<td>26.0g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)치킨패밀리-포테이토</td>
-						<td>1694Kcal / 759g</td>
-						<td>98g</td>
-						<td>3712mg</td>
-						<td>6g</td>
-						<td>23.7g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)치킨패밀리-콘샐러</td>
-						<td>1573Kcal / 770g</td>
-						<td>96g</td>
-						<td>3580mg</td>
-						<td>7g</td>
-						<td>21.8g</td>
-					</tr>
-				
-					<tr>
 						<td>치킨풀팩-콘샐러드</td>
 						<td>2590Kcal / 1272g</td>
 						<td>166g</td>
@@ -917,42 +674,6 @@
 						<td>563mg</td>
 						<td>2g</td>
 						<td>4.8g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)치즈스틱</td>
-						<td>160Kcal / 49g</td>
-						<td>9g</td>
-						<td>183mg</td>
-						<td>0g</td>
-						<td>2.6g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)양념감자</td>
-						<td>371Kcal / 122g</td>
-						<td>6g</td>
-						<td>563mg</td>
-						<td>2g</td>
-						<td>4.8g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)롱치즈스틱</td>
-						<td>156Kcal / 49g</td>
-						<td>8g</td>
-						<td>236mg</td>
-						<td>0g</td>
-						<td>7.0g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)쉑쉑치킨</td>
-						<td>229Kcal / 89g</td>
-						<td>21g</td>
-						<td>447mg</td>
-						<td>2g</td>
-						<td>1.7g</td>
 					</tr>
 				
 					<tr>
@@ -1432,69 +1153,7 @@
 						<td>0.0g</td>
 					</tr>
 				
-					<tr>
-						<td>(선물)아메리카노</td>
-						<td>34Kcal / 290g</td>
-						<td>1g</td>
-						<td>2mg</td>
-						<td>0g</td>
-						<td>0.5g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)ICE아메리카노</td>
-						<td>32Kcal / 520g</td>
-						<td>1g</td>
-						<td>2mg</td>
-						<td>0g</td>
-						<td>0.5g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)카페라떼</td>
-						<td>210Kcal / 300g</td>
-						<td>10g</td>
-						<td>144mg</td>
-						<td>12g</td>
-						<td>7.8g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)ICE카페라떼</td>
-						<td>98Kcal / 295g</td>
-						<td>4g</td>
-						<td>56mg</td>
-						<td>5g</td>
-						<td>3.2g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)아메리카노(S)</td>
-						<td>27Kcal / 230g</td>
-						<td>1g</td>
-						<td>2mg</td>
-						<td>0g</td>
-						<td>0.4g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)핫초코</td>
-						<td>151Kcal / 215g</td>
-						<td>2g</td>
-						<td>124mg</td>
-						<td>19g</td>
-						<td>3.3g</td>
-					</tr>
-				
-					<tr>
-						<td>오렌지-배달</td>
-						<td>145Kcal / 400g</td>
-						<td>2g</td>
-						<td>15mg</td>
-						<td>28g</td>
-						<td>0.0g</td>
-					</tr>
-				
+			
 					<tr>
 						<td>아이스 아메리카노(L)</td>
 						<td>55Kcal / 520g</td>
@@ -1558,23 +1217,7 @@
 						<td>34g</td>
 					</tr>
 				
-					<tr>
-						<td>홈더블팩</td>
-						<td>2039Kcal / 1754g</td>
-						<td>57g</td>
-						<td>2286mg</td>
-						<td>150g</td>
-						<td>28.9g</td>
-					</tr>
-				
-					<tr>
-						<td>홈투게더팩</td>
-						<td>2015Kcal / 1825g</td>
-						<td>55g</td>
-						<td>2156mg</td>
-						<td>155g</td>
-						<td>27.3g</td>
-					</tr>
+			
 				
 					<tr>
 						<td>홈패밀리팩</td>
@@ -1585,14 +1228,7 @@
 						<td>27.6g</td>
 					</tr>
 				
-					<tr>
-						<td>내 마음대로 너겟</td>
-						<td>964Kcal / 771g</td>
-						<td>49g</td>
-						<td>1846mg</td>
-						<td>36g</td>
-						<td>13.9g</td>
-					</tr>
+				
 				
 					<tr>
 						<td>T-REX팩</td>
@@ -1603,32 +1239,6 @@
 						<td>17.6g</td>
 					</tr>
 				
-					<tr>
-						<td>(선물)모짜더블팩</td>
-						<td>1894~1906Kcal / 1406g</td>
-						<td>62g</td>
-						<td>2551mg</td>
-						<td>76g</td>
-						<td>34g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)한우연인팩</td>
-						<td>1680Kcal / 1379g</td>
-						<td>47g</td>
-						<td>2365mg</td>
-						<td>79g</td>
-						<td>22.5g</td>
-					</tr>
-				
-					<tr>
-						<td>(선물)한우명품팩</td>
-						<td>1810~1822Kcal / 1441g</td>
-						<td>57g</td>
-						<td>2792mg</td>
-						<td>79g</td>
-						<td>26.5g</td>
-					</tr>
 				
 					<tr>
 						<td>홈패밀리팩</td>
@@ -1665,34 +1275,7 @@
 						<td>0g</td>
 						<td>0g</td>
 					</tr>
-				
-					<tr>
-						<td>빤쮸</td>
-						<td>0Kcal / 0g</td>
-						<td>0g</td>
-						<td>0mg</td>
-						<td>0g</td>
-						<td>0g</td>
-					</tr>
-				
-					<tr>
-						<td>타올 </td>
-						<td>0Kcal / 0g</td>
-						<td>0g</td>
-						<td>0mg</td>
-						<td>0g</td>
-						<td>0g</td>
-					</tr>
-				
-					<tr>
-						<td>거품목욕</td>
-						<td>0Kcal / 0g</td>
-						<td>0g</td>
-						<td>0mg</td>
-						<td>0g</td>
-						<td>0g</td>
-					</tr>
-				
+							
 					<tr>
 						<td>NEW 한우연인팩</td>
 						<td>1680Kcal / 1379g</td>

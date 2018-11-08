@@ -7,20 +7,11 @@
 	<head>
 		<%@include file="/cus/cus_head.jsp"%>
 		
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128572661-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-128572661-1','none');
-</script>
 
 
 <style>
 .jumbotron{
-    background: url("/Muhan/cus/cus_images/KakaoTalk_20181101_185.png") no-repeat center center; 
+    background: url("/Muhan/cus/cus_images/menu1.jpg") no-repeat center center; 
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
     -o-background-size: 100% 100%;
@@ -36,7 +27,7 @@
 		
 		<!-- Descriptor Jumbotron -->
 		<div class="jumbotron mt-1">
-			<h1 class="display-5 text-center font-weight-bold pt-4">메뉴보기</h1>
+			<h1 class="display-5 text-center font-weight-bold pt-4"></h1>
 			
 		</div>
 		
