@@ -60,7 +60,7 @@
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 	<!-- Lotteria Logo, Used as Home Button -->
 	<a class="navbar-brand" href="cus_user_main.do">
-		<img src="/Muhan/cus/cus_images/Muhan (1).png" class="d-inline-block align-top" alt="Lotteria Red Main Logo">
+		<img src="/Muhan/cus/cus_images/logo_red.png" class="d-inline-block align-top" alt="Lotteria Red Main Logo">
 	</a>
 	
 	<!-- Toggler/Collapsible Button -->
