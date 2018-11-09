@@ -38,8 +38,9 @@
 		<div class="form-group row">
 		       <label for="nickname" class="col-sm-3 col-form-label">성별</label>
 		<div class="col-sm-8"><input class="form-control" type="text" style="border:0 padding-top:2; text-align:center;"
-		value="<c:if test="${customer_member_dto.cus_gender eq 1 }">남자</c:if>
-<c:if test="${customer_member_dto.cus_gender eq 2 }">여자</c:if>" readonly>
+									 value="<c:if test="${customer_member_dto.cus_gender eq 1 }">남자</c:if>
+											<c:if test="${customer_member_dto.cus_gender eq 2 }">여자</c:if>" 
+																											readonly>
 	 	</div>
 		</div>
 		
