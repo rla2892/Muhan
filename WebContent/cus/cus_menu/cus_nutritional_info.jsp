@@ -6,11 +6,21 @@
 <html>
 	<head>
 		<%@include file="/cus/cus_head.jsp"%>
+		<style>
+.jumbotron{
+    background: url("/Muhan/cus/cus_images/nuturial.jpg") no-repeat center center; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+</style>
 	</head>
 	<body>
 		<%@include file="/cus/cus_topNav.jsp"%>
 		<div class="jumbotron mt-1">
-			<h1 class="display-5 text-center font-weight-bold">영양 정보</h1>
+			<h1 class="display-5 text-center font-weight-bold pt-4"></h1>
 		</div>
 		
 		<%@include file="/cus/cus_menu/cus_menu_subNav.jsp"%>
