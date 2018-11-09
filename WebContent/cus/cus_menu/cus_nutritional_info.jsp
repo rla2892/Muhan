@@ -3,6 +3,16 @@
 <%@include file="/cus/cus_setting.jsp"%>
 <%@include file="/cus/cus_script.jsp"%>
 
+<style>
+.jumbotron{
+    background: url("/Muhan/cus/cus_images/nuturial.jpg") no-repeat center center; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+</style>
 <html>
 	<head>
 		<%@include file="/cus/cus_head.jsp"%>
