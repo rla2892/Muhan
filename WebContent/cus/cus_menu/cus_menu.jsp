@@ -50,9 +50,11 @@
 				</a>
 				</c:forEach>
 			</div>
+			
 		</div>
 		
-		<!-- Scrollable Footer: 붙이는 위치가 Fixed Footer와는 다릅니다! Scollable Footer는 중단 Container 밖에 넣어주셔야 합니다. -->
 		<%@include file="/cus/cus_scrollableFooter.jsp"%>
+		<!-- Scrollable Footer: 붙이는 위치가 Fixed Footer와는 다릅니다! Scollable Footer는 중단 Container 밖에 넣어주셔야 합니다. -->
+		
 	</body>
 </html>
