@@ -13,7 +13,7 @@
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<style>
 		body {
-			min-height: 75rem;
+			
 			padding-top: 4.5rem;
 		}		
 		a.nav-item {
