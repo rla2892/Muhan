@@ -120,10 +120,14 @@
 							</a>
 						</c:if>	
 					</c:if>
+								<div class="container" style="height:100px"></div> <!-- fixedfooter를 위해서 공간처리 -->
+								
+						<%@include file="/cus/cus_fixedFooter.jsp"%>
 				</div>
 			</form>
+			
 		</div>
 	
-		<%@include file="/cus/cus_scrollableFooter.jsp"%>
+		
 	</body>
 </html>
