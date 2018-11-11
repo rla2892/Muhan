@@ -78,7 +78,7 @@ body {
 	</head>		
 	<body class="login" onload="loginfocus()">
 			<form class="form-signin" name="loginform" method="post" role="form" action="cus_login_pro.do" onsubmit="return logincheck()" style="margin-top: 10px;">
-  				<img class="pt-0 mt-0 mb-4" src="/Muhan/cus/cus_images/lot.png" alt="logo" width="400" height="250">
+  				<img class="pt-0 mt-0 mb-4" src="/Muhan/cus/cus_images/lot-MH.png" alt="logo" width="400" height="250">
   				<input type="text" id="cus_id" name="cus_id" class="form-control" 
      				placeholder="아이디" required autofocus>
  	 				<script type="text/javascript">

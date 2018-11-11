@@ -9,7 +9,7 @@ fixed-bottom이라 페이지에 스크롤이 있을 경우 스크롤 내릴 때�
 	<nav class="navbar navbar-expand-lg bg-dark justify-content-center">
 		<!-- Bottom Logo -->
 		<a class="navbar-brand" href="cus_user_main.do">
-			<img src="/Muhan/cus/cus_images/logo_white.png" class="mainWhiteLogo" alt="Lotteria White Main Logo">
+			<img src="/Muhan/cus/cus_images/logo_white-MH.png" class="mainWhiteLogo" alt="Lotteria White Main Logo">
 		</a>
 		
 		<!-- Links -->
