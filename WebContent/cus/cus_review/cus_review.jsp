@@ -20,7 +20,7 @@
 		<%@include file="/cus/cus_review/cus_review_subNav.jsp"%>
 
 		<!-- Container -->
-		<div class="container mt-4 pt-5">
+		<div class="container mt-4 pt-2">
 			<table class="table table-sm table-responsive-lg table-striped table-hover text-center mt-4">
 				<thead>
 					<tr>
