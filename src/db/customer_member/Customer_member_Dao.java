@@ -32,4 +32,7 @@ public interface Customer_member_Dao {
 	public String find_id(String cus_email);
 	public int update_pw(Customer_member_DataBean customer_member_dto);
 	public String find_email(String cus_email);
+	
+	
+	public int EmailCheck( String email );
 }

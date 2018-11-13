@@ -26,7 +26,6 @@ function joincheck() {
 /* emailAuthentic 체크 */
 function emailAuthentic(){
 	var email = joinform.cus_email1.value+"@" + joinform.cus_email3.value;
-	alert(email);
 	var url="cus_email_verification.do?email="+email;
 	window.open(url, "b", "width=600,height=300,scrollbars=yes,resizeable=no,left=150,top=150") 
 }

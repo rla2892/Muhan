@@ -11,7 +11,13 @@
 	<select id="getCountByAddress" resultType="int">
 		select count(*) from mh_customer_member where cus_address like '%'||#{locationKeyword}||'%'
 	</select>
-
+	
+	
+	<select id="EmailCheck" parameterType="String" resultType="int">
+		select
+		count(*) from mh_customer_member where cus_email=#{email}
+	</select>
+	
 	<insert id="insertCustomer" parameterType="db.customer_member.Customer_member_DataBean" >
 		insert into mh_customer_member
 		values(

@@ -11,12 +11,6 @@
 		<%@include file="/cus/cus_topNav.jsp"%>
 		
 		<!-- Descriptor Jumbotron -->
-		<%-- 
-		<div class="jumbotron mt-5">
-			<h1 class="display-5 text-center font-weight-bold pt-4">리뷰보기</h1>
-		</div>
-		--%>
-		
 		<%@include file="/cus/cus_review/cus_review_subNav.jsp"%>
 
 		<!-- Container -->

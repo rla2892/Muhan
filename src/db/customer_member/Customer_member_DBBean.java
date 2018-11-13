@@ -25,6 +25,10 @@ public class Customer_member_DBBean implements Customer_member_Dao {
 		return session.selectOne("Customer_member.checkId", cus_id);
 	}
 	
+	public int EmailCheck( String email ) {
+	return session.selectOne( "Customer_member.EmailCheck", email);
+	}
+	
 	@Override
 	public int check(String cus_id, String pw) {
 		int result = 0;		
