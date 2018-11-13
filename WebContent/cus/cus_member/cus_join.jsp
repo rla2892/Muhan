@@ -154,6 +154,7 @@
 					가입 취소
 					</button>
 				</div>
+				<br><br><br><br><br><br><br>
 		</form>
 		</div>
 			<!-- 약관 -->
