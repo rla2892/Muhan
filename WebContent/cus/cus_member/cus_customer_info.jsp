@@ -74,9 +74,11 @@
 				<div class="col-sm-8"><input class="form-control" type="text" style="border:0 padding-top:2; text-align:center;" value="<fmt:formatDate value="${customer_member_dto.cus_reg_date}" type="both" pattern="yyyy-MM-dd"/>" readonly></div>
 		</div>
 			<!-- Fixed Footer: 붙이는 위치가 Scrollable Footer와는 다릅니다! Fixed Footer는 중단 Container 안에 넣어주셔야 합니다. --> 
-			<%@include file="/cus/cus_fixedFooter.jsp"%>
+			
 				</form>
+				
 			</div>
 	</article>
+	<%@include file="/cus/cus_scrollableFooter.jsp"%>
 
 </html>
