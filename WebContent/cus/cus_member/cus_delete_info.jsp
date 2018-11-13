@@ -19,7 +19,7 @@
 			<form method="post" name="modify_info_form" action="cus_delete_info_pro.do">
 			 <div class="row">
 			 	<h3 class="text-muted">회원탈퇴</h3>&nbsp;&nbsp;
-				<input class="form-control col-5" type="password" name="cus_pw">&nbsp;&nbsp;
+				<input class="form-control col-5" type="password" name="cus_pw" placeholder="비밀번호를 입력하세요">&nbsp;&nbsp;
 				<button type="submit" class="btn btn-md btn-secondary">삭제</button>&nbsp;
 				<button type="button" class="btn btn-md btn-secondary"
 				onclick="location='cus_user_main.do'">취소</button>
