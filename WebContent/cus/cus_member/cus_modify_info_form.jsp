@@ -154,11 +154,11 @@
 	font-size: 0.75rem !important;
 }
 		</style>
-			<div class="footer bg-dark fixed-bottom pt-0">
+			<div class="footer bg-dark position-relative" id="footerWScroll">
 	<nav class="navbar navbar-expand-lg bg-dark justify-content-center">
 		<!-- Bottom Logo -->
 		<a class="navbar-brand" href="cus_user_main.do">
-			<img src="/Muhan/cus/cus_images/logo_white.png" class="mainWhiteLogo" alt="Lotteria White Main Logo">
+			<img src="/Muhan/cus/cus_images/logo_white-MH.png" class="mainWhiteLogo" alt="Lotteria White Main Logo">
 		</a>
 		
 		<!-- Links -->
