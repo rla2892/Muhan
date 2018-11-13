@@ -2,6 +2,7 @@ package handler.cus.member;
 
 import java.util.Properties;
 
+import javax.annotation.Resource;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -18,18 +19,24 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.MimeUtility;
 
+import db.customer_member.Customer_member_Dao;
 import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
 public class Cus_Email_Verification_Handler implements CommandHandler{
+	@Resource
+	private Customer_member_Dao cusMemberDao;
 	
 	@Override
 	@RequestMapping("cus_email_verification")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String email=request.getParameter("email");
 		String authNum="";
+		int result = cusMemberDao.EmailCheck(email);
 		
+		request.setAttribute("result", result);
+		request.setAttribute("email", email);
 		authNum=RandomNum();
 		
 		try {
