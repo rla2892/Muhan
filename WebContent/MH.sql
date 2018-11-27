@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
+/* Drop Tables */
 
 DROP TABLE mh_address_coords CASCADE CONSTRAINTS;
 DROP TABLE mh_admin_member CASCADE CONSTRAINTS;
@@ -14,6 +14,10 @@ DROP TABLE mh_menu CASCADE CONSTRAINTS;
 DROP TABLE mh_notice CASCADE CONSTRAINTS;
 DROP TABLE mh_store_member CASCADE CONSTRAINTS;
 
+
+
+
+/* Create Tables */
 
 CREATE TABLE mh_address_coords
 (
@@ -148,6 +152,49 @@ CREATE TABLE mh_store_member
 );
 
 
+
+/* Create Foreign Keys */
+
+ALTER TABLE mh_black_member
+	ADD FOREIGN KEY (cus_id)
+	REFERENCES mh_customer_member (cus_id)
+;
+
+
+ALTER TABLE mh_order_history
+	ADD FOREIGN KEY (cus_id)
+	REFERENCES mh_customer_member (cus_id)
+;
+
+
+ALTER TABLE mh_report
+	ADD FOREIGN KEY (cus_id)
+	REFERENCES mh_customer_member (cus_id)
+;
+
+
+ALTER TABLE mh_review
+	ADD FOREIGN KEY (cus_id)
+	REFERENCES mh_customer_member (cus_id)
+;
+
+
+ALTER TABLE mh_order_history
+	ADD FOREIGN KEY (menu_id)
+	REFERENCES mh_menu (menu_id)
+;
+
+
+ALTER TABLE mh_report
+	ADD FOREIGN KEY (review_no)
+	REFERENCES mh_review (review_no)
+;
+
+
+ALTER TABLE mh_order_history
+	ADD FOREIGN KEY (store_id)
+	REFERENCES mh_store_member (store_id)
+;
 
 
 
