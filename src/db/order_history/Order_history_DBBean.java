@@ -52,7 +52,7 @@ public class Order_history_DBBean implements Order_history_Dao {
 
 	//김상진 order 넣기
 	@Override
-	public int insertOrder(Order_history_DataBean order_history_dto) {
+	public int insertOrder(Order_history_DataBean_for_recieve order_history_dto) {
 		return session.insert("Order_history.insertOrder", order_history_dto);
 	}
 	@Override
