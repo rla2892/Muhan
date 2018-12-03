@@ -1,5 +1,7 @@
 package handler.cus.cart;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -15,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import db.customer_member.Customer_member_Dao;
+import db.customer_member.Customer_member_DataBean;
 import db.order_history.Order_history_Dao;
 import db.order_history.Order_history_DataBean;
+import db.order_history.Order_history_DataBean_for_recieve;
 import handler.CommandHandler;
 import handler.HandlerException;
 @Controller
@@ -42,15 +46,15 @@ public class Cus_Pay_Pro_Handler implements CommandHandler{
 		}
 		
 		
-		Order_history_DataBean order_history_dto = new Order_history_DataBean();
+		Order_history_DataBean_for_recieve order_history_dto = new Order_history_DataBean_for_recieve();
 		
 		//order_no
-		int order_no = order_hisotry_dao.getMaxOrder_no()+1;
+		int order_no = order_hisotry_dao.getMaxOrder_no()+1; //주문번호
 		order_history_dto.setOrder_no(order_no);
 		System.out.println(order_no);
 		
 		//order_date
-		Time order_date = new Time( System.currentTimeMillis() );
+		Timestamp order_date = new Timestamp( System.currentTimeMillis() ); //주문날짜
 		order_history_dto.setOrder_date(order_date);
 		
 		//cus_id
@@ -86,6 +90,40 @@ public class Cus_Pay_Pro_Handler implements CommandHandler{
 			order_history_dto.setOrder_qnt(order_qnt);
 			
 			order_hisotry_dao.insertOrder(order_history_dto);
+		}
+		
+		
+		FileWriter fw;
+		String new_order_log="";
+		try {
+			fw = new FileWriter("C:/home/encore/flume/spool/out.txt");
+			new_order_log+=order_no;
+			new_order_log+=",";
+			new_order_log+=order_date.getYear()+1900;
+			new_order_log+=",";
+			new_order_log+=order_date.getMonth()+1;
+			new_order_log+=",";
+			new_order_log+=order_date.getDate();
+			new_order_log+=",";
+			new_order_log+=order_date.getHours();
+			new_order_log+=",";
+			new_order_log+=order_date.getMinutes();
+			new_order_log+=",";
+			new_order_log+=order_date.getSeconds();
+			
+			Customer_member_DataBean cus_member_dto = customer_member_dao.selectCustomer(cus_id);
+			int cus_age = order_date.getYear()-cus_member_dto.getCus_birth().getYear();
+			System.out.println(order_date.getYear());
+			System.out.println(cus_member_dto.getCus_birth().getYear());
+			new_order_log+=",";
+			new_order_log+=cus_age;
+			
+			fw.write(new_order_log);
+			System.out.println("파일출력성공");
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return new ModelAndView("cus/cus_cart/cus_pay_pro");

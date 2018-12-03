@@ -25,7 +25,7 @@
 		from mh_order_history, mh_menu 
 		where order_no=#{order_no} and mh_order_history.menu_id=mh_menu.menu_id
 	</select>
-	<insert id="insertOrder" parameterType="db.order_history.Order_history_DataBean">
+	<insert id="insertOrder" parameterType="db.order_history.Order_history_DataBean_for_recieve">
 		insert into mh_order_history
 		values(#{order_no}, #{order_qnt}, #{order_date}, #{menu_id}, #{cus_id}, #{store_id}, 1)
 	</insert>

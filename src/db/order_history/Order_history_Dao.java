@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface Order_history_Dao {
 	//public int insertOrder(Order_history_DataBean order_history_dto);						//customer 전용. 주문 
-	public int insertOrder(Order_history_DataBean order_history_dto);										//customer 전용. 주문 
+	public int insertOrder(Order_history_DataBean_for_recieve order_history_dto);										//customer 전용. 주문 
 	public int getMaxOrder_no();															//customer 전용. 주문 번호 최대값 구하기
 	
 	public List<Order_history_DataBean> selectOrders(Map<String,String> map);				//admin 전용. 전체 주문 리스트 출력
