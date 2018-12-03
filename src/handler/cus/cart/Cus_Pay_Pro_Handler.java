@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import db.customer_member.Customer_member_Dao;
 import db.customer_member.Customer_member_DataBean;
+import db.menu.Menu_Dao;
+import db.menu.Menu_DataBean;
 import db.order_history.Order_history_Dao;
 import db.order_history.Order_history_DataBean;
 import db.order_history.Order_history_DataBean_for_recieve;
@@ -31,6 +33,9 @@ public class Cus_Pay_Pro_Handler implements CommandHandler{
 	
 	@Resource
 	private Customer_member_Dao customer_member_dao;
+	
+	@Resource
+	private Menu_Dao menu_dao;
 	
 	@RequestMapping("cus_pay_pro")
 	@Override
@@ -92,38 +97,62 @@ public class Cus_Pay_Pro_Handler implements CommandHandler{
 			order_hisotry_dao.insertOrder(order_history_dto);
 		}
 		
-		
-		FileWriter fw;
-		String new_order_log="";
-		try {
-			fw = new FileWriter("C:/home/encore/flume/spool/out.txt");
-			new_order_log+=order_no;
-			new_order_log+=",";
-			new_order_log+=order_date.getYear()+1900;
-			new_order_log+=",";
-			new_order_log+=order_date.getMonth()+1;
-			new_order_log+=",";
-			new_order_log+=order_date.getDate();
-			new_order_log+=",";
-			new_order_log+=order_date.getHours();
-			new_order_log+=",";
-			new_order_log+=order_date.getMinutes();
-			new_order_log+=",";
-			new_order_log+=order_date.getSeconds();
-			
-			Customer_member_DataBean cus_member_dto = customer_member_dao.selectCustomer(cus_id);
-			int cus_age = order_date.getYear()-cus_member_dto.getCus_birth().getYear();
-			System.out.println(order_date.getYear());
-			System.out.println(cus_member_dto.getCus_birth().getYear());
-			new_order_log+=",";
-			new_order_log+=cus_age;
-			
-			fw.write(new_order_log);
-			System.out.println("파일출력성공");
-			fw.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		//메뉴 개수만큼 반복 
+		for(int i=0; i<menu_ids.length; i++) {
+			FileWriter fw;
+			String new_order_log="";
+			try {
+				fw = new FileWriter("C:/home/encore/flume/spool/out.txt",true);
+				new_order_log+=order_no;
+				new_order_log+=",";
+				
+				//주문 시간
+				new_order_log+=order_date.getYear()+1900;
+				new_order_log+=",";
+				new_order_log+=order_date.getMonth()+1;
+				new_order_log+=",";
+				new_order_log+=order_date.getDate();
+				new_order_log+=",";
+				new_order_log+=order_date.getHours();
+				new_order_log+=",";
+				new_order_log+=order_date.getMinutes();
+				new_order_log+=",";
+				new_order_log+=order_date.getSeconds();
+				
+				//고객 정보(나이, 성별)
+				Customer_member_DataBean cus_member_dto = customer_member_dao.selectCustomer(cus_id);
+				int cus_age = order_date.getYear()-cus_member_dto.getCus_birth().getYear();
+				new_order_log+=",";
+				new_order_log+=cus_age;
+				new_order_log+=",";
+				int cus_gender = cus_member_dto.getCus_gender();
+				new_order_log+=cus_gender;
+				
+				
+				//메뉴 정보
+				int menu_id = Integer.parseInt(menu_ids[i]);
+				int order_qnt = Integer.parseInt(order_qnts[i]);
+				
+				Menu_DataBean menu_dto = menu_dao.selectMenu(menu_id);
+				String menu_name = menu_dto.getMenu_name();
+				new_order_log+=",";
+				new_order_log+=menu_name;
+				new_order_log+=",";
+				new_order_log+=order_qnt;
+				
+				//고객 아이디
+				new_order_log+=",";
+				new_order_log+=cus_id;
+				new_order_log+="\r\n";
+				
+				
+				fw.write(new_order_log);
+				System.out.println("파일출력성공");
+				fw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		return new ModelAndView("cus/cus_cart/cus_pay_pro");
