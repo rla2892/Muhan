@@ -81,6 +81,7 @@ var cus_location=randomlocation();
 var menu=randombetween(1,69);
 var price=menu_to_price(menu);
 var quantity=randombetween(1,3);
+var store_id="store"+randombetween(1,1312);
 
 //로그 출력
 //  년,월,일,시,분,초,주문번호,아이디,나이,성별,지역,메뉴명,가격,수량 
@@ -111,6 +112,8 @@ document.write(",");
 document.write(price);
 document.write(",");
 document.write(quantity);
+document.write(",");
+document.write(store_id);
 document.write("<br>");
 
 order_no++//주문번호 1 증가
