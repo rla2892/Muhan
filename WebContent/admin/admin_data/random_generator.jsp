@@ -17,11 +17,11 @@ function random_month(){
 }
 function random_day(month){
 	var day;
-	if(month == 1,month == 3,month == 5,month == 7,month == 8,month == 10,month == 12){
+	if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
 		day=randombetween(1,31);
 	}else{
 		if(month ==2){
-			day=randombetween(1,30);
+			day=randombetween(1,28);
 		}else{
 		day=randombetween(1,30);
 		}

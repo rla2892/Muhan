@@ -102,11 +102,9 @@ public class Cus_Pay_Pro_Handler implements CommandHandler{
 			FileWriter fw;
 			String new_order_log="";
 			try {
-				fw = new FileWriter("C:/home/encore/flume/spool/out.txt",true);
-				new_order_log+=order_no;
-				new_order_log+=",";
 				
-				//주문 시간
+				//년,월,일,시,분,초,주문번호,아이디,나이,성별,지역,메뉴명,가격,수량 
+				//주문 시간(년,월,일,시,분,초)
 				new_order_log+=order_date.getYear()+1900;
 				new_order_log+=",";
 				new_order_log+=order_date.getMonth()+1;
@@ -119,33 +117,59 @@ public class Cus_Pay_Pro_Handler implements CommandHandler{
 				new_order_log+=",";
 				new_order_log+=order_date.getSeconds();
 				
-				//고객 정보(나이, 성별)
+				//주문번호
+				new_order_log+=",";
+				new_order_log+=order_no;
+				
+				
+				//고객 정보(아이디,나이, 성별,지역)
 				Customer_member_DataBean cus_member_dto = customer_member_dao.selectCustomer(cus_id);
 				int cus_age = order_date.getYear()-cus_member_dto.getCus_birth().getYear();
+				int cus_gender = cus_member_dto.getCus_gender();
+				String cus_address_sub= cus_address.substring(0, 2);
+				
+				new_order_log+=",";
+				new_order_log+=cus_id;
 				new_order_log+=",";
 				new_order_log+=cus_age;
 				new_order_log+=",";
-				int cus_gender = cus_member_dto.getCus_gender();
 				new_order_log+=cus_gender;
+				new_order_log+=",";
+				new_order_log+=cus_address_sub;
 				
-				
-				//메뉴 정보
+				//메뉴 정보(메뉴,가격,수량)
 				int menu_id = Integer.parseInt(menu_ids[i]);
 				int order_qnt = Integer.parseInt(order_qnts[i]);
 				
 				Menu_DataBean menu_dto = menu_dao.selectMenu(menu_id);
-				String menu_name = menu_dto.getMenu_name();
+				//String menu_name = menu_dto.getMenu_name();
+				int menu_price = menu_dto.getMenu_price();
 				new_order_log+=",";
-				new_order_log+=menu_name;
+				new_order_log+=menu_id;
+				new_order_log+=",";
+				new_order_log+=menu_price;
 				new_order_log+=",";
 				new_order_log+=order_qnt;
 				
-				//고객 아이디
-				new_order_log+=",";
-				new_order_log+=cus_id;
 				new_order_log+="\r\n";
 				
-				
+				//String fw_path = "C:/home/encore/flume/spool/";//윈도우용
+				String fw_path = "/home/encore/flume/spool/";//리눅스용
+				fw_path+=order_date.getYear()+1900;
+				fw_path+="-";
+				fw_path+=order_date.getMonth()+1;
+				fw_path+="-";
+				fw_path+=order_date.getDate();
+				fw_path+="-";
+				fw_path+=order_date.getHours();
+				fw_path+="-";
+				fw_path+=order_date.getMinutes();
+				fw_path+="-";
+				fw_path+=order_date.getSeconds();
+				fw_path+="-";
+				fw_path+=order_no;
+				fw_path+=".txt";
+				fw = new FileWriter(fw_path,true);
 				fw.write(new_order_log);
 				System.out.println("파일출력성공");
 				fw.close();
