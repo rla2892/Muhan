@@ -56,6 +56,7 @@ public class Store_order_check_Handler implements CommandHandler {
 			List<Order_history_DataBean_for_store1> orders = order_history_dao.selectOrdersByDate(map);
 			Gson gsonBuilder = new GsonBuilder().create();
 			jsonFromJavaArrayList = gsonBuilder.toJson(orders);
+			System.out.println(jsonFromJavaArrayList);
 		}	
 		
         return jsonFromJavaArrayList;
