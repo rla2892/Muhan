@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!--  년,월,일,시,분,초,주문번호,아이디,나이,성별,지역,메뉴명,가격,수량 -->
-년,월,일,시,분,초,주문번호,아이디,나이,성별,지역,메뉴명,가격,수량
+년,월,일,시,분,초,주문번호,아이디,나이,성별,지역,메뉴명,가격,수량,매장
 <br>
 
 <script>
@@ -71,6 +71,11 @@ for(var year=2015; year<=now_year; year++){
 				//for(var minute=0; minute<= end_minute;minute++){
 
 ////////////////////////////////////////////////////////////////////////////////////
+
+var reps = 3 //반복횟수
+
+for(var rep=0; rep<=reps; rep++){
+
 var minute=randombetween(0,59);
 var second=randombetween(0,59);
 //order_no 존재
@@ -117,6 +122,8 @@ document.write(store_id);
 document.write("<br>");
 
 order_no++//주문번호 1 증가
+
+}
 ////////////////////////////////////////////////////////////////////////////////////
 				//}//분
 			}//시간
