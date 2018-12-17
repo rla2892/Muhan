@@ -21,6 +21,38 @@ import org.springframework.web.servlet.ModelAndView;
 import handler.CommandHandler;
 import handler.HandlerException;
 
+class Cus_for_random{
+	private String cus_id;
+	private int age;
+	private int gender;
+	private String cus_location;
+	public String getCus_id() {
+		return cus_id;
+	}
+	public void setCus_id(String cus_id) {
+		this.cus_id = cus_id;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public int getGender() {
+		return gender;
+	}
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+	public String getCus_location() {
+		return cus_location;
+	}
+	public void setCus_location(String cus_location) {
+		this.cus_location = cus_location;
+	}
+	
+}
+
 @Controller
 public class Admin_data implements CommandHandler{
 	
@@ -33,6 +65,15 @@ public class Admin_data implements CommandHandler{
 		String[] locations= {"서울","인천","경기","대전","충청","세종","강원","부산","대구","울산","경상","광주","전라","제주"};
 		int random_number= randombetween(0,13);
 		return locations[random_number];
+	}
+	//함수:랜덤고객
+	public Cus_for_random random_cus(String cus_id){
+		Cus_for_random cus = new Cus_for_random();
+		cus.setAge(randombetween(20, 65));
+		cus.setCus_id(cus_id);
+		cus.setGender(randombetween(0, 1)); //여자 0 남자 1
+		cus.setCus_location(randomlocation());
+		return cus;
 	}
 	//함수:해당 메뉴 가격 환산
 	public int menu_to_price(int menu){
@@ -64,6 +105,13 @@ public class Admin_data implements CommandHandler{
 		ArrayList menu_ids = new ArrayList();
 		for(int i=1; i<=69;i++) {
 			menu_ids.add(i);
+		}
+		
+		//고객들
+		ArrayList<Cus_for_random> cus_objects = new ArrayList<Cus_for_random>();
+		for(int i=1; i<=50000; i++) {
+			String cus_id="cus"+i;
+			cus_objects.add(random_cus(cus_id));
 		}
 		
 		//랜덤객체
@@ -160,10 +208,16 @@ for(int rep=0;rep<reps;rep++) {
 minute=randombetween(0,59);
 second=randombetween(0,59);
 //order_no 존재
-cus_id="cus"+randombetween(1,1000);
-age=randombetween(20,65);
-gender=randombetween(0,1);//0 여자 , 1 남자
-cus_location=randomlocation();
+//랜덤 고객 생성
+Cus_for_random cus_random=cus_objects.get(randombetween(1, 50000));
+//cus_id="cus"+randombetween(1,1000);
+cus_id=cus_random.getCus_id();
+//age=randombetween(20,65);
+age=cus_random.getAge();
+//gender=randombetween(0,1);//0 여자 , 1 남자
+gender=cus_random.getGender();
+//cus_location=randomlocation();
+cus_location=cus_random.getCus_location();
 store_id="store"+randombetween(1,1312);
 
 	// 메뉴 정보.
@@ -183,6 +237,8 @@ store_id="store"+randombetween(1,1312);
 	
 	price=menu_to_price(menu);
 	quantity=randombetween(1,3);
+	
+	
 					
 	//로그 출력
 	//년,월,일,시,분,초,주문번호,아이디,나이,성별,지역,메뉴명,가격,수량 
