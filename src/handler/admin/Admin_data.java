@@ -117,7 +117,6 @@ public class Admin_data implements CommandHandler{
 		//랜덤객체
 		Random normal_random = new Random();
 		int normal_random_int;
-		int normal_random_int_12;
 		
 		//객체 생성
 		String cus_id;
@@ -186,26 +185,34 @@ public class Admin_data implements CommandHandler{
 //로그 쓰기 시작							
 
 
-normal_random_int= (int) (normal_random.nextGaussian()*3+10);
-normal_random_int_12= (int) (normal_random.nextGaussian()*3+15);
+normal_random_int= (int) (normal_random.nextGaussian()*3+12);
+if(year>=2017) {
+	normal_random_int+=2;
+	if(year>=2018) {
+		normal_random_int+=2;
+	}
+}
+if( hour==12 || hour==13 || hour==18 || hour==19 || hour==20 ) {
+	normal_random_int+=10;
+}
 if(normal_random_int<0) {
 	normal_random_int=0;
 }
-if(normal_random_int_12<0) {
-	normal_random_int_12=0;
-}
-//System.out.println(normal_random_int);
 								
 int reps=normal_random_int;
-if(hour==12) {
-	reps=normal_random_int_12;
+
+
+int[] minute_select = new int[reps];
+for(int minute_i=0;minute_i<reps;minute_i++) {
+	minute_select[minute_i]=randombetween(0, 59);
 }
+Arrays.sort(minute_select);
+
+
 for(int rep=0;rep<reps;rep++) {
 
-
-
 	
-minute=randombetween(0,59);
+minute=minute_select[rep];
 second=randombetween(0,59);
 //order_no 존재
 //랜덤 고객 생성
