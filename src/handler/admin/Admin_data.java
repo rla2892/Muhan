@@ -209,7 +209,7 @@ minute=randombetween(0,59);
 second=randombetween(0,59);
 //order_no 존재
 //랜덤 고객 생성
-Cus_for_random cus_random=cus_objects.get(randombetween(1, 50000));
+Cus_for_random cus_random=cus_objects.get(randombetween(1, 50000-1));
 //cus_id="cus"+randombetween(1,1000);
 cus_id=cus_random.getCus_id();
 //age=randombetween(20,65);
