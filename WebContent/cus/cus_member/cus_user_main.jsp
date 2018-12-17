@@ -2,12 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/cus/cus_setting.jsp"%>
 <%@include file="/cus/cus_script.jsp"%>
+<style>
 
+</style>
 <html>
 	<head>
 		<%@include file="/cus/cus_head.jsp"%>
 	</head>
-	<body>
+	<body style="background-color: #353535;">
 		<%@include file="/cus/cus_topNav.jsp"%>
 	
 		<!-- Container -->
@@ -22,10 +24,10 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img class="d-block h-75 newTrex" src="/Muhan/cus/cus_images/ad_1.jpg" alt="First Slide">
+						<img class="d-block h-75 newTrex" src="/Muhan/cus/cus_images/ad_1.jpg" alt="First Slide" >
 					</div>
 					<div class="carousel-item">
-						<img class="d-block h-75" src="/Muhan/cus/cus_images/ad_2.jpg" alt="Second Slide">
+						<img class="d-block h-75" src="/Muhan/cus/cus_images/ad_2.jpg" alt="Second Slide" >
 					</div>
 					<div class="carousel-item">
 						<img class="d-block h-75" src="/Muhan/cus/cus_images/ad_4.jpg" alt="Third Slide">
