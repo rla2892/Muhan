@@ -1,25 +1,12 @@
-package handler.admin;
+package handler.admin.data;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import handler.CommandHandler;
-import handler.HandlerException;
 
 class Cus_for_random{
 	private String cus_id;
@@ -53,21 +40,19 @@ class Cus_for_random{
 	
 }
 
-@Controller
-public class Admin_data implements CommandHandler{
-	
+public class Admin_data_gen {
 	//함수:랜덤
-	public int randombetween(int a,int b){
+	public static int randombetween(int a,int b){
 		return (int) (Math.random()*(b+1-a)+a);
 	}
 	//함수:랜덤 주소
-	public String randomlocation(){
+	public static String randomlocation(){
 		String[] locations= {"서울","인천","경기","대전","충청","세종","강원","부산","대구","울산","경상","광주","전라","제주"};
 		int random_number= randombetween(0,13);
 		return locations[random_number];
 	}
 	//함수:랜덤고객
-	public Cus_for_random random_cus(String cus_id){
+	public static Cus_for_random random_cus(String cus_id){
 		Cus_for_random cus = new Cus_for_random();
 		cus.setAge(randombetween(20, 65));
 		cus.setCus_id(cus_id);
@@ -76,7 +61,7 @@ public class Admin_data implements CommandHandler{
 		return cus;
 	}
 	//함수:해당 메뉴 가격 환산
-	public int menu_to_price(int menu){
+	public static int menu_to_price(int menu){
 		int[] prices= {8100,9500,7700,8400,7500
 			,12500,7200,7000,6500,13300
 			,15100,5600,5600,6000,4700
@@ -93,11 +78,7 @@ public class Admin_data implements CommandHandler{
 			,2000,2400,2400,2500};
 		return prices[menu-1];
 	}
-	
-	
-	@RequestMapping("/Admin_data")
-	@Override
-	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
+	public static void main(String[] args) throws IOException {
 		//시작시간
 		long start = System.currentTimeMillis();
 		
@@ -147,10 +128,8 @@ public class Admin_data implements CommandHandler{
 		int order_no=1;
 		
 		FileOutputStream output = null; //파일
-		try {
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////					
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
 			//로그 파일 열기
-			output = new FileOutputStream("c:/home/log_data_sample.txt");
 			
 			//로그 만들 반복 실행
 			//년 단위 : 2015~2018
@@ -159,6 +138,8 @@ public class Admin_data implements CommandHandler{
 				if(year==now_year){end_month=now_month;}else{end_month=12;}
 				//월 단위 : 1~12
 				for(int month=1; month<= end_month;month++){
+					output = new FileOutputStream("c:/home/event"+"-"+year+"-"+month+".txt");
+
 					StringBuffer data =new StringBuffer(""); //파일에 쓸 로그
 					int end_date=0;
 					int end_of_month=0;
@@ -180,11 +161,8 @@ public class Admin_data implements CommandHandler{
 //							end_minute=0;
 //							if(month==now_month && year==now_year && date==now_date && hour==now_hour){end_minute=now_minute;}else{end_minute=59;}
 //							for(int minute=0; minute<=end_minute;minute++) {
-////////////////////////////////////////////////////////////////////////////////////
-							
+///////////////////////////////////////////////////////////////////////////////////
 //로그 쓰기 시작							
-
-
 normal_random_int= (int) (normal_random.nextGaussian()*3+12);
 if(year>=2017) {
 	normal_random_int+=2;
@@ -198,9 +176,7 @@ if( hour==12 || hour==13 || hour==18 || hour==19 || hour==20 ) {
 if(normal_random_int<0) {
 	normal_random_int=0;
 }
-								
 int reps=normal_random_int;
-
 
 int[] minute_select = new int[reps];
 for(int minute_i=0;minute_i<reps;minute_i++) {
@@ -208,10 +184,8 @@ for(int minute_i=0;minute_i<reps;minute_i++) {
 }
 Arrays.sort(minute_select);
 
-
 for(int rep=0;rep<reps;rep++) {
 
-	
 minute=minute_select[rep];
 second=randombetween(0,59);
 //order_no 존재
@@ -245,8 +219,6 @@ store_id="store"+randombetween(1,1312);
 	price=menu_to_price(menu);
 	quantity=randombetween(1,3);
 	
-	
-					
 	//로그 출력
 	//년,월,일,시,분,초,주문번호,아이디,나이,성별,지역,메뉴명,가격,수량,매장명
 	new_data= year+","+month+","+ date+","+hour+","+minute+","+second+","+order_no+","+cus_id
@@ -259,33 +231,19 @@ order_no++;//주문번호 1 증가
 }//rep
 
 ////////////////////////////////////////////////////////////////////////////////////
-//							}//분
-						}//시간
-					}//일
-					output.write(data.toString().getBytes());
-				}//월
-			}//년
-
-				
-			
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////					
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
+//						}//분
+					}//시간
+				}//일
+				output.write(data.toString().getBytes());
 				output.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+			}//월
+		}//년
+					
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
 		
 		// 끝에 아래와 같이 삽입
-
 		long end = System.currentTimeMillis();
 		System.out.println( "실행 시간 : " + ( end - start )/1000.0 );
+	}//main
+}//class
 
-		return new ModelAndView("admin/admin_data_view");
-	}
-}

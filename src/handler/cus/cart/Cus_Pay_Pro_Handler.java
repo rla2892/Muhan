@@ -150,6 +150,8 @@ public class Cus_Pay_Pro_Handler implements CommandHandler{
 				new_order_log+=menu_price;
 				new_order_log+=",";
 				new_order_log+=order_qnt;
+				new_order_log+=",";
+				new_order_log+=store_id;
 				
 				new_order_log+="\r\n";
 				
