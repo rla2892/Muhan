@@ -12,6 +12,7 @@ DROP TABLE mh_review CASCADE CONSTRAINTS;
 DROP TABLE mh_customer_member CASCADE CONSTRAINTS;
 DROP TABLE mh_menu CASCADE CONSTRAINTS;
 DROP TABLE mh_notice CASCADE CONSTRAINTS;
+DROP TABLE mh_regression CASCADE CONSTRAINTS;
 DROP TABLE mh_store_member CASCADE CONSTRAINTS;
 
 
@@ -107,6 +108,13 @@ CREATE TABLE mh_order_history
 	cus_id varchar2(20) NOT NULL,
 	store_id varchar2(20) NOT NULL,
 	order_status number(1) NOT NULL
+);
+
+
+CREATE TABLE mh_regression
+(
+	coefficients varchar2(20),
+	weight number
 );
 
 
