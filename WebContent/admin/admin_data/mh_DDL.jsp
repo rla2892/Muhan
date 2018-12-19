@@ -13,7 +13,13 @@ DROP TABLE mh_customer_member CASCADE CONSTRAINTS;
 DROP TABLE mh_menu CASCADE CONSTRAINTS;
 DROP TABLE mh_notice CASCADE CONSTRAINTS;
 DROP TABLE mh_store_member CASCADE CONSTRAINTS;
+DROP TABLE mh_regression CASCADE CONSTRAINTS;
 
+CREATE TABLE mh_regression
+(
+	coefficients varchar2(20),
+	weight number
+);
 
 CREATE TABLE mh_address_coords
 (
