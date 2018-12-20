@@ -54,7 +54,7 @@
 		</td>
 	</tr>
 	<tr>
-		<th>가입일</th>
+		<th>생일</th>
 		<td>${customer_member_dto.cus_birth}</td>
 	</tr>
 	<tr>
