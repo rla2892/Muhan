@@ -8,11 +8,10 @@
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-
 <table class="table table-hover">
 	<tr>
-		<th>글번호</th>
-		<td>${review_dto.review_no}</td>
+		<th class="col-sm-1">글번호</th>
+		<td class="col-sm-4">${review_dto.review_no}</td>
 	</tr>
 	<tr>
 		<th>제목</th>
@@ -36,7 +35,9 @@
 	</tr>
 	<tr>
 		<th>이미지</th>
-		<td>${review_dto.review_image}</td>
+		<td>
+			<img src="/Muhan/review_images/${review_dto.review_image}">
+		</td>
 	</tr>
 	<%-- 
 	<tr>

@@ -10,8 +10,8 @@
 
 <table class="table table-hover">
 	<tr>
-		<th>글번호</th>
-		<td>${notice_dto.notice_no}</td>
+		<th class="col-sm-1">글번호</th>
+		<td class="col-sm-4">${notice_dto.notice_no}</td>
 	</tr>
 	<tr>
 		<th>작성일</th>
