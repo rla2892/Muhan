@@ -135,6 +135,10 @@ public class Order_history_DBBean implements Order_history_Dao {
 	public int insertCarLocation(Order_history_car_DataBean order_history_car_dto) {
 		return session.insert("Order_history.insertCarLocation", order_history_car_dto);
 	}
+	@Override
+	public List<Order_history_regression_DataBean> selectRegression() {
+		return session.selectList("Order_history.selectRegression");
+	}
 	
 	// 최은혜
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore( Map<String, String> map ) {
