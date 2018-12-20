@@ -65,7 +65,7 @@ public class Admin_order_graph_time implements CommandHandler{
 				last_time=12;//고정
 				break;
 		case 4: order_history_dtos=order_history_dao.selectOrdersAll();//모든, 연도별
-				start_time=this_year-3;//변동
+				start_time=this_year-2;//변동
 				last_time=this_year;//변동
 				break;
 		default:order_history_dtos=order_history_dao.selectOrdersAllToday();
@@ -75,9 +75,9 @@ public class Admin_order_graph_time implements CommandHandler{
 		}
 		
 		//데이터 만들기 위한 맵 만들기 <시간, 매출액>
-		Map<Integer,Integer> time_sales = new HashMap<Integer,Integer>();
+		Map<Integer,Long> time_sales = new HashMap<Integer,Long>();
 		for(int i=start_time; i<=last_time; i++) {
-			time_sales.put(i, 0);
+			time_sales.put(i, 0l);
 		}
 		//데이터 만들기
 		for(int i=0; i<order_history_dtos.size();i++) {
@@ -100,7 +100,7 @@ public class Admin_order_graph_time implements CommandHandler{
 			int price = menu_dao.selectMenu(order_history_dtos.get(i).getMenu_id()).getMenu_price();
 			int qnt = order_history_dtos.get(i).getOrder_qnt();
 			int all_pay = price*qnt;
-			int old_pay = time_sales.get(dto_time);
+			Long old_pay = time_sales.get(dto_time);
 			time_sales.put(dto_time, old_pay+all_pay );
 		}
 		//데이터 보내기
@@ -108,14 +108,14 @@ public class Admin_order_graph_time implements CommandHandler{
 		
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 		//누적데이터 만들기 위한 맵 만들기 <시간, 매출액>
-		Map<Integer,Integer> time_sales_cumul = new HashMap<Integer,Integer>();
+		Map<Integer,Long> time_sales_cumul = new HashMap<Integer,Long>();
 		for(int i=start_time; i<=last_time; i++) {
 			time_sales_cumul.put(i, time_sales.get(i));
 		}
 		
 		//누적 데이터 만들기
 		for(int i=start_time; i<=last_time; i++) {
-			int new_sales = time_sales_cumul.get(i);
+			Long new_sales = time_sales_cumul.get(i);
 			if(i != start_time ){
 				new_sales += time_sales_cumul.get(i-1);
 			}

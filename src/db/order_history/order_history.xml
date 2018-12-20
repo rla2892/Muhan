@@ -111,6 +111,9 @@
 		insert into mh_car
 		values(#{car_id}, #{order_no}, #{car_x}, #{car_y}, sysdate)
 	</insert>
+	<select id="selectRegression" resultType="db.order_history.Order_history_regression_DataBean">
+		select * from mh_regression
+	</select>
 	
 	<!-- 최은혜 -->
 	<select id="selectOrdersForDayByStore" parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean_for_store_Timegraph">

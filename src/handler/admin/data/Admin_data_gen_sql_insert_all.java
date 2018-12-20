@@ -67,8 +67,11 @@ public class Admin_data_gen_sql_insert_all {
 		
 		FileOutputStream output = null; //파일
 		output = new FileOutputStream("c:/home/mh_order_history.sql");
+		
 		output.write("delete from mh_order_history;\n".getBytes());
-		output.write("insert all\n".getBytes());
+		output.write("commit;\n".getBytes());
+		output.write("select count(*) from mh_order_history;\n".getBytes());
+		//output.write("insert all\n".getBytes());
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
 		//로그 파일 열기
 		
@@ -95,6 +98,7 @@ public class Admin_data_gen_sql_insert_all {
 				if(month==now_month && year==now_year){end_date=now_date;}else{end_date=end_of_month;}
 				//일 단위 : 1~31
 				for(int date=1; date<= end_date;date++){
+					data.append("insert all\n");
 					int end_hour=0;
 					if(month==now_month && year==now_year && date==now_date){end_hour=now_hour;}else{end_hour=23;}
 					for(int hour=0; hour<= end_hour;hour++){
@@ -164,12 +168,16 @@ order_no++;//주문번호 1 증가
 ////////////////////////////////////////////////////////////////////////////////////
 //					}//분
 				}//시간
+				data.append("select * from dual;\n");
+				data.append("select count(*) from mh_order_history;\n");
+				data.append("commit;\n");
 			}//일
 				output.write(data.toString().getBytes());
 		}//월
 	}//년
-		output.write("select * from dual;\n".getBytes());
-		output.write("commit;".getBytes());
+		output.write(";\n".getBytes());
+		output.write("commit;\n".getBytes());
+		output.write("select count(*) from mh_order_history;".getBytes());
 		output.close();
 					
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
