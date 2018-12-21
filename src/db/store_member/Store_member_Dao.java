@@ -47,6 +47,6 @@ public interface Store_member_Dao {
 	//최은혜
 	
 	//임상혁
-	
+	public List<String> selectCustomer_age(String store_id);
 	//손소라
 }
