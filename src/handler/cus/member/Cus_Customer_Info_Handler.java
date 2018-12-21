@@ -1,5 +1,7 @@
 package handler.cus.member;
 
+import java.util.Calendar;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,8 +27,12 @@ public class Cus_Customer_Info_Handler implements CommandHandler{
 		
 		String cus_id = (String) request.getSession().getAttribute("cus_id");
 		Customer_member_DataBean customer_member_dto = customer_member_dao.selectCustomer(cus_id);
-		
+		Calendar current = Calendar.getInstance();
+        int currentYear  = current.get(Calendar.YEAR);
+        int age = currentYear - (customer_member_dto.getCus_birth().getYear()+1900);
+
 		request.setAttribute("customer_member_dto", customer_member_dto);
+		request.setAttribute("age", age);
 		return new ModelAndView("/cus/cus_member/cus_customer_info");
 	}
 }
