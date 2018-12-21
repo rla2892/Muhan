@@ -1,5 +1,6 @@
 package handler.admin.order;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import db.menu.Menu_Dao;
 import db.order_history.Order_history_Dao;
 import db.order_history.Order_history_DataBean_for_recieve;
+import db.order_history.Order_history_regression_DataBean;
 import handler.CommandHandler;
 import handler.HandlerException;
 
@@ -125,8 +127,26 @@ public class Admin_order_graph_predict implements CommandHandler{
 		request.setAttribute("time_sales_cumul", time_sales_cumul);
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 		//예상 매출액 가져오기
-		
-		
+		//모델
+		List<Order_history_regression_DataBean > order_history_regression_dto=order_history_dao.selectRegression();
+		List<Double> regression_model = new ArrayList<Double>();
+		for(int i=0;i<order_history_regression_dto.size();i++) {
+			double weight = order_history_regression_dto.get(i).getWeight();
+			regression_model.add(weight);
+		}
+		//예상 매출액 계산
+		Map<Integer,Long> time_sales_predicted = new HashMap<Integer,Long>();
+		for(int i=start_time; i<=last_time; i++) {
+			Long predicted_sales=0l;
+			predicted_sales+= regression_model.get(regression_model.size()-1).longValue();//절편 더하기
+			predicted_sales+= regression_model.get(1).longValue();//2018년 더하기
+			predicted_sales+= regression_model.get(i+2).longValue();//2018년 더하기
+			
+			
+			time_sales_predicted.put(i, predicted_sales);
+		}
+		//데이터 보내기
+		request.setAttribute("time_sales_predicted", time_sales_predicted);
 		return new ModelAndView("admin/admin_order/admin_order_graph_predict");
 	}
 }
