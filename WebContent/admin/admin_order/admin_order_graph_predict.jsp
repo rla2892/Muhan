@@ -23,8 +23,14 @@
 	<input type="hidden" name="time_sales_predict_key" value="${time_sales_predict.key}">
 	<input type="hidden" name="time_sales_predict_value" value="${time_sales_predict.value}">
 </c:forEach>
+<!-- 예상 누적 데이터 -->
+<c:forEach var="time_sales_cumul_predict" items="${time_sales_cumul_predicted}">
+	<input type="hidden" name="time_sales_cumul_predict_key" value="${time_sales_cumul_predict.key}">
+	<input type="hidden" name="time_sales_cumul_predict_value" value="${time_sales_cumul_predict.value}">
+</c:forEach>
 
 <div id="chart"></div>
+<div id="chart_cumul"></div>
 
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <%@ include file="../../admin/admin_ui/admin_aside_end.jsp" %>
@@ -53,6 +59,13 @@ var time_sales_predict_value = document.getElementsByName("time_sales_predict_va
 time_sale_data=to_list(time_sale_value,"오늘의매출액");
 time_sale_predict_data=to_list(time_sales_predict_value,"예상매출액");
 
+//오늘의 시간별 누적 매출
+var time_sale_cumul_value = document.getElementsByName("time_sale_cumul_value");
+var time_sales_cumul_predict_value = document.getElementsByName("time_sales_cumul_predict_value");
+
+time_sale_cumul_data=to_list(time_sale_cumul_value,"오늘의 누적매출액");
+time_sale_cumul_predict_data=to_list(time_sales_cumul_predict_value,"예상 누적매출액");
+
 //generate the chart
 var chart = bb.generate({
     bindto: "#chart",
@@ -61,6 +74,17 @@ var chart = bb.generate({
         columns: [
         	time_sale_data,
         	time_sale_predict_data
+        ]
+    }
+});
+//generate the chart : cumul
+var chart = bb.generate({
+    bindto: "#chart_cumul",
+    data: {
+      type: "line",
+        columns: [
+        	time_sale_cumul_data,
+        	time_sale_cumul_predict_data
         ]
     }
 });
