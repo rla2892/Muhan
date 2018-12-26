@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Random;
 
-public class Admin_data_gen_sql_insert_all {
+public class Admin_data_gen_sql_insert_all_today {
 	//함수:랜덤
 	public static int randombetween(int a,int b){
 		return (int) (Math.random()*(b+1-a)+a);
@@ -66,42 +66,29 @@ public class Admin_data_gen_sql_insert_all {
 		int order_no=1;
 		
 		FileOutputStream output = null; //파일
-		output = new FileOutputStream("c:/home/mh_order_history.sql");
+		output = new FileOutputStream("c:/home/mh_order_history_today.sql");
 		
-		output.write("delete from mh_order_history;\n".getBytes());
-		output.write("commit;\n".getBytes());
+		//output.write("delete from mh_order_history;\n".getBytes());
+		//output.write("commit;\n".getBytes());
 		output.write("select count(*) from mh_order_history;\n".getBytes());
 		//output.write("insert all\n".getBytes());
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
 		//로그 파일 열기
 		
 		//로그 만들 반복 실행
-		//년 단위 : 2015~2018
-		for(int year=2016; year<=now_year; year++){
-			int end_month=0;
-			if(year==now_year){end_month=now_month;}else{end_month=12;}
-			//월 단위 : 1~12
-			for(int month=1; month<= end_month;month++){
-
-				StringBuffer data =new StringBuffer(""); //파일에 쓸 로그
-				int end_date=0;
-				int end_of_month=0;
-				if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
-					end_of_month=31;
-				}else{
-					if(month == 2){
-						end_of_month=28;
-					}else{
-						end_of_month=30;
-					}
-				}
-				if(month==now_month && year==now_year){end_date=now_date;}else{end_date=end_of_month;}
-				//일 단위 : 1~31
-				for(int date=1; date<= end_date;date++){
-					data.append("insert all\n");
-					int end_hour=0;
-					if(month==now_month && year==now_year && date==now_date){end_hour=now_hour;}else{end_hour=23;}
-					for(int hour=0; hour<= end_hour;hour++){
+		//년 단위 : 2nth && year==now_year){end_date=now_date;}else{end_date=end_of_month;}
+		//일 단위 : 1~31
+		int year = now_year;
+		int month = now_month;
+		int date = now_date;
+		
+		StringBuffer data =new StringBuffer(""); //파일에 쓸 로그
+		String delete_today_order="delete from mh_order_history where to_char( ORDER_DATE, 'yyyymmdd' ) = to_char( sysdate, 'yyyymmdd');\n";
+		data.append(delete_today_order);
+		data.append("insert all\n");
+		int end_hour=0;
+		end_hour=now_hour;
+		for(int hour=0; hour<= end_hour;hour++){
 //						end_minute=0;
 //						if(month==now_month && year==now_year && date==now_date && hour==now_hour){end_minute=now_minute;}else{end_minute=59;}
 //						for(int minute=0; minute<=end_minute;minute++) {
@@ -167,17 +154,12 @@ order_no++;//주문번호 1 증가
 
 ////////////////////////////////////////////////////////////////////////////////////
 //					}//분
-				}//시간
-				data.append("select * from dual;\n");
-				data.append("select count(*) from mh_order_history;\n");
-				data.append("commit;\n");
-			}//일
-				output.write(data.toString().getBytes());
-		}//월
-	}//년
-		output.write(";\n".getBytes());
-		output.write("commit;\n".getBytes());
-		output.write("select count(*) from mh_order_history;".getBytes());
+		}//시간
+		data.append("select * from dual;\n");
+		data.append("select count(*) from mh_order_history;\n");
+		data.append("commit;\n");
+		output.write(data.toString().getBytes());
+		
 		output.close();
 					
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							

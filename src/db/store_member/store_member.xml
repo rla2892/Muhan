@@ -232,6 +232,9 @@
 	</select>
 	<!-- 장성열 -->		
 	<!-- 최은혜 -->		
-	<!-- 임상혁 -->		
+	<!-- 임상혁 -->
+	<select id="selectCustomer_age" parameterType="String" resultType="String">
+		select To_char(u.cus_birth,'yyyy-mm-dd') from mh_order_history h, mh_customer_member u where h.store_id=#{store_id} and h.cus_id = u.cus_id
+	</select>	
 	<!-- 손소라 -->		
 </mapper>
