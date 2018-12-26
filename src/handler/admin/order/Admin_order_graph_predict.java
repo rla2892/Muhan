@@ -49,6 +49,8 @@ public class Admin_order_graph_predict implements CommandHandler{
 		//오늘날짜
 		Calendar today = Calendar.getInstance();
 		int this_year = today.get(Calendar.YEAR);
+		int this_hour = today.get(Calendar.HOUR_OF_DAY);
+		//System.out.println(this_hour);
 		
 		//all 모든 주문 불러오기
 		List<Order_history_DataBean_for_recieve> order_history_dtos;
@@ -76,6 +78,8 @@ public class Admin_order_graph_predict implements CommandHandler{
 				last_time=23;//고정
 				break;
 		}
+		//마지막 시간
+		
 		
 		//데이터 만들기 위한 맵 만들기 <시간, 매출액>
 		Map<Integer,Long> time_sales = new HashMap<Integer,Long>();
@@ -112,16 +116,16 @@ public class Admin_order_graph_predict implements CommandHandler{
 		//누적데이터 만들기 위한 맵 만들기 <시간, 매출액>
 		Map<Integer,Long> time_sales_cumul = new HashMap<Integer,Long>();
 		for(int i=start_time; i<=last_time; i++) {
-		time_sales_cumul.put(i, time_sales.get(i));
+			time_sales_cumul.put(i, time_sales.get(i));
 		}
 		
 		//누적 데이터 만들기
 		for(int i=start_time; i<=last_time; i++) {
-		Long new_sales = time_sales_cumul.get(i);
-		if(i != start_time ){
-		new_sales += time_sales_cumul.get(i-1);
-		}
-		time_sales_cumul.put(i, new_sales);
+			Long new_sales = time_sales_cumul.get(i);
+			if(i != start_time ){
+				new_sales += time_sales_cumul.get(i-1);
+			}
+			time_sales_cumul.put(i, new_sales);
 		}
 		//누적 데이터 보내기
 		request.setAttribute("time_sales_cumul", time_sales_cumul);
@@ -140,13 +144,28 @@ public class Admin_order_graph_predict implements CommandHandler{
 			Long predicted_sales=0l;
 			predicted_sales+= regression_model.get(regression_model.size()-1).longValue();//절편 더하기
 			predicted_sales+= regression_model.get(1).longValue();//2018년 더하기
-			predicted_sales+= regression_model.get(i+2).longValue();//2018년 더하기
-			
+			predicted_sales+= regression_model.get(i+1).longValue();//2018년 더하기
 			
 			time_sales_predicted.put(i, predicted_sales);
 		}
 		//데이터 보내기
 		request.setAttribute("time_sales_predicted", time_sales_predicted);
+		
+		//예상 누적 매출액 계산
+		Map<Integer,Long> time_sales_cumul_predicted = new HashMap<Integer,Long>();
+		for(int i=start_time; i<=last_time; i++) {
+			time_sales_cumul_predicted.put(i, time_sales_predicted.get(i));
+		}
+		//누적 
+		for(int i=start_time; i<=last_time; i++) {
+			Long new_sales = time_sales_cumul_predicted.get(i);
+			if(i != start_time ){
+				new_sales += time_sales_cumul_predicted.get(i-1);
+			}
+			time_sales_cumul_predicted.put(i, new_sales);
+		}
+		//데이터 보내기
+		request.setAttribute("time_sales_cumul_predicted", time_sales_cumul_predicted);
 		return new ModelAndView("admin/admin_order/admin_order_graph_predict");
 	}
 }
