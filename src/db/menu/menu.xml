@@ -37,4 +37,11 @@
 	<select id="selectMenusByCategory" parameterType="java.util.Map" resultType="db.menu.Menu_DataBean">
 		select * from mh_menu where menu_category=#{menu_category} order by menu_id desc
 	</select>
+	
+	<select id="selectRecommended" parameterType="String" resultType="String">
+		select menu_result from mh_recommendation where cus_id=#{cus_id}
+	</select>
+	<insert id="insertRecommended" parameterType="db.menu.Recommended_Menu_DataBean">
+		insert into mh_recommendation values(#{cus_id}, #{menu_result})
+	</insert>
 </mapper>

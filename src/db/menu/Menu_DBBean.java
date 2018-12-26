@@ -39,4 +39,12 @@ public class Menu_DBBean implements Menu_Dao{
 	public List<Menu_DataBean> selectMenusByCategory(Map<String, Integer> map) {
 		return session.selectList("Menu.selectMenusByCategory", map);
 	}
+	
+	public String selectRecommended(String cus_id) {
+		return session.selectOne("Menu.selectRecommended", cus_id);
+	}
+	
+	public int insertRecommended( Recommended_Menu_DataBean recDto ) {
+		return session.insert("Menu.insertRecommended", recDto);
+	}
 }
