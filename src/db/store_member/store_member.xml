@@ -238,7 +238,7 @@
 	</select>
 	
 	<select id="selectStore_age" resultType="db.store_member.Store_member_age">
-		select * from test
+		select * from mh.clustering
 	</select>	
 	<!-- 손소라 -->		
 </mapper>
