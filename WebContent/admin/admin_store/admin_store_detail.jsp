@@ -47,6 +47,10 @@
 		<td>${store_member_dto.owner_email}</td>
 	</tr>
 	<tr>
+		<th>고객 연령 비율</th>
+		<td>10대:${count_ages1}%&nbsp;&nbsp;20대:${count_ages2}%&nbsp;&nbsp;30대:${count_ages3}%&nbsp;&nbsp;40대:${count_ages4}%&nbsp;&nbsp;50대:${count_ages5}%&nbsp;&nbsp;60대:${count_ages6}%</td>
+	</tr>
+	<tr>
 		<th>지도</th>
 		<td><div id="map" style="width:500px;height:400px;"></div></td>
 	</tr>
