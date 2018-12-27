@@ -5,7 +5,7 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark justify-content-center">
 	<ul class="navbar-nav" id="subNavbar">
 		<li class="nav-item">
-			<a class="nav-link active text-white ml-5 mr-5" href="cus_menu.do?menu_category=4,5">추천메뉴</a>
+			<a class="nav-link active text-white ml-5 mr-5" href="cus_recommendation.do">추천메뉴</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link text-white ml-5 mr-5" href="cus_menu.do?menu_category=4,1">세트메뉴</a>
