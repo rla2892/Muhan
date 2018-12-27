@@ -84,7 +84,7 @@ public class Admin_store_detail_Handler implements CommandHandler {
         Map<Integer, Double> distances = new HashMap<Integer, Double>();
 		
 		for(int i=0; i<Store_member_age_dto.size(); i++ ) {
-			int store = Store_member_age_dto.get(i).getStore();
+			int store = Store_member_age_dto.get(i).getStore_number();
 			String store_a = Store_member_age_dto.get(i).getA();
 			String store_b = Store_member_age_dto.get(i).getB();	
 			String store_c = Store_member_age_dto.get(i).getC();
