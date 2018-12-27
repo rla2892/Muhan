@@ -6,6 +6,7 @@ DROP TABLE mh_admin_member CASCADE CONSTRAINTS;
 DROP TABLE mh_analysis_sales CASCADE CONSTRAINTS;
 DROP TABLE mh_black_member CASCADE CONSTRAINTS;
 DROP TABLE mh_car CASCADE CONSTRAINTS;
+DROP TABLE mh_clustering CASCADE CONSTRAINTS;
 DROP TABLE mh_order_history CASCADE CONSTRAINTS;
 DROP TABLE mh_report CASCADE CONSTRAINTS;
 DROP TABLE mh_review CASCADE CONSTRAINTS;
@@ -60,6 +61,16 @@ CREATE TABLE mh_car
 	car_x number NOT NULL,
 	car_y number NOT NULL,
 	car_date timestamp NOT NULL
+);
+
+
+CREATE TABLE mh_clustering
+(
+	store_number number,
+	a varchar2(100),
+	b varchar2(100),
+	c varchar2(100),
+	d varchar2(100)
 );
 
 
