@@ -228,6 +228,7 @@
 			}
 		});
 	 });
+ 
 	$(window).on(
 		'load',
 		function(event) {
@@ -362,4 +363,5 @@ function orderNow(menu_id) {
 		window.location.href='cus_pay.do';
 	}
 }
+
 </script>
