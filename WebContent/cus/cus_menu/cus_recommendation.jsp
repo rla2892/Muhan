@@ -13,8 +13,27 @@ $(window).on(
 				contentType: 'application/json; charset="UTF-8"',
 				cache: false,
 				success: function(data) {
-					alert(data);
+					if(data == '주문이력없음') {
+						alert('주문이력이 있는 회원만 사용가능한 서비스입니다.');
+						location.href="cus_menu.do?menu_category=4,5";
+					} else {
+					var jsonmenus = JSON.parse(data);
+					var myHTMLStr = '';
+ 					for(var i in jsonmenus){
+ 						myHTMLStr += '<a class="menuListItem" href="cus_menu_details.do?menu_id='+jsonmenus[i]['menu_id']+'" ><div class="card mt-4 mb-4">'
+ 								+ '<img class="card-img-top img-fluid" src="/Muhan/menu_images/'+jsonmenus[i]['menu_image']+'"alt="Menu Img" width="150" height="100">'
+ 								+ '<div class="card-body text-center font-weight-bold flex-fill"><b class="card-title text-danger">'+([i]) +'위 '+jsonmenus[i]['menu_name']+ '</b>'
+ 								+ '<p class="card-text text-dark">' + jsonmenus[i]['menu_price'] + '원</p></div></div></a>'
+ 					}
+					$('#menu_card').html(myHTMLStr); 
+					}
 				},
+ 				beforeSend: function(){
+ 					$('.wrap-loading').removeClass('display-none');
+				},
+				complete:function(){
+			        $('.wrap-loading').addClass('display-none');
+			    },
 				error:function(e) {
 					console.log('ajaxResponse 수신 실패');
 				}
@@ -38,6 +57,25 @@ $(window).on(
 }
 /* jumbotron image */
 
+	.wrap-loading{ /*화면 전체를 어둡게 합니다.*/
+	    position: fixed;
+	    left:0;
+	    right:0;
+	    top:0;
+	    bottom:0;
+	    background: rgba(0,0,0,0.2); /*not in ie */
+	    filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
+	}
+    .wrap-loading div{ /*로딩 이미지*/
+        position: fixed;
+        top:50%;
+        left:50%;
+        margin-left: -21px;
+        margin-top: -21px;
+    }
+    .display-none{ /*감추기*/
+        display:none;
+    }
 
 </style>
 	</head>
@@ -54,21 +92,14 @@ $(window).on(
 		
 		<!-- Container -->
 		<div class="container">
-			<h2>${line}</h2>
 			
 			<!-- Menu List shown in Cards -->
-			<div class="card-deck mt-4 mb-4">
-				<c:forEach var="menu" items="${menus}">
-				<a class="menuListItem" href="cus_menu_details.do?menu_id=${menu.menu_id}" >
-					<div class="card mt-4 mb-4">
-						<img class="card-img-top img-fluid" src="/Muhan/menu_images/${menu.menu_image}" alt="Menu Img" width="150" height="100">
-						<div class="card-body text-center font-weight-bold flex-fill">
-							<b class="card-title text-danger">${menu.menu_name}</b>
-							<p class="card-text text-dark">${menu.menu_price}원</p>
-						</div>
-					</div>
-				</a>
-				</c:forEach>
+			<div class="card-deck mt-4 mb-4" id="menu_card">
+				<div class="wrap-loading display-none">
+				    <div><img src="/Muhan/review_images/loading.gif"/>
+				    당신을 위한 추천 메뉴 분석 중입니다.
+				    </div>
+				</div> 
 			</div>
 			
 		</div>

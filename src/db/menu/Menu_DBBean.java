@@ -47,4 +47,7 @@ public class Menu_DBBean implements Menu_Dao{
 	public int insertRecommended( Recommended_Menu_DataBean recDto ) {
 		return session.insert("Menu.insertRecommended", recDto);
 	}
+	public int deleteRecommended(String cus_id) {
+		return session.delete("Menu.deleteRecommended", cus_id);
+	}
 }

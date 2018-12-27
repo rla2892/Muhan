@@ -44,4 +44,8 @@
 	<insert id="insertRecommended" parameterType="db.menu.Recommended_Menu_DataBean">
 		insert into mh_recommendation values(#{cus_id}, #{menu_result})
 	</insert>
+	
+	<delete id="deleteRecommended" parameterType="String">
+		delete from mh_recommendation where cus_id=#{cus_id}
+	</delete>
 </mapper>
