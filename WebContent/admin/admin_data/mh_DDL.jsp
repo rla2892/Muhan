@@ -14,6 +14,31 @@ DROP TABLE mh_menu CASCADE CONSTRAINTS;
 DROP TABLE mh_notice CASCADE CONSTRAINTS;
 DROP TABLE mh_store_member CASCADE CONSTRAINTS;
 DROP TABLE mh_regression CASCADE CONSTRAINTS;
+DROP TABLE mh_svd_s CASCADE CONSTRAINTS;
+DROP TABLE mh_svd_U CASCADE CONSTRAINTS;
+DROP TABLE mh_svd_V CASCADE CONSTRAINTS;
+
+CREATE TABLE mh_svd_s
+(
+	diag_key number NOT NULL UNIQUE,
+	diag_val number NOT NULL
+);
+
+
+CREATE TABLE mh_svd_U
+(
+	cus_id varchar2(20) NOT NULL UNIQUE,
+	weight1 number NOT NULL,
+	weight2 number NOT NULL
+);
+
+
+CREATE TABLE mh_svd_V
+(
+	menu_id number,
+	weight1 number,
+	weight2 number
+);
 
 CREATE TABLE mh_regression
 (
