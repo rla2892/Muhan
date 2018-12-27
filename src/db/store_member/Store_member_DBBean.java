@@ -131,8 +131,8 @@ public class Store_member_DBBean implements Store_member_Dao{
 	}
 	
 	@Override
-	public Store_member_age selectStore_age() {
-		return session.selectOne("Store_member.selectStore_age");
+	public List<Store_member_age> selectStore_age() {
+		return session.selectList("Store_member.selectStore_age");
 	}
 	//손소라
 	

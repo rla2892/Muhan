@@ -48,7 +48,11 @@
 	</tr>
 	<tr>
 		<th>고객 연령 비율</th>
-		<td>10대:${count_ages1}%&nbsp;&nbsp;20대:${count_ages2}%&nbsp;&nbsp;30대:${count_ages3}%&nbsp;&nbsp;40대:${count_ages4}%&nbsp;&nbsp;50대:${count_ages5}%&nbsp;&nbsp;60대:${count_ages6}%</td>
+		<td>20대:${count_ages2}%&nbsp;&nbsp;30대:${count_ages3}%&nbsp;&nbsp;40대:${count_ages4}%&nbsp;&nbsp;50대:${count_ages5}%&nbsp;&nbsp;60대:${count_ages6}%</td>
+	</tr>
+	<tr>
+		<th>소속 집단</th>
+		<td>${sumsum}</td>
 	</tr>
 	<tr>
 		<th>지도</th>

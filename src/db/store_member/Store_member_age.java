@@ -2,39 +2,38 @@ package db.store_member;
 
 public class Store_member_age {
 	private int store;
-	private int a;
-	private int b;
-	private int c;
-	private int d;
+	private String a;
+	private String b;
+	private String c;
+	private String d;
 	public int getStore() {
 		return store;
 	}
 	public void setStore(int store) {
 		this.store = store;
 	}
-	public int getA() {
+	public String getA() {
 		return a;
 	}
-	public void setA(int a) {
+	public void setA(String a) {
 		this.a = a;
 	}
-	public int getB() {
+	public String getB() {
 		return b;
 	}
-	public void setB(int b) {
+	public void setB(String b) {
 		this.b = b;
 	}
-	public int getC() {
+	public String getC() {
 		return c;
 	}
-	public void setC(int c) {
+	public void setC(String c) {
 		this.c = c;
 	}
-	public int getD() {
+	public String getD() {
 		return d;
 	}
-	public void setD(int d) {
+	public void setD(String d) {
 		this.d = d;
 	}
-	
 }
