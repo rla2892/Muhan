@@ -17,6 +17,16 @@ DROP TABLE mh_regression CASCADE CONSTRAINTS;
 DROP TABLE mh_svd_s CASCADE CONSTRAINTS;
 DROP TABLE mh_svd_U CASCADE CONSTRAINTS;
 DROP TABLE mh_svd_V CASCADE CONSTRAINTS;
+DROP TABLE mh_clustering CASCADE CONSTRAINTS;
+
+CREATE TABLE mh_clustering
+(
+	store_number number,
+	a varchar2(100),
+	b varchar2(100),
+	c varchar2(100),
+	d varchar2(100)
+);
 
 CREATE TABLE mh_svd_s
 (
