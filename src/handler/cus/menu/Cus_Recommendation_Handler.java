@@ -60,7 +60,7 @@ public class Cus_Recommendation_Handler implements CommandHandler {
 				
 				List<String> command = new ArrayList<String>();
 				command.add("python");
-				command.add("C:\\ExpertJava\\Python\\PythonEx\\project\\recommend.py");
+				command.add("C:\\Users\\Playdata\\Documents\\GitHub\\Muhan\\WebContent\\cus\\cus_menu\\recommend.py");
 				command.add(cus_id);
 				ProcessBuilder pb = new ProcessBuilder(command).inheritIO();
 				pb.redirectErrorStream(true);

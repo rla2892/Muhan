@@ -153,7 +153,11 @@ CREATE TABLE mh_store_member
 	PRIMARY KEY (store_id)
 );
 
-
+CREATE TABLE mh_recommendation
+(
+	cus_id varchar2(20) NOT NULL,
+	menu_result varchar2(40) NOT NULL
+);
 
 
 

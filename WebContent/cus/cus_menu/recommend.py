@@ -6,8 +6,14 @@ from surprise import Reader
 
 from surprise import SVD
 import numpy as np
+from hdfs import InsecureClient
 
-fname="C:\ExpertJava\Python\PythonEx\project\event.txt"
+# linux용
+# client_hdfs = InsecureClient( "http://mh_master:50070" )
+# with client_hdfs.read( "/input/cron-load/log-data-flumed.txt", encoding="utf-8" ) as reader :
+#     raw_data = pd.read_csv(reader, header=None, names=columns, index_col=False )
+
+fname="C:\home\encore\\flume\collect\log-data-flumed.txt"
 columns = ['년','월','일','시','분','초','주문번호','아이디','나이','성별','지역','메뉴명','가격','수량']
 raw_data = pd.read_csv(fname, header=None, names=columns, index_col=False)
 collected = raw_data[['아이디', '메뉴명', '수량']]
