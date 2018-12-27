@@ -1,16 +1,16 @@
 package db.store_member;
 
 public class Store_member_age {
-	private int store;
+	private int store_number;
 	private String a;
 	private String b;
 	private String c;
 	private String d;
-	public int getStore() {
-		return store;
+	public int getStore_number() {
+		return store_number;
 	}
-	public void setStore(int store) {
-		this.store = store;
+	public void setStore_number(int store_number) {
+		this.store_number = store_number;
 	}
 	public String getA() {
 		return a;
@@ -36,4 +36,5 @@ public class Store_member_age {
 	public void setD(String d) {
 		this.d = d;
 	}
+	
 }
