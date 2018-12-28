@@ -22,4 +22,8 @@
 <br>
 <%@include file="mh_order_history.jsp" %>
 <br>
+<%@include file="mh_result.jsp" %>
+<br>
+commit;
+<br>
 </pre>
