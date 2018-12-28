@@ -57,7 +57,7 @@ $(window).on(
 }
 /* jumbotron image */
 
-	.wrap-loading{ /*화면 전체를 어둡게 합니다.*/
+	/* .wrap-loading{ /*화면 전체를 어둡게 합니다.*/
 	    position: fixed;
 	    left:0;
 	    right:0;
@@ -65,7 +65,7 @@ $(window).on(
 	    bottom:0;
 	    background: rgba(0,0,0,0.2); /*not in ie */
 	    filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
-	}
+	} */
     .wrap-loading div{ /*로딩 이미지*/
         position: fixed;
         top:50%;
@@ -97,7 +97,15 @@ $(window).on(
 			<div class="card-deck mt-4 mb-4" id="menu_card">
 				<div class="wrap-loading display-none">
 				    <div><img src="/Muhan/review_images/loading.gif"/>
-				    당신을 위한 추천 메뉴 분석 중입니다.
+				    	당신을 위한 추천 메뉴 분석 중입니다.
+				    	<br>
+				    	<br>
+				    	<br>
+				    	<br>
+				    	<br>
+				    	<br>
+				    	<br>
+				    	
 				    </div>
 				</div> 
 			</div>
