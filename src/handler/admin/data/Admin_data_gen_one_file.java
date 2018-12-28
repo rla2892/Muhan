@@ -21,9 +21,19 @@ public class Admin_data_gen_one_file {
 		return locations[random_number];
 	}
 	//함수:랜덤고객
-	public static Cus_for_random random_cus(String cus_id){
+	public static Cus_for_random random_cus(String cus_id,int age_group){
+		int age=20;
+		if(age_group==2){
+			age=randombetween(20, 29);
+		}else if(age_group==3) {
+			age=randombetween(30, 39);
+		}else if(age_group==4) {
+			age=randombetween(40, 49);
+		}else {
+			age=randombetween(50, 65);
+		}
 		Cus_for_random cus = new Cus_for_random();
-		cus.setAge(randombetween(20, 65));
+		cus.setAge(age);
 		cus.setCus_id(cus_id);
 		cus.setGender(randombetween(0, 1)); //여자 0 남자 1
 		cus.setCus_location(randomlocation());
@@ -58,10 +68,25 @@ public class Admin_data_gen_one_file {
 		}
 		
 		//고객들
-		ArrayList<Cus_for_random> cus_objects = new ArrayList<Cus_for_random>();
-		for(int i=1; i<=50000; i++) {
+		ArrayList<Cus_for_random> cus_objects_20 = new ArrayList<Cus_for_random>();
+		ArrayList<Cus_for_random> cus_objects_30 = new ArrayList<Cus_for_random>();
+		ArrayList<Cus_for_random> cus_objects_40 = new ArrayList<Cus_for_random>();
+		ArrayList<Cus_for_random> cus_objects_50 = new ArrayList<Cus_for_random>();
+		for(int i=1; i<=9999; i++) {
 			String cus_id="cus"+i;
-			cus_objects.add(random_cus(cus_id));
+			cus_objects_20.add(random_cus(cus_id,2));
+		}
+		for(int i=10000; i<=19999; i++) {
+			String cus_id="cus"+i;
+			cus_objects_30.add(random_cus(cus_id,3));
+		}
+		for(int i=20000; i<=29999; i++) {
+			String cus_id="cus"+i;
+			cus_objects_40.add(random_cus(cus_id,4));
+		}
+		for(int i=30000; i<=39999; i++) {
+			String cus_id="cus"+i;
+			cus_objects_50.add(random_cus(cus_id,5));
 		}
 		
 		//랜덤객체
@@ -140,7 +165,7 @@ if(year>=2017) {
 	}
 }
 if( hour==12 || hour==13 || hour==18 || hour==19 || hour==20 ) {
-	normal_random_int+=10;
+	normal_random_int+=5;
 }
 if(normal_random_int<0) {
 	normal_random_int=0;
@@ -157,18 +182,50 @@ for(int rep=0;rep<reps;rep++) {
 
 minute=minute_select[rep];
 second=randombetween(0,59);
-//order_no 존재
+
+//랜덤 매장
+int store_no=randombetween(1,1312);
+store_id="store"+store_no;
+int store_group=(store_no%3)+1;
+
+//랜덤고객유형
+int[] cus_groups = {2, 2, 2, 2, 2, 2, 3, 3, 4, 5};
+if(store_group==1) {
+}else if(store_group==2) {
+	cus_groups[1] =3;
+	cus_groups[2] =3;
+	cus_groups[3] =3;
+	cus_groups[4] =3;
+	cus_groups[5] =4;
+	cus_groups[6] =4;
+	cus_groups[7] =4;
+	cus_groups[8] =4;
+}else {
+	cus_groups[3] =3;
+	cus_groups[4] =3;
+	cus_groups[5] =3;
+	cus_groups[6] =4;
+	cus_groups[7] =4;
+	cus_groups[8] =5;
+}
+Random random_cus_group = new Random();
+int cus_group = cus_groups[random_cus_group.nextInt(cus_groups.length)];
+
 //랜덤 고객 생성
-Cus_for_random cus_random=cus_objects.get(randombetween(1, 50000-1));
-//cus_id="cus"+randombetween(1,1000);
+Cus_for_random cus_random=null;
+if(cus_group==2) {
+	cus_random=cus_objects_20.get(randombetween(0, 9998));
+}else if(cus_group==3) {
+	cus_random=cus_objects_30.get(randombetween(0, 9998));
+}else if(cus_group==4) {
+	cus_random=cus_objects_40.get(randombetween(0, 9998));
+}else {
+	cus_random=cus_objects_50.get(randombetween(0, 9998));
+}
 cus_id=cus_random.getCus_id();
-//age=randombetween(20,65);
 age=cus_random.getAge();
-//gender=randombetween(0,1);//0 여자 , 1 남자
 gender=cus_random.getGender();
-//cus_location=randomlocation();
 cus_location=cus_random.getCus_location();
-store_id="store"+randombetween(1,1312);
 
 	// 메뉴 정보.
 	int menu_count=1;
