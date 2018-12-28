@@ -46,7 +46,7 @@
 		 <div class="form-group row">
 		       <label for="nickname" class="col-sm-3 col-form-label">생년월일</label>
 				<div class="col-sm-8"><input class="form-control" style="border:0 padding-top:2; text-align:center;" type="text" value="<fmt:formatDate value="${customer_member_dto.cus_birth}" type="both" pattern="yyyy-MM-dd"/>" readonly></div>
-		
+		</div>
 		<div class="form-group row">
 		       <label for="age" class="col-sm-3 col-form-label">나이</label>
 				<div class="col-sm-8"><input class="form-control" type="text" style="border:0 padding-top:2; text-align:center;" value="만${age}세" readonly></div>
