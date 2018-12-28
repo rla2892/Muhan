@@ -75,11 +75,11 @@ public class Admin_store_detail_Handler implements CommandHandler {
 		}
 		
 		double count_all = (double)count_20+count_30+count_40+count_50+count_60;
-		double count_ages2 =Math.round((double) (count_20/count_all)*100)/100.0;
-        double count_ages3 =Math.round((double) (count_30/count_all)*100)/100.0;
-        double count_ages4 =Math.round((double) (count_40/count_all)*100)/100.0;
-        double count_ages5 =Math.round((double) (count_50/count_all)*100)/100.0;
-        double count_ages6 =Math.round((double) (count_60/count_all)*100)/100.0;
+		double count_ages2 =Math.floor((Math.round((double) (count_20/count_all)*100)/100.0)*100);
+        double count_ages3 =Math.floor((Math.round((double) (count_30/count_all)*100)/100.0)*100);
+        double count_ages4 =Math.floor((Math.round((double) (count_40/count_all)*100)/100.0)*100);
+        double count_ages5 =Math.floor((Math.round((double) (count_50/count_all)*100)/100.0)*100);
+        double count_ages6 =Math.floor((Math.round((double) (count_60/count_all)*100)/100.0)*100);
         
         Map<Integer, Double> distances = new HashMap<Integer, Double>();
 		
