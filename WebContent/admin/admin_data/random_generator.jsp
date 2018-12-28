@@ -42,6 +42,17 @@ function random_timestamp(){
 	timestamp = ""+random_year()+"-"+random_month()+"-"+random_day()+"-"+random_hour()+"-"+random_minute()+"-"+random_second()
 	return timestamp
 }
+function random_timestamp_today(){
+	var now= new Date();
+	var now_year= now.getFullYear();
+	var now_month= now.getMonth()+1;
+	var now_date= now.getDate();
+	var now_hour= now.getHours();
+	var now_minute= now.getMinutes();
+	var timestamp;
+	timestamp = ""+now_year+"-"+now_month+"-"+now_date+"-"+randombetween(0,now_hour)+"-"+random_minute()+"-"+random_second()
+	return timestamp
+}
 function random_timestamp_for_birth(){
 	var timestamp;
 	timestamp = ""+randombetween(1960,1999)+"-"+random_month()+"-"+random_day()+"-"+random_hour()+"-"+random_minute()+"-"+random_second()
@@ -91,7 +102,26 @@ function random_order_history(order_no){
 	order_history +=3
 	order_history +=");"
 	return order_history;
-	
+}
+// random : random_order_history_today
+function random_order_history_today(order_no){
+	var order_history="";
+	order_history +="insert into mh_order_history values("
+	order_history +=order_no
+	order_history +=","
+	order_history +=random_quantity()
+	order_history +=","
+	order_history +=random_timestamp_to_date(random_timestamp_today())
+	order_history +=","
+	order_history +=random_menu()
+	order_history +=",'"
+	order_history +=random_cus_id()
+	order_history +="','"
+	order_history +=random_store_id()
+	order_history +="',"
+	order_history +=3
+	order_history +=");"
+	return order_history;
 }
 
 
