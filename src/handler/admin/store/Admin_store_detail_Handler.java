@@ -100,12 +100,12 @@ public class Admin_store_detail_Handler implements CommandHandler {
 		Entry<Integer, Double> min = Collections.min(distances.entrySet(),Comparator.comparing(Entry::getValue));
 		int sumsum = min.getKey();
 		
-        request.setAttribute("count_ages2", count_ages2);
-        request.setAttribute("count_ages3", count_ages3);
-        request.setAttribute("count_ages4", count_ages4);
-        request.setAttribute("count_ages5", count_ages5);
-        request.setAttribute("count_ages6", count_ages6);
-        request.setAttribute("sumsum", sumsum);
+        request.setAttribute("count_ages2", count_ages2);	//20대
+        request.setAttribute("count_ages3", count_ages3);	//30대
+        request.setAttribute("count_ages4", count_ages4);	//40대
+        request.setAttribute("count_ages5", count_ages5);	//50대
+        request.setAttribute("count_ages6", count_ages6);	//60대
+        request.setAttribute("sumsum", sumsum);				//최소값의 key
         
 		request.setAttribute("store_member_dto", store_member_dto);
 		
