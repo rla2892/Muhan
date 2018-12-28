@@ -27,3 +27,8 @@ insert into mh_regression values('co23',-2168.204032668505);
 insert into mh_regression values('co24',-2319.4077363722113);
 insert into mh_regression values('co25',-5027.46329192777);
 insert into mh_regression values('intercept',190735.2644344536);
+
+delete from mh_clustering;
+insert into mh_clustering values(1,0.21490697032960643,0.19675651064273916,0.30303755527143367,0.2852989637562208);
+insert into mh_clustering values(2,0.24603664591514732,0.27784871242447085,0.16894908090297756,0.3071655607574045);
+insert into mh_clustering values(3,0.19123233516011243,0.16801923277506564,0.1859497990011974,0.4547986330636245);
