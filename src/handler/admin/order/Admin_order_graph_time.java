@@ -101,7 +101,9 @@ public class Admin_order_graph_time implements CommandHandler{
 			int qnt = order_history_dtos.get(i).getOrder_qnt();
 			int all_pay = price*qnt;
 			Long old_pay = time_sales.get(dto_time);
-			time_sales.put(dto_time, old_pay+all_pay );
+			if(dto_time>=start_time) {
+				time_sales.put(dto_time, old_pay+all_pay );
+			}
 		}
 		//데이터 보내기
 		request.setAttribute("time_sales", time_sales);
