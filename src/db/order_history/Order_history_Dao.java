@@ -49,6 +49,9 @@ public interface Order_history_Dao {
 	
 	public List<Order_history_regression_DataBean> selectRegression();//회귀 기울기,절편 가져오기
 	
+	//고객의 메뉴별 주문횟수
+	public List<Integer> selectCountOfMenu(String cus_id);
+	
 	// 최은혜
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore ( Map<String, String> map );
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForMonthByStore ( Map<String, String> map );	

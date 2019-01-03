@@ -114,6 +114,9 @@
 	<select id="selectRegression" resultType="db.order_history.Order_history_regression_DataBean">
 		select * from mh_regression
 	</select>
+	<select id="selectCountOfMenu" parameterType="String" resultType="int">
+		select (select count(*) from mh_order_history where cus_id=#{cus_id} and menu_id=mh_menu.menu_id ) from mh_menu
+	</select>
 	
 	<!-- 최은혜 -->
 	<select id="selectOrdersForDayByStore" parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean_for_store_Timegraph">
