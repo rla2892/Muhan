@@ -117,7 +117,7 @@
 								&nbsp;<input type="text" style="width:110px;" class="form-control" name="cus_email1" id="cus_email1" maxlength="20" placeholder="이메일" required>
 								@
 								<input type="text" style="width:130px;" class="form-control" name="cus_email3" id="cus_email3" maxlength="20" placeholder="이메일" required>
-								<select class="form-control" style="width:130px;" name="cus_email2" id="cus_email2">
+								<select class="form-control" style="width:115px;" name="cus_email2" id="cus_email2">
 									<option value="0"> 직접 입력 </option>
 									<option value="naver.com">naver.com</option>
 									<option value="daum.net">daum.net</option>
