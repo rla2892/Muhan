@@ -19,7 +19,7 @@
 <script src="//code.jquery.com/jquery.js"></script>
 
 </head>
-<input type="text" id="authNum" value="${authNum}">
+<input type="hidden" id="authNum" value="${authNum}">
 
 <c:if test="${result eq 0}">
 <center>
