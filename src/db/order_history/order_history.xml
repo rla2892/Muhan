@@ -33,14 +33,9 @@
 		select max(order_no) from mh_order_history
 	</select>
 	<select parameterType="java.util.Map" resultType="int" id="checkOrders">
-    	select count(*) from mh_order_history where store_id=#{store_id}
-		and to_char(order_date, 'yyyy-mm-dd')=#{order_date} and order_status in (1, 2, 4)
-    </select>
-	<select parameterType="java.util.Map" resultType="int" id="Orders">
 		select count(*) from mh_order_history where store_id=#{store_id} 
 		and to_char(order_date, 'yyyy-mm-dd')=#{order_date} and order_status in (1, 2, 4) 
 	</select>
-
 	<select parameterType="java.util.Map" resultType="db.order_history.Order_history_DataBean_for_store2" id="selectOrderDetails">
 		select m.menu_name, oh.order_qnt 
 		from mh_menu m, mh_order_history oh 
@@ -176,12 +171,12 @@
      group by h.menu_id,m.menu_name,m.menu_category
 	</select>
 	<update id="updateDeliveryStatus" parameterType="java.util.Map">
-		update mh_order_history set order_status=${order_status} where order_no=${order_no} 
+		update mh_order_history set order_status=#{order_status} where order_no=#{order_no} 
 	</update>
 	<delete id="deleteCarLocations" parameterType="int">
 		delete from mh_car where order_no=#{order_no}
 	</delete>
-	<select id="selectOrderStatus" parameterType="int" resultType="int">
+	<select id="selectOrderStatus" parameterType="Integer" resultType="Integer">
 		select distinct order_status from mh_order_history where order_no=#{order_no}
 	</select>
 </mapper>
