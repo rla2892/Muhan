@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import db.order_history.Order_history_Dao;
+import db.order_history.Order_history_DataBean;
 import db.order_history.Order_history_car_DataBean;
 import handler.CommandHandler;
 import handler.HandlerException;
@@ -32,6 +33,10 @@ public class Cus_car_location_Handler implements CommandHandler{
 		}
 		List<Order_history_car_DataBean> order_hisotry_car_dtos = order_history_dao.selectCarLocations(order_no);
 		request.setAttribute("order_hisotry_car_dtos", order_hisotry_car_dtos);
+		
+		int order_status = order_history_dao.getOrder_status(order_no).get(0);
+		request.setAttribute("order_status", order_status);
+		
 		return new ModelAndView("/cus/cus_member/cus_car_location");
 	}
 }
