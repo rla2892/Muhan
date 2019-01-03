@@ -13,4 +13,8 @@ public interface Menu_Dao {
 	public String selectRecommended (String cus_id);
 	public int insertRecommended(Recommended_Menu_DataBean recDto);
 	public int deleteRecommended(String cus_id);
+	
+	public List<Svd_s_DataBean> select_svd_s();
+	public List<Svd_u_DataBean> select_svd_u(String cus_id);
+	public List<Svd_v_DataBean> select_svd_v();
 }

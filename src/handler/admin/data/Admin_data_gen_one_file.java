@@ -62,7 +62,7 @@ public class Admin_data_gen_one_file {
 		long start = System.currentTimeMillis();
 		
 		//메뉴들
-		ArrayList menu_ids = new ArrayList();
+		ArrayList<Integer> menu_ids = new ArrayList<Integer>();
 		for(int i=1; i<=69;i++) {
 			menu_ids.add(i);
 		}
@@ -122,7 +122,7 @@ public class Admin_data_gen_one_file {
 		int order_no=1;
 		
 		FileOutputStream output = null; //파일
-		output = new FileOutputStream("c:/home/one_log.txt");
+		output = new FileOutputStream("c:/home/log_data_sample.txt");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
 			//로그 파일 열기
 			
@@ -227,17 +227,28 @@ age=cus_random.getAge();
 gender=cus_random.getGender();
 cus_location=cus_random.getCus_location();
 
-	// 메뉴 정보.
-	int menu_count=1;
-	menu_count=randombetween(1, 3);
-	Collections.shuffle(menu_ids);
-	ArrayList menu_select = new ArrayList();
-	for(int select=0;select<menu_count;select++) {
-		menu_select.add(menu_ids.get(select));
-	}
-	if(age>=20 && age<30 && gender==1) {
-		menu_select.set(0, 1);
-	}
+int cus_number_group=Integer.parseInt(cus_id.substring(3, cus_id.length()));
+
+// 메뉴 정보.
+int menu_count=1;
+menu_count=randombetween(1, 3);
+
+ArrayList<Integer> new_menu_ids = (ArrayList<Integer>) menu_ids.clone();
+if(cus_number_group%2==1) {
+	new_menu_ids.removeIf(id -> id%2 == 1);
+}else {
+	new_menu_ids.removeIf(id -> id%2 == 0);
+}
+
+Collections.shuffle(new_menu_ids);
+ArrayList menu_select = new ArrayList();
+for(int select=0;select<menu_count;select++) {
+	menu_select.add(new_menu_ids.get(select));
+}
+//if(age>=20 && age<30 && gender==1) {
+//	menu_select.set(0, 1);
+//}
+
 	for(int menu_index=0;menu_index<menu_count;menu_index++ ) {
 	
 	menu=(int)menu_select.get(menu_index);
