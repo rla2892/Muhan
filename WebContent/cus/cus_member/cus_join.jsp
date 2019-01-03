@@ -98,7 +98,7 @@
 					<div class="form-group row">
 								<label for="inputNickname" class="col-sm-2 col-form-label">주소</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" name="cus_address" id="cus_address" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
+								<input type="text" style="width:300px;" class="form-control" name="cus_address" id="cus_address" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
 							</div>
 							<div class="col-sm-2">
 							<button class="btn btn-md btn-secondary" type="button" onclick="sample4_execDaumPostcode()">주소찾기</button>
@@ -106,9 +106,10 @@
 					</div>
 						
 					<div class="form-group row">
-								<label for="inputNickname" class="col-sm-2 col-form-label">상세주소</label>							
-							<div class="col-sm-8">
-								<input type="text" class="form-control" name="cus_address2" id="cus_address2" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
+								<label for="inputNickname" class="col-sm-2 col-form-label">상세주소</label>
+							
+							<div class="col-lg-9 text-right">
+								<input type="text" style="width:400px;" class="form-control" name="cus_address2" id="cus_address2" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
 							</div>
 					</div>
 					
