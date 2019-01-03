@@ -76,7 +76,7 @@ var reddotImage = new daum.maps.MarkerImage(reddot, reddotSize, imageOption)
 
 <script type="text/javascript">
 //<!--
-//배달 상태 정보//함수 안으로 들어오지 않는 중...?
+//배달 상태 정보
 function updateStatus(order_status){
 	statusDiv=$('#statusDiv')
 	statusDiv.empty()
