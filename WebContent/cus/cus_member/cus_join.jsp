@@ -91,14 +91,14 @@
 			<div class="form-group row">
 				<label for="inputNickname" class="col-sm-2 col-form-label">생일</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="testDatepicker" name="Birth" id="Birth" maxlength="10" autofocus autocomplete="off"/>
+					<input type="text" class="form-control" id="testDatepicker" placeholder="생일" name="Birth" id="Birth" maxlength="10" autofocus autocomplete="off"/>
 				</div>
 			</div>
 			
 					<div class="form-group row">
 								<label for="inputNickname" class="col-sm-2 col-form-label">주소</label>
 							<div class="col-sm-8">
-								<input type="text" style="width:300px;" class="form-control text-center" name="cus_address" id="cus_address" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
+								<input type="text" class="form-control" name="cus_address" id="cus_address" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
 							</div>
 							<div class="col-sm-2">
 							<button class="btn btn-md btn-secondary" type="button" onclick="sample4_execDaumPostcode()">주소찾기</button>
@@ -106,19 +106,17 @@
 					</div>
 						
 					<div class="form-group row">
-								<label  for="inputNickname" class="col-sm-2 col-form-label">상세주소</label>
-							
-							<div class="col-lg-9 text-right">
-								<input type="text" style="width:400px;" class="form-control text-center" name="cus_address2" id="cus_address2" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
+								<label for="inputNickname" class="col-sm-2 col-form-label">상세주소</label>							
+							<div class="col-sm-8">
+								<input type="text" class="form-control" name="cus_address2" id="cus_address2" maxlength="20" placeholder="주소를 다시 입력해 주세요." required>
 							</div>
 					</div>
 					
-					<div class="form-group">
-						<div class="row">
-						<label for="email" class="col-sm-2 col-form-label">이메일</label>
-								<input type="text" style="width:110px;" class="form-control text-center" name="cus_email1" id="cus_email1" maxlength="20" placeholder="이메일을 다시 입력해 주세요." required>
+					<div class="form-group row">						
+						<label for="inputNickname" class="col-sm-2 col-form-label">이메일</label>&nbsp;
+								&nbsp;<input type="text" style="width:110px;" class="form-control" name="cus_email1" id="cus_email1" maxlength="20" placeholder="이메일" required>
 								@
-								<input type="text" style="width:130px;" class="form-control text-center" name="cus_email3" id="cus_email3" maxlength="20" placeholder="이메일을 다시 입력해 주세요." required>
+								<input type="text" style="width:130px;" class="form-control" name="cus_email3" id="cus_email3" maxlength="20" placeholder="이메일" required>
 								<select class="form-control" style="width:130px;" name="cus_email2" id="cus_email2">
 									<option value="0"> 직접 입력 </option>
 									<option value="naver.com">naver.com</option>
@@ -127,23 +125,21 @@
 									<option value="gmail.com">gmail.com</option>
 								</select>
 							<div class="col-sm-2">
- 								<button type="button" class="btn btn-md btn-secondary" onclick="emailAuthentic()">
-									이메일인증									
-								</button>
+ 								<button type="button" class="btn btn-md btn-secondary" onclick="emailAuthentic()">이메일인증</button>
 								<input type="hidden" name="confirm" value="0">
 							</div>
-							</div>
-						</div>
-						<div class="form-group">
-						<div class="row">
-								<label class="col-sm-2 col-form-label">전화번호</label>
 							
-								<input type="text" style="width:100px;" class="form-control text-center" name="cus_tel1" id="cus_tel1" maxlength="3" placeholder="번호" required>
-								-
-								<input type="text" style="width:130px;" class="form-control text-center" name="cus_tel2" id="cus_tel2" maxlength="4" placeholder="번호" required>
-								-
-								<input type="text" style="width:130px;" class="form-control text-center" name="cus_tel3" id="cus_tel3" maxlength="4" placeholder="번호" required>
 						</div>
+						
+						<div class="form-group row">
+								<label for="inputNickname" class="col-sm-2 col-form-label">전화번호</label>&nbsp;
+							
+								&nbsp;<input type="text" style="width:100px;" class="form-control" name="cus_tel1" id="cus_tel1" 
+								maxlength="3" placeholder="번호" required>
+								-
+								<input type="text" style="width:130px;" class="form-control" name="cus_tel2" id="cus_tel2" maxlength="4" placeholder="번호" required>
+								-
+								<input type="text" style="width:130px;" class="form-control" name="cus_tel3" id="cus_tel3" maxlength="4" placeholder="번호" required>						
 						</div>
 					
 				<div class="col-lg-12 text-center mt-1 mb-1">
