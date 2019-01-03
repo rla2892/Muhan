@@ -185,4 +185,9 @@ public class Order_history_DBBean implements Order_history_Dao {
 	public int deleteCarLocations(int order_no) {
 		return session.update("Order_history.deleteCarLocations",order_no);
 	}
+
+	@Override
+	public List<Integer> getOrder_status(int order_no) {
+		return session.selectList("Order_history.selectOrderStatus",order_no);
+	}
 }

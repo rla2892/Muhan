@@ -71,5 +71,7 @@ public interface Order_history_Dao {
 	public int updateDeliveryStatus(Map<String,Integer> map);
 	//배달 완료 후 위치 좌표 삭제
 	public int deleteCarLocations(int order_no);
+	//주문번호별 상태
+	public List<Integer> getOrder_status(int order_no);
 }
 
