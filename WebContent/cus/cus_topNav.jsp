@@ -82,10 +82,11 @@
 			<li class="nav-item">
 				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="cus_review.do">REVIEW</a>
 			</li>
+			<!--  
 			<li class="nav-item">
 				<a class="nav-link ml-5 mr-5 pl-5 text-white" href="cus_chart.do">CHART</a>
 			</li>
-			
+			-->
 			
 		</ul>
 	</div>	

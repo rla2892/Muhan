@@ -48,4 +48,14 @@
 	<delete id="deleteRecommended" parameterType="String">
 		delete from mh_recommendation where cus_id=#{cus_id}
 	</delete>
+	
+	<select id="select_svd_s" resultType="db.menu.Svd_s_DataBean">
+		select * from mh_svd_s
+	</select>
+	<select id="select_svd_u" resultType="db.menu.Svd_u_DataBean">
+		select * from mh_svd_u where cus_id=#{cus_id}
+	</select>
+	<select id="select_svd_v" resultType="db.menu.Svd_v_DataBean">
+		select * from mh_svd_v
+	</select>
 </mapper>

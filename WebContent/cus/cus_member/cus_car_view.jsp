@@ -10,14 +10,9 @@
 		<%@include file="/cus/cus_member/cus_member_subNav.jsp"%>
 
 <div class="container">
+	<input id="order_status" type="hidden" value="${order_status}">
 	<div class="col-sm-8" id="map" style="width:100%;height:73%;"></div>
-	<div class="col-sm-4 alignment-center">
-		<h1>배달상태</h1>
-		<c:if test="${order_status eq 1}">1 주문 대기</c:if>
-		<c:if test="${order_status eq 2}">2 주문 접수</c:if>
-		<c:if test="${order_status eq 3}">3 주문 확인</c:if>
-		<c:if test="${order_status eq 4}">4 주문 완료</c:if>
-	</div>
+	<div id="statusDiv" class="col-sm-4 alignment-center"></div>
 </div>
 
 <input type="hidden" name="cus_address" id="cus_address" value="${cus_address}">
@@ -26,7 +21,6 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84ade146f4c88c0cf4ae826cc2f4eec8&libraries=services,clusterer"></script>
 <script>
-
 
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 var options = { //지도를 생성할 때 필요한 기본 옵션
@@ -82,6 +76,34 @@ var reddotImage = new daum.maps.MarkerImage(reddot, reddotSize, imageOption)
 
 <script type="text/javascript">
 //<!--
+//배달 상태 정보
+function updateStatus(order_status){
+	statusDiv=$('#statusDiv')
+	statusDiv.empty()
+	order_status=order_status.trim()
+	msg="<h1>배달상태</h1>"
+	switch(order_status){
+	case '1':
+		msg+="1. 주문 대기"
+		break;
+	case '2':
+		msg+="2. 주문 접수"
+		break;
+	case '3':
+		msg+="3. 주문 확인"
+		break;
+	case '5':
+		msg+="4. 배달 중"
+		break;
+	case '6':
+		msg+="5. 주문 완료"
+		break;
+	}
+	statusDiv.append(msg)
+}
+
+var status=$("#order_status").val()
+updateStatus(status);
 
 setInterval(
 	function(){
@@ -91,11 +113,11 @@ setInterval(
 				url : 'cus_car_location.do?order_no='+${param.order_no},
 				dataType : 'xml',	//json은 jsp파일 안에 있어서 안 읽힘 그래서 대신 text로 준다
 				success : function(data){
-					
-					
 					//alert("success");
 					var order_hisotry_car_dtos= data.getElementsByTagName('order_hisotry_car_dto');
-					
+					var order_status=data.getElementsByTagName("order_status")[0].textContent;
+					updateStatus(order_status)
+				
 					clusterer.clear();
 					for(var i=0; i<order_hisotry_car_dtos.length; i++){
 						var car_id = order_hisotry_car_dtos[i].children[0].textContent;

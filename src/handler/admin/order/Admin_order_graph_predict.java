@@ -83,7 +83,8 @@ public class Admin_order_graph_predict implements CommandHandler{
 		
 		//데이터 만들기 위한 맵 만들기 <시간, 매출액>
 		Map<Integer,Long> time_sales = new HashMap<Integer,Long>();
-		for(int i=start_time; i<=last_time; i++) {
+		//for(int i=start_time; i<=last_time; i++) {
+		for(int i=start_time; i<=this_hour; i++) {
 			time_sales.put(i, 0l);
 		}
 		//데이터 만들기
@@ -115,12 +116,14 @@ public class Admin_order_graph_predict implements CommandHandler{
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 		//누적데이터 만들기 위한 맵 만들기 <시간, 매출액>
 		Map<Integer,Long> time_sales_cumul = new HashMap<Integer,Long>();
-		for(int i=start_time; i<=last_time; i++) {
+		//for(int i=start_time; i<=last_time; i++) {
+		for(int i=start_time; i<=this_hour; i++) {
 			time_sales_cumul.put(i, time_sales.get(i));
 		}
 		
 		//누적 데이터 만들기
-		for(int i=start_time; i<=last_time; i++) {
+		//for(int i=start_time; i<=last_time; i++) {
+		for(int i=start_time; i<=this_hour; i++) {
 			Long new_sales = time_sales_cumul.get(i);
 			if(i != start_time ){
 				new_sales += time_sales_cumul.get(i-1);

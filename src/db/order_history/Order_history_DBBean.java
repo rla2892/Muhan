@@ -139,6 +139,10 @@ public class Order_history_DBBean implements Order_history_Dao {
 	public List<Order_history_regression_DataBean> selectRegression() {
 		return session.selectList("Order_history.selectRegression");
 	}
+	@Override
+	public List<Integer> selectCountOfMenu(String cus_id) {
+		return session.selectList("Order_history.selectCountOfMenu",cus_id);
+	}
 	
 	// 최은혜
 	public List<Order_history_DataBean_for_store_Timegraph> selectOrdersForDayByStore( Map<String, String> map ) {
@@ -184,5 +188,10 @@ public class Order_history_DBBean implements Order_history_Dao {
 	@Override
 	public int deleteCarLocations(int order_no) {
 		return session.update("Order_history.deleteCarLocations",order_no);
+	}
+
+	@Override
+	public List<Integer> getOrder_status(int order_no) {
+		return session.selectList("Order_history.selectOrderStatus",order_no);
 	}
 }

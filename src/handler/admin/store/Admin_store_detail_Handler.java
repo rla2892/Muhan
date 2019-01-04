@@ -36,32 +36,32 @@ public class Admin_store_detail_Handler implements CommandHandler {
 		List<String> age_sujm = store_member_dao.selectCustomer_age(store_id);
 		List<Store_member_age> Store_member_age_dto = store_member_dao.selectStore_age();
 			
-		double count_20=(double)0;
+		double count_20=(double)0;				//소수점 계산을위해 더블처리
 		double count_30=(double)0;
 		double count_40=(double)0;
 	    double count_50=(double)0;
 	    double count_60=(double)0; 
 	    
 		for(String str : age_sujm){
-			String result = str.substring(0, 4);
-			Calendar current = Calendar.getInstance();
-        	int currentYear  = current.get(Calendar.YEAR);
-        	int age = currentYear - Integer.parseInt(result);
+			String result = str.substring(0, 4);	//생년 가져오기
+			Calendar current = Calendar.getInstance();	//현재 날짜
+        	int currentYear  = current.get(Calendar.YEAR);	//현재 년도
+        	int age = currentYear - Integer.parseInt(result);	//현재년도 - 사용자 생년  = 현재 나이
         	int dae=0;
         	
-        	if (age>=20 && age<30) {
+        	if (age>=20 && age<30) {		// 20부터 29는 20으로 출력
         		dae=20;
-        	}else if(age>=30 && age<40) {
+        	}else if(age>=30 && age<40) { 	// 30부터 39는 30으로 출력
         		dae=30; 
-        	}else if(age>=40 && age<50) {
+        	}else if(age>=40 && age<50) {	// 40부터 49는 40으로 출력
         		dae=40;
-        	}else if(age>=50 && age<60) {
+        	}else if(age>=50 && age<60) {	// 50부터 59는 50으로 출력
         		dae=50;
-        	}else {
+        	}else {							// 나머지는 60으로 출력
         		dae=60;
         	}
         	       	
-        	if(dae==20){
+        	if(dae==20){					//20살이 있을때마다 count_20에 1씩 중첩 
         		count_20+=1;
         	}else if(dae==30) {
                 count_30+=1;
@@ -83,7 +83,7 @@ public class Admin_store_detail_Handler implements CommandHandler {
         
         Map<Integer, Double> distances = new HashMap<Integer, Double>();
 		
-		for(int i=0; i<Store_member_age_dto.size(); i++ ) {
+		for(int i=0; i<Store_member_age_dto.size(); i++) {
 			int store = Store_member_age_dto.get(i).getStore_number();
 			String store_a = Store_member_age_dto.get(i).getA();
 			String store_b = Store_member_age_dto.get(i).getB();	
@@ -98,8 +98,7 @@ public class Admin_store_detail_Handler implements CommandHandler {
 		}
 		
 		Entry<Integer, Double> min = Collections.min(distances.entrySet(),Comparator.comparing(Entry::getValue));
-		int sumsum = min.getKey();
-		
+		int sumsum = min.getKey();			//Map의 최소값의 key가져오기 
         request.setAttribute("count_ages2", count_ages2);	//20대
         request.setAttribute("count_ages3", count_ages3);	//30대
         request.setAttribute("count_ages4", count_ages4);	//40대
