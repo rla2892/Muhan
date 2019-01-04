@@ -30,7 +30,7 @@
 		values(#{order_no}, #{order_qnt}, #{order_date}, #{menu_id}, #{cus_id}, #{store_id}, 1)
 	</insert>
 	<select id="getMaxOrder_no" resultType="int">
-		select max(order_no) from mh_order_history
+		select NVL(max(order_no),0) from mh_order_history
 	</select>
 	<select parameterType="java.util.Map" resultType="int" id="checkOrders">
 		select count(*) from mh_order_history where store_id=#{store_id} 
