@@ -16,7 +16,7 @@
 	width: 360px;
 	z-index: 200;
 }
-				</style>
+</style>
 
 
 <!-- Top Navigation Bar -->
