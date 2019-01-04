@@ -50,4 +50,21 @@ public class Menu_DBBean implements Menu_Dao{
 	public int deleteRecommended(String cus_id) {
 		return session.delete("Menu.deleteRecommended", cus_id);
 	}
+	
+	@Override
+	public List<Svd_s_DataBean> select_svd_s() {
+		return session.selectList("Menu.select_svd_s");
+	}
+	@Override
+	public List<Svd_u_DataBean> select_svd_u(String cus_id) {
+		return session.selectList("Menu.select_svd_u",cus_id);
+	}
+	@Override
+	public List<Svd_v_DataBean> select_svd_v() {
+		return session.selectList("Menu.select_svd_v");
+	}
+	@Override
+	public int check_cus_id_from_svd_u(String cus_id) {
+		return session.selectOne("Menu.check_cus_id_from_svd_u", cus_id);
+	}
 }

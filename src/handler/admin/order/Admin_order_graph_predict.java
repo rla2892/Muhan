@@ -141,15 +141,33 @@ public class Admin_order_graph_predict implements CommandHandler{
 			double weight = order_history_regression_dto.get(i).getWeight();
 			regression_model.add(weight);
 		}
-		//예상 매출액 계산
+		//예상 매출액 계산. 24시 기준
 		Map<Integer,Long> time_sales_predicted = new HashMap<Integer,Long>();
+		
+		//start_time=0 , last_time=23
+		//절편 더하기
 		for(int i=start_time; i<=last_time; i++) {
 			Long predicted_sales=0l;
 			predicted_sales+= regression_model.get(regression_model.size()-1).longValue();//절편 더하기
-			predicted_sales+= regression_model.get(1).longValue();//2018년 더하기
-			predicted_sales+= regression_model.get(i+1).longValue();//2018년 더하기
-			
 			time_sales_predicted.put(i, predicted_sales);
+		}
+		
+		//올해 인덱스
+		int lag_year=this_year-2016;//2019-2016=3. 2016년이 로그데이터 회귀분석 원년
+		int this_year_index=lag_year-1;//올해인덱스 2016:x 2017:0 2018:1 2019:2
+		//년도 더하기
+		for(int i=start_time; i<=last_time; i++) {
+			Long predicted_sales=0l;
+			predicted_sales+= regression_model.get(this_year_index).longValue();//2018년 더하기
+			time_sales_predicted.put(i,time_sales_predicted.get(i)+predicted_sales);
+		}
+
+
+		//24시간 더하기
+		for(int i=start_time; i<=last_time; i++) {
+			Long predicted_sales=0l;
+			predicted_sales+= regression_model.get(i+this_year_index).longValue();//시간별 더하기
+			time_sales_predicted.put(i, time_sales_predicted.get(i)+ predicted_sales);
 		}
 		//데이터 보내기
 		request.setAttribute("time_sales_predicted", time_sales_predicted);
