@@ -21,7 +21,8 @@ public class Cus_Logout_Handler implements CommandHandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		
 		String cus_id = (String)request.getSession().getAttribute("cus_id");
-		int result = menuDao.deleteRecommended(cus_id);
+		System.out.println(cus_id);
+		if(cus_id != null) menuDao.deleteRecommended(cus_id);
 		
 		request.getSession().removeAttribute("cus_id");
 		request.getSession().removeAttribute("black");
