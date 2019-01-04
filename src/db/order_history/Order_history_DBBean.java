@@ -99,8 +99,8 @@ public class Order_history_DBBean implements Order_history_Dao {
 	// HY 추가
 
 	public List<Order_history_DataBean_for_Alarm> checkOrderStatus( String cus_id ) {
-		session.flushStatements();
-	    session.clearCache();
+		//session.flushStatements();
+	    //session.clearCache();
 		return session.selectList("Order_history.checkOrderStatus", cus_id );
 	}
 
