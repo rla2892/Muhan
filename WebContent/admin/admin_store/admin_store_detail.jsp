@@ -77,8 +77,18 @@
 		<td id="piechart" style="height:250px;"><%-- 20대:${count_ages2}%&nbsp;&nbsp;30대:${count_ages3}%&nbsp;&nbsp;40대:${count_ages4}%&nbsp;&nbsp;50대:${count_ages5}%&nbsp;&nbsp;60대:${count_ages6}% --%></td>
 	</tr>
 	<tr>
-		<th>소속 집단</th>
-		<td>${sumsum}</td>
+		<th>상권 유형</th>
+		<td>
+			<c:if test="${sumsum eq 1}">
+				대학/학원가
+			</c:if>
+			<c:if test="${sumsum eq 2}">
+				상업지역
+			</c:if>
+			<c:if test="${sumsum eq 3}">
+				주거지역
+			</c:if>
+		</td>
 	</tr>
 	<tr>
 		<th>지도</th>
