@@ -77,6 +77,5 @@
 		 <div class="row" id="chart_div">
  		 </div>
 	</div>
-</div>
- 	
- </main>
+</div>	
+</main>

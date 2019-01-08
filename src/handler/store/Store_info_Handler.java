@@ -23,10 +23,10 @@ import handler.CommandHandler;
 import handler.HandlerException;
 
 @Controller
-public class Store_age_chart_Handler implements CommandHandler{
+public class Store_info_Handler implements CommandHandler{
 	@Resource
 	private Store_member_Dao store_member_dao;
-	@RequestMapping("/Store_age_chart")
+	@RequestMapping("/Store_info")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
 		String store_id = (String)request.getSession().getAttribute("store_id");
@@ -105,7 +105,7 @@ public class Store_age_chart_Handler implements CommandHandler{
         request.setAttribute("sumsum", sumsum);				//최소값의 key
         
 		request.setAttribute("store_member_dto", store_member_dto);
-		return new ModelAndView("store/store_age_chart");
+		return new ModelAndView("store/store_info");
 	}
 
 }
