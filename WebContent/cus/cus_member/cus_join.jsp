@@ -254,9 +254,11 @@ function IdCheck() {
 				if (data.countId > 0) {
 					$('#IdCheckMessagegg').html(
 							"아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+					$('#IdCheckMessagegg').css("color","red")
 					idck = 1;
 				} else {
 					$('#IdCheckMessagegg').html("사용가능한 아이디입니다.");
+					$('#IdCheckMessagegg').css("color","blue")
 					idck = 2;
 				}
 			},
@@ -279,6 +281,7 @@ function passwordCheckFunction() {
 		$('#passwordCheckMessage').html("비밀번호가 일치하지 않습니다");
 	} else {
 		$('#passwordCheckMessage').html("비밀번호가 일치합니다");
+		$('#passwordCheckMessage').css("color","blue");
 		passwdck = 1;
 	}
 }

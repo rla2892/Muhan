@@ -146,7 +146,7 @@ var addressToCoord = function(result, status) {
     		storehtml+='<tr>';
     		storehtml+=	'<td>'+positions[i].address+'<td>';
     		storehtml+=	'<td>'+positions[i].name+'<td>';
-    		storehtml+=	'<td><button onclick="setStore('+"'"+positions[i].id+"'"+','+"'"+positions[i].name+"'"+');">';
+    		storehtml+=	'<td><button class="btn btn-md btn-secondary" onclick="setStore('+"'"+positions[i].id+"'"+','+"'"+positions[i].name+"'"+');">';
     		storehtml+=	'선택</button></td>';
     		storehtml+='</tr>';
     	}
