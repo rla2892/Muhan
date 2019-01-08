@@ -90,7 +90,7 @@ private void sendEmail(String cus_email, String cus_id) throws MessagingExceptio
 	String host="smtp.gmail.com"; // smtp 서버
 	String subject="무한상사 :아이디 입니다";
 	String fromName="무한상사 관리자";
-	String from="jsboy0718@gmail.com";//보내는 메일
+	String from="test1sangjin@gmail.com";//보내는 메일
 	String to1=cus_email;
 	String content="아이디는["+cus_id+"]입니다";
 	
@@ -109,7 +109,7 @@ try {
 		Session mailSession =Session.getInstance(props,
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication("jsboy0718@gmail.com", "whrldy!@87");
+						return new PasswordAuthentication("test1sangjin@gmail.com", "987654asd@");
 					}
 			
 				}); 
