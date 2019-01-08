@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="store_setting.jsp"%>
 <script src="${project}script.js"></script>
 
 <style type="text/css">
@@ -149,11 +148,6 @@ img {
         <p class="card__text">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.</p>
         <button class="btn btn--block card__btn" onclick="location='Store_orders_location.do'">Button</button>
       </div>
-    </div>
-  </li>
-  <li class="cards__item">
-    <div class="card">
-     	<c:import url="/Store_age_chart.do"/>
     </div>
   </li>
   <li class="cards__item">
