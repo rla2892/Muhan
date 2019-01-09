@@ -59,10 +59,10 @@ public class Cus_Recommendation_Handler implements CommandHandler {
 				String menu_result="";
 				
 				List<String> command = new ArrayList<String>();
-				//command.add("python");
-				//command.add("C:\\ExpertJava\\Muhan\\Muhan\\WebContent\\cus\\cus_menu\\recommend.py");
-				command.add("python3");
-				command.add("/home/encore/recommend.py");
+				command.add("python");
+				command.add("C:\\home\\encore\\recommend.py");
+				//command.add("python3");
+				//command.add("/home/encore/recommend.py");
 				command.add(cus_id);
 				ProcessBuilder pb = new ProcessBuilder(command).inheritIO();
 				pb.redirectErrorStream(true);

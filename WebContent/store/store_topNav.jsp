@@ -200,7 +200,7 @@ body.okayNav-loaded {
 
 <header id="header" class="fixed-top">
   <a class="site-logo" href="Store_main.do">
-           <img src="/Muhan/cus/cus_images/logo_red.png">
+           <img src="/Muhan/cus/cus_images/logo_red-MH.png">
         </a>
 <c:if test="${sessionScope.store_id eq null}">
   <nav role="navigation" id="nav-main" class="okayNav" onclick="sessionLogincheck()">
