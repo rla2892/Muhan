@@ -245,9 +245,6 @@ ArrayList menu_select = new ArrayList();
 for(int select=0;select<menu_count;select++) {
 	menu_select.add(new_menu_ids.get(select));
 }
-//if(age>=20 && age<30 && gender==1) {
-//	menu_select.set(0, 1);
-//}
 
 	for(int menu_index=0;menu_index<menu_count;menu_index++ ) {
 	

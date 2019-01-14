@@ -24,7 +24,7 @@
 	
 	<!-- Lotteria Logo, Used as Home Button -->
 	<a class="navbar-brand ml-5 mr-5 pl-5" href="cus_user_main.do">
-		<img src="/Muhan/cus/cus_images/logo_red.png" class="mainLogo" alt="Lotteria Red Main Logo">
+		<img src="/Muhan/cus/cus_images/logo_red-MH.png" class="mainLogo" alt="Lotteria Red Main Logo">
 	</a>
 	
 	<!-- Toggler/Collapsible Button -->
