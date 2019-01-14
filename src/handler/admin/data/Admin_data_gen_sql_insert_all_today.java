@@ -20,31 +20,6 @@ public class Admin_data_gen_sql_insert_all_today {
 		timestamp_to_date +=", 'YYYY-MM-DD-HH24-mi-ss')";
 		return timestamp_to_date;
 	}
-	//함수:랜덤 주소
-	public static String randomlocation(){
-		String[] locations= {"서울","인천","경기","대전","충청","세종","강원","부산","대구","울산","경상","광주","전라","제주"};
-		int random_number= randombetween(0,13);
-		return locations[random_number];
-	}
-	//함수:랜덤고객
-	public static Cus_for_random random_cus(String cus_id,int age_group){
-		int age=20;
-		if(age_group==2){
-			age=randombetween(20, 29);
-		}else if(age_group==3) {
-			age=randombetween(30, 39);
-		}else if(age_group==4) {
-			age=randombetween(40, 49);
-		}else {
-			age=randombetween(50, 65);
-		}
-		Cus_for_random cus = new Cus_for_random();
-		cus.setAge(age);
-		cus.setCus_id(cus_id);
-		cus.setGender(randombetween(0, 1)); //여자 0 남자 1
-		cus.setCus_location(randomlocation());
-		return cus;
-	}
 	public static void main(String[] args) throws IOException {
 		//시작시간
 		long start = System.currentTimeMillis();
@@ -55,33 +30,12 @@ public class Admin_data_gen_sql_insert_all_today {
 			menu_ids.add(i);
 		}
 		
-		//객체
-		int age;
-		int gender;
-		String cus_location;
-		
 		//고객들
-		ArrayList<Cus_for_random> cus_objects_20 = new ArrayList<Cus_for_random>();
-		ArrayList<Cus_for_random> cus_objects_30 = new ArrayList<Cus_for_random>();
-		ArrayList<Cus_for_random> cus_objects_40 = new ArrayList<Cus_for_random>();
-		ArrayList<Cus_for_random> cus_objects_50 = new ArrayList<Cus_for_random>();
-		for(int i=1; i<=9999; i++) {
+		ArrayList<String> cus_ids = new ArrayList<String>();
+		for(int i=1; i<=50000; i++) {
 			String cus_id="cus"+i;
-			cus_objects_20.add(random_cus(cus_id,2));
+			cus_ids.add(cus_id);
 		}
-		for(int i=10000; i<=19999; i++) {
-			String cus_id="cus"+i;
-			cus_objects_30.add(random_cus(cus_id,3));
-		}
-		for(int i=20000; i<=29999; i++) {
-			String cus_id="cus"+i;
-			cus_objects_40.add(random_cus(cus_id,4));
-		}
-		for(int i=30000; i<=39999; i++) {
-			String cus_id="cus"+i;
-			cus_objects_50.add(random_cus(cus_id,5));
-		}
-				
 		
 		//랜덤객체
 		Random normal_random = new Random();
@@ -117,9 +71,13 @@ public class Admin_data_gen_sql_insert_all_today {
 		//output.write("delete from mh_order_history;\n".getBytes());
 		//output.write("commit;\n".getBytes());
 		output.write("select count(*) from mh_order_history;\n".getBytes());
+		//output.write("insert all\n".getBytes());
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
 		//로그 파일 열기
 		
+		//로그 만들 반복 실행
+		//년 단위 : 2nth && year==now_year){end_date=now_date;}else{end_date=end_of_month;}
+		//일 단위 : 1~31
 		int year = now_year;
 		int month = now_month;
 		int date = now_date;
@@ -128,8 +86,12 @@ public class Admin_data_gen_sql_insert_all_today {
 		String delete_today_order="delete from mh_order_history where to_char( ORDER_DATE, 'yyyymmdd' ) = to_char( sysdate, 'yyyymmdd');\n";
 		data.append(delete_today_order);
 		data.append("insert all\n");
-		int end_hour=now_hour;
+		int end_hour=0;
+		end_hour=now_hour;
 		for(int hour=0; hour<= end_hour;hour++){
+//						end_minute=0;
+//						if(month==now_month && year==now_year && date==now_date && hour==now_hour){end_minute=now_minute;}else{end_minute=59;}
+//						for(int minute=0; minute<=end_minute;minute++) {
 //////////////////////////////////////////////////////////////////////////////////
 //로그 쓰기 시작							
 normal_random_int= (int) (normal_random.nextGaussian()*3+12);
@@ -157,73 +119,23 @@ for(int rep=0;rep<reps;rep++) {
 
 minute=minute_select[rep];
 second=randombetween(0,59);
-
-//랜덤 매장
-int store_no=randombetween(1,1312);
-store_id="store"+store_no;
-int store_group=(store_no%3)+1;
-
-//랜덤고객유형
-int[] cus_groups = {2, 2, 2, 2, 2, 2, 3, 3, 4, 5};
-if(store_group==1) {
-}else if(store_group==2) {
-	cus_groups[1] =3;
-	cus_groups[2] =3;
-	cus_groups[3] =3;
-	cus_groups[4] =3;
-	cus_groups[5] =4;
-	cus_groups[6] =4;
-	cus_groups[7] =4;
-	cus_groups[8] =4;
-}else {
-	cus_groups[3] =3;
-	cus_groups[4] =3;
-	cus_groups[5] =3;
-	cus_groups[6] =4;
-	cus_groups[7] =4;
-	cus_groups[8] =5;
-}
-Random random_cus_group = new Random();
-int cus_group = cus_groups[random_cus_group.nextInt(cus_groups.length)];
-
+//order_no 존재
 //랜덤 고객 생성
-Cus_for_random cus_random=null;
-if(cus_group==2) {
-	cus_random=cus_objects_20.get(randombetween(0, 9998));
-}else if(cus_group==3) {
-	cus_random=cus_objects_30.get(randombetween(0, 9998));
-}else if(cus_group==4) {
-	cus_random=cus_objects_40.get(randombetween(0, 9998));
-}else {
-	cus_random=cus_objects_50.get(randombetween(0, 9998));
-}
-cus_id=cus_random.getCus_id();
-age=cus_random.getAge();
-gender=cus_random.getGender();
-cus_location=cus_random.getCus_location();
+String cus_random=cus_ids.get(randombetween(1, 50000-1));
+cus_id=cus_random;
+store_id="store"+randombetween(1,1312);
 
-int cus_number_group=Integer.parseInt(cus_id.substring(3, cus_id.length()));
-
-//메뉴 정보.
-int menu_count=1;
-menu_count=randombetween(1, 3);
-
-ArrayList<Integer> new_menu_ids = (ArrayList<Integer>) menu_ids.clone();
-if(cus_number_group%2==1) {
-	new_menu_ids.removeIf(id -> id%2 == 1);
-}else {
-	new_menu_ids.removeIf(id -> id%2 == 0);
-}
-
-Collections.shuffle(new_menu_ids);
-ArrayList menu_select = new ArrayList();
-for(int select=0;select<menu_count;select++) {
-	menu_select.add(new_menu_ids.get(select));
-}
-
+	// 메뉴 정보.
+	int menu_count=1;
+	menu_count=randombetween(1, 3);
+	Collections.shuffle(menu_ids);
+	ArrayList<Integer> menu_select = new ArrayList<Integer>();
+	for(int select=0;select<menu_count;select++) {
+		menu_select.add(menu_ids.get(select));
+	}
 	for(int menu_index=0;menu_index<menu_count;menu_index++ ) {
 	
-		menu=(int) menu_select.get(menu_index);
+		menu=menu_select.get(menu_index);
 		
 		quantity=randombetween(1,3);
 		
