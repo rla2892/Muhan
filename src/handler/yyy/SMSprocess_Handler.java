@@ -21,7 +21,7 @@ public class SMSprocess_Handler implements CommandHandler{
 		request.setAttribute("msg", "주문이 접수됐습니다.");//문자 내용
 		request.setAttribute("rphone", "010-8527-8929");//받는 사람 전화번호
 		//request.setAttribute("testflag", "");//진짜 문자 보내면 안쓰고, 시험용 문자는 Y
-		request.setAttribute("testflag", "Y");//진짜 문자 보내면 안쓰고, 시험용 문자는 Y
+		//request.setAttribute("testflag", "Y");//진짜 문자 보내면 안쓰고, 시험용 문자는 Y
 		
 		return new ModelAndView( "yyy/SMSprocess" );
 	}
