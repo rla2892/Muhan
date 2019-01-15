@@ -70,10 +70,10 @@ public class Store_order_email_pro_Handler implements CommandHandler{
 		request.setAttribute("msg", "주문이 접수됐습니다.");//문자 내용
 		request.setAttribute("rphone", cus_tel);//받는 사람 전화번호
 		
-		String testCheck = "Y";//진짜 문자 보내면 안쓰고, 시험용 문자는 Y
+//		String testCheck = "Y";//진짜 문자 보내면 안쓰고, 시험용 문자는 Y
 //		String testCheck = "";//진짜 문자 보내면 안쓰고, 시험용 문자는 Y
 		
-		request.setAttribute("testflag", testCheck);//진짜 문자 보내면 안쓰고, 시험용 문자는 Y
+//		request.setAttribute("testflag", testCheck);//진짜 문자 보내면 안쓰고, 시험용 문자는 Y
 		
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("/store/store_sms_process");
