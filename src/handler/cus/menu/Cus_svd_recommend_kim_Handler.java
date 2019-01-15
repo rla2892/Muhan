@@ -79,13 +79,8 @@ public class Cus_svd_recommend_kim_Handler implements CommandHandler{
 	@Override
 	@RequestMapping("cus_svd_recommend_kim")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
-		
 		String cus_id=(String)request.getSession().getAttribute("cus_id");
-		Map<String, String> map = new HashMap<>();
-		map.put("cus_id", cus_id);
-		List<Order_history_DataBean> nullCheck = order_history_dao.selectOrdersByCus(map);	
-		System.out.println(nullCheck);
-		System.out.println(nullCheck.isEmpty());
+		System.out.println(cus_id);
 		if(cus_id==null){
 			try {
 				response.sendRedirect("cus_menu.do?menu_category=4,5");
@@ -93,6 +88,12 @@ public class Cus_svd_recommend_kim_Handler implements CommandHandler{
 				e.printStackTrace();
 			}
 		}else {
+			Map<String, String> map = new HashMap<>();
+			map.put("cus_id", cus_id);
+			List<Order_history_DataBean> nullCheck = order_history_dao.selectOrdersByCus(map);	
+			System.out.println(nullCheck);
+			System.out.println(nullCheck.isEmpty());
+			System.out.println(cus_id);
 			if(! nullCheck.isEmpty()) {
 				int check_cus_id_from_svd_u = menu_dao.check_cus_id_from_svd_u(cus_id);
 				System.out.println("체크 svd_u : "+check_cus_id_from_svd_u);
