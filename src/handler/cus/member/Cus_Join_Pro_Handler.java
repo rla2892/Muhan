@@ -22,6 +22,7 @@ public class Cus_Join_Pro_Handler implements CommandHandler {
 	@Resource
 	private Customer_member_Dao cusMemberDao;
 
+	@SuppressWarnings("deprecation")
 	@Override
 	@RequestMapping("/cus_join_pro")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws HandlerException {
